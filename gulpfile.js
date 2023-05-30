@@ -129,7 +129,7 @@ gulp.task('assets', function () {
 
 gulp.task('images', function () {
     return gulp.src([paths.src.img])
-        //.pipe(cached('images'))
+        .pipe(cached('images'))
         .pipe(imagemin({ verbose: true }))
         .pipe(gulp.dest(paths.temp.img));
 });
