@@ -27,7 +27,11 @@ var sass = require('gulp-sass')(require('node-sass'));
 var wait = require('gulp-wait');
 var sourcemaps = require('gulp-sourcemaps');
 var fileinclude = require('gulp-file-include');
+
+// Nick improvements
 var cached = require('gulp-cached');
+var imagemin = require('gulp-imagemin');
+// var sharpResponsive = require("gulp-sharp-responsive");
 
 // Define paths
 
@@ -57,6 +61,7 @@ const paths = {
         css: './src/css',
         html: './src/html/**/*.html',
         assets: './src/assets/**/*.*',
+        img: './src/assets/img/**/*.+(jpeg|jpg|png|tiff|webp|gif|avif|heif|heic)',
         partials: './src/partials/**/*.html',
         scss: './src/scss',
         node_modules: './node_modules/',
@@ -67,6 +72,7 @@ const paths = {
         css: './.temp/css',
         html: './.temp/html',
         assets: './.temp/assets',
+        img: './.temp/assets/img',
         vendor: './.temp/vendor'
     }
 };
@@ -121,13 +127,35 @@ gulp.task('assets', function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task('images', function () {
+    return gulp.src([paths.src.img])
+        //.pipe(cached('images'))
+        .pipe(imagemin({ verbose: true }))
+        .pipe(gulp.dest(paths.temp.img));
+});
+
+// gulp.task('images', function () {
+//     return gulp.src([paths.src.img])
+//         .pipe(cached('images'))
+//         .pipe(sharpResponsive({
+//             includeOriginalFile: true,
+//             formats: [
+//                 { width: 640, rename: { suffix: "-sm" } },
+//                 { width: 768, rename: { suffix: "-md" } },
+//                 { width: 1024, rename: { suffix: "-lg" } },
+//                 { width: 1080, rename: { suffix: "-xl" } },
+//             ]
+//         }))
+//         .pipe(gulp.dest(paths.temp.img));
+// });
+
 gulp.task('vendor', function () {
     return gulp.src(npmDist(), { base: paths.src.node_modules })
         .pipe(cached('vendor'))
         .pipe(gulp.dest(paths.temp.vendor));
 });
 
-gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', function () {
+gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'images', 'vendor', function () {
     browserSync.init({
         server: paths.temp.base
     });
@@ -135,6 +163,7 @@ gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', func
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'], gulp.series('scss'));
     gulp.watch([paths.src.html, paths.src.base + '*.html', paths.src.partials], gulp.series('html', 'index'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
+    gulp.watch([paths.src.assets], gulp.series('images'));
     gulp.watch([paths.src.vendor], gulp.series('vendor'));
 }));
 
@@ -281,6 +310,16 @@ gulp.task('copy:dist:assets', function () {
 gulp.task('copy:dev:assets', function () {
     return gulp.src(paths.src.assets)
         .pipe(gulp.dest(paths.dev.assets))
+});
+
+gulp.task('copy:dist:image', function () {
+    return gulp.src(paths.src.img)
+        .pipe(gulp.dest(paths.dist.img))
+});
+
+gulp.task('copy:dev:image', function () {
+    return gulp.src(paths.src.img)
+        .pipe(gulp.dest(paths.dev.img))
 });
 
 // Copy node_modules to vendor
