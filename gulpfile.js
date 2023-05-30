@@ -61,7 +61,7 @@ const paths = {
         css: './src/css',
         html: './src/html/**/*.html',
         assets: './src/assets/**/*.*',
-        img: './src/assets/img/**/*.+(jpeg|jpg|png|tiff|webp|gif|avif|heif|heic)',
+        img: './src/assets/img/**/*.+(jpeg|jpg|png|gif|svg)',
         partials: './src/partials/**/*.html',
         scss: './src/scss',
         node_modules: './node_modules/',
