@@ -27,6 +27,7 @@ var sass = require('gulp-sass')(require('node-sass'));
 var wait = require('gulp-wait');
 var sourcemaps = require('gulp-sourcemaps');
 var fileinclude = require('gulp-file-include');
+var cached = require('gulp-cached');
 
 // Define paths
 
@@ -75,6 +76,7 @@ gulp.task('scss', function () {
     return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'])
         .pipe(wait(500))
         .pipe(sourcemaps.init())
+        .pipe(cached('sass'))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['> 1%']
@@ -93,6 +95,7 @@ gulp.task('index', function () {
                 environment: 'development'
             }
         }))
+        .pipe(cached('index'))
         .pipe(gulp.dest(paths.temp.base))
         .pipe(browserSync.stream());
 });
@@ -106,22 +109,25 @@ gulp.task('html', function () {
                 environment: 'development'
             }
         }))
+        .pipe(cached('html'))
         .pipe(gulp.dest(paths.temp.html))
         .pipe(browserSync.stream());
 });
 
 gulp.task('assets', function () {
     return gulp.src([paths.src.assets])
+        .pipe(cached('assets'))
         .pipe(gulp.dest(paths.temp.assets))
         .pipe(browserSync.stream());
 });
 
-gulp.task('vendor', function() {
+gulp.task('vendor', function () {
     return gulp.src(npmDist(), { base: paths.src.node_modules })
-      .pipe(gulp.dest(paths.temp.vendor));
+        .pipe(cached('vendor'))
+        .pipe(gulp.dest(paths.temp.vendor));
 });
 
-gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', function() {
+gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', function () {
     browserSync.init({
         server: paths.temp.base
     });
@@ -146,8 +152,8 @@ gulp.task('minify:css', function () {
     return gulp.src([
         paths.dist.css + '/pixel.css'
     ])
-    .pipe(cleanCss())
-    .pipe(gulp.dest(paths.dist.css))
+        .pipe(cleanCss())
+        .pipe(gulp.dest(paths.dist.css))
 });
 
 // Minify Html
@@ -187,6 +193,7 @@ gulp.task('clean:dist', function () {
 });
 
 gulp.task('clean:dev', function () {
+    cache.caches = {};
     return del([paths.dev.base]);
 });
 
@@ -277,14 +284,14 @@ gulp.task('copy:dev:assets', function () {
 });
 
 // Copy node_modules to vendor
-gulp.task('copy:dist:vendor', function() {
+gulp.task('copy:dist:vendor', function () {
     return gulp.src(npmDist(), { base: paths.src.node_modules })
-      .pipe(gulp.dest(paths.dist.vendor));
+        .pipe(gulp.dest(paths.dist.vendor));
 });
 
-gulp.task('copy:dev:vendor', function() {
+gulp.task('copy:dev:vendor', function () {
     return gulp.src(npmDist(), { base: paths.src.node_modules })
-      .pipe(gulp.dest(paths.dev.vendor));
+        .pipe(gulp.dest(paths.dev.vendor));
 });
 
 gulp.task('build:dev', gulp.series('clean:dev', 'copy:dev:css', 'copy:dev:html', 'copy:dev:html:index', 'copy:dev:assets', 'beautify:css', 'copy:dev:vendor'));
