@@ -6,3 +6,4 @@ Disabled packages and removed from package.json:
         "chartist-plugin-tooltips": "0.0.17",
         "countup.js": "^2.0.5",
         "vanillajs-datepicker": "^1.0.3",
+        "jarallax": "1.12.0",
