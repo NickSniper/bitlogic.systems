@@ -319,7 +319,7 @@ gulp.task('copy:dist:image', function () {
 
 gulp.task('compress:dist:image', function () {
     return gulp.src([paths.src.img])
-        .pipe(imagemin({ verbose: true }))
+        .pipe(imagemin(/*{ verbose: true }*/))
         .pipe(gulp.dest(paths.dist.img));
 });
 
