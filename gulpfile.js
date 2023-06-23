@@ -127,13 +127,11 @@ gulp.task('assets', function () {
         .pipe(browserSync.stream());
 });
 
-gulp.task('images', function () {
-    return gulp.src([paths.src.img])
-        .pipe(cached('images'))
-        // TODO: uncomment it on final phases
-        // .pipe(imagemin({ verbose: true }))
-        .pipe(gulp.dest(paths.temp.img));
-});
+// gulp.task('images', function () {
+//     return gulp.src([paths.src.img])
+//         .pipe(cached('images'))
+//         .pipe(gulp.dest(paths.temp.img));
+// });
 
 // gulp.task('images', function () {
 //     return gulp.src([paths.src.img])
@@ -156,7 +154,7 @@ gulp.task('vendor', function () {
         .pipe(gulp.dest(paths.temp.vendor));
 });
 
-gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'images', 'vendor', function () {
+gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', function () {
     browserSync.init({
         server: paths.temp.base
     });
@@ -164,7 +162,7 @@ gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'images', 'ven
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'], gulp.series('scss'));
     gulp.watch([paths.src.html, paths.src.base + '*.html', paths.src.partials], gulp.series('html', 'index'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
-    gulp.watch([paths.src.assets], gulp.series('images'));
+    // gulp.watch([paths.src.assets], gulp.series('images'));
     gulp.watch([paths.src.vendor], gulp.series('vendor'));
 }));
 
@@ -318,6 +316,13 @@ gulp.task('copy:dist:image', function () {
         .pipe(gulp.dest(paths.dist.img))
 });
 
+gulp.task('compress:dist:image', function () {
+    return gulp.src([paths.src.img])
+        .pipe(imagemin({ verbose: true }))
+        .pipe(gulp.dest(paths.dist.img));
+});
+
+
 gulp.task('copy:dev:image', function () {
     return gulp.src(paths.src.img)
         .pipe(gulp.dest(paths.dev.img))
@@ -334,8 +339,9 @@ gulp.task('copy:dev:vendor', function () {
         .pipe(gulp.dest(paths.dev.vendor));
 });
 
+
 gulp.task('build:dev', gulp.series('clean:dev', 'copy:dev:css', 'copy:dev:html', 'copy:dev:html:index', 'copy:dev:assets', 'beautify:css', 'copy:dev:vendor'));
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'compress:dist:image', 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
