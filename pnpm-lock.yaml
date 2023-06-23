@@ -15,8 +15,8 @@ dependencies:
     specifier: ^2.6.0
     version: 2.6.0
   bootstrap:
-    specifier: 5.0.1
-    version: 5.0.1(@popperjs/core@2.6.0)
+    specifier: 5.3.0
+    version: 5.3.0(@popperjs/core@2.6.0)
   chartist:
     specifier: ^0.11.4
     version: 0.11.4
@@ -780,10 +780,10 @@ packages:
     dev: false
     optional: true
 
-  /bootstrap@5.0.1(@popperjs/core@2.6.0):
-    resolution: {integrity: sha512-Fl79+wsLOZKoiU345KeEaWD0ik8WKRI5zm0YSPj2oF1Qr+BO7z0fco6GbUtqjoG1h4VI89PeKJnMsMMVQdKKTw==}
+  /bootstrap@5.3.0(@popperjs/core@2.6.0):
+    resolution: {integrity: sha512-UnBV3E3v4STVNQdms6jSGO2CvOkjUMdDAVR2V5N4uCMdaIkaQjbcEAMqRimDHIs4uqBYzDAKCQwCB+97tJgHQw==}
     peerDependencies:
-      '@popperjs/core': ^2.9.2
+      '@popperjs/core': ^2.11.7
     dependencies:
       '@popperjs/core': 2.6.0
     dev: false
