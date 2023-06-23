@@ -82,3 +82,5 @@ yarn-error.log
 # site specific
 .temp
 package-lock.json
+dist
+pnpm-lock.yaml
