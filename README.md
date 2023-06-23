@@ -7,3 +7,7 @@ Disabled packages and removed from package.json:
         "countup.js": "^2.0.5",
         "vanillajs-datepicker": "^1.0.3",
         "jarallax": "1.12.0",
+        "nouislider": "11.0.3",
+        "onscreen": "1.3.4",
+        "vivus": "^0.4.5",
+        "waypoints": "4.0.1"
