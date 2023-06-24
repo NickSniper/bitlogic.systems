@@ -189,7 +189,8 @@ gulp.task('minify:css', function () {
 gulp.task('minify:html', function () {
     return gulp.src([paths.dist.html + '/**/*.html'])
         .pipe(htmlmin({
-            collapseWhitespace: true
+            collapseWhitespace: true,
+            removeComments: true
         }))
         .pipe(fileinclude({
             prefix: '@@',
@@ -204,7 +205,8 @@ gulp.task('minify:html', function () {
 gulp.task('minify:html:index', function () {
     return gulp.src([paths.dist.base + '*.html'])
         .pipe(htmlmin({
-            collapseWhitespace: true
+            collapseWhitespace: true,
+            removeComments: true
         }))
         .pipe(fileinclude({
             prefix: '@@',
