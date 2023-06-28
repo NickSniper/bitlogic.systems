@@ -48,9 +48,10 @@
 
 // Bootstrap
 @import "../../node_modules/bootstrap/scss/variables";
-@import "../../node_modules/bootstrap/scss/variables-dark";
+// @import "../../node_modules/bootstrap/scss/variables-dark";
 @import "../../node_modules/bootstrap/scss/maps";
 @import "../../node_modules/bootstrap/scss/mixins";
+
 
 // Variables correction for Bootstrap 5.3
 $tertiary: #3fb247;
