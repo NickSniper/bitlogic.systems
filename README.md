@@ -35,3 +35,27 @@ Service Transformation solutions are relevant across various industries and sect
 
 
 
+
+Application Services
+Blockchain
+Business Process Services
+Cloud
+Cognitive
+Cyber Security
+DevOps
+AI
+Digital
+Enterprise Automation
+Experience Design
+Governance, Risk & Compliance
+Infrastructure Services
+Modernization
+Next-Gen Data
+Next-Gen IT Operations
+Product Engineering
+Agile IT Operations
+Platforms & Protocols - XAAP
+AWS Services
+Azure Services
+GCP Services
+VMware Tanzu Services
