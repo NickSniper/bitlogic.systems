@@ -83,7 +83,7 @@ gulp.task('scss', function () {
     return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'])
         .pipe(wait(500))
         .pipe(sourcemaps.init())
-        .pipe(cached('sass'))
+        // .pipe(cached('sass'))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['> 1%']
@@ -102,7 +102,7 @@ gulp.task('index', function () {
                 environment: 'development'
             }
         }))
-        .pipe(cached('index'))
+        // .pipe(cached('index'))
         .pipe(gulp.dest(paths.temp.base))
         .pipe(browserSync.stream());
 });
@@ -151,7 +151,7 @@ gulp.task('assets', function () {
 
 gulp.task('vendor', function () {
     return gulp.src(npmDist(), { base: paths.src.node_modules })
-        .pipe(cached('vendor'))
+        // .pipe(cached('vendor'))
         .pipe(gulp.dest(paths.temp.vendor));
 });
 
