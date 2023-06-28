@@ -1,19 +1,4 @@
-/*
-
-=========================================================
-* Pixel Pro Bootstrap 5 UI Kit
-=========================================================
-
-* Product Page: https://themesberg.com/product/ui-kit/pixel-pro-premium-bootstrap-5-ui-kit
-* Copyright 2021 Themesberg (https://www.themesberg.com)
-
-* Coded by https://themesberg.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Contact us if you want to remove it.
-
-*/
+// <!-- Copyright © 2011-2023 bitLogic.systems -->
 
 "use strict";
 const d = document;
@@ -27,12 +12,12 @@ d.addEventListener("DOMContentLoaded", function (event) {
         xl: 1140
     };
 
-    if(document.getElementById('navbar_global')) {
-        document.getElementById('navbar_global').addEventListener('shown.bs.collapse', function() {
+    if (document.getElementById('navbar_global')) {
+        document.getElementById('navbar_global').addEventListener('shown.bs.collapse', function () {
             document.getElementsByTagName('body')[0].classList.add('overflow-hidden');
         });
-    
-        document.getElementById('navbar_global').addEventListener('hidden.bs.collapse', function() {
+
+        document.getElementById('navbar_global').addEventListener('hidden.bs.collapse', function () {
             document.getElementsByTagName('body')[0].classList.remove('overflow-hidden');
         });
     }

@@ -1,9 +1,9 @@
 {
-    "name": "pixel-pro-ui-kit",
-    "version": "5.4.0",
-    "description": "Pixel Pro - Premium Bootstrap 5 UI Kit created by Themesberg",
+    "name": "bitlogic-systems",
+    "version": "1.0.0",
+    "description": "bitLogic.systems corporate site",
     "main": "gulpfile.js",
-    "author": "Themesberg",
+    "author": "bitLogic",
     "keywords": [
         "css",
         "sass",
@@ -14,11 +14,11 @@
         "accessible",
         "bootstrap 5"
     ],
-    "homepage": "https://themesberg.com/product/ui-kit/pixel-pro-premium-bootstrap-5-ui-kit",
+    "homepage": "https://bitLogic.systems",
     "bugs": {
-        "email": "zoltan@themesberg.com"
+        "email": "admin@bitLogic.systems"
     },
-    "license": "https://themesberg.com/licensing",
+    "license": "https://bitLogic.systems/licensing",
     "devDependencies": {
         "browser-sync": "^2.29.3",
         "compress": "^0.99.0",
