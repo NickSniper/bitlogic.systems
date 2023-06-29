@@ -25,8 +25,8 @@
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^8.0.0",
         "gulp-clean-css": "^4.3.0",
+        "gulp-concat": "^2.6.1",
         "gulp-cssbeautify": "^3.0.0",
-        "node-sass": "^6.0.1",
         "gulp-file-include": "^2.3.0",
         "gulp-header": "^2.0.9",
         "gulp-htmlmin": "^5.0.1",
@@ -37,7 +37,8 @@
         "gulp-sourcemaps": "^3.0.0",
         "gulp-uglify": "^3.0.2",
         "gulp-wait": "^0.0.2",
-        "merge-stream": "^2.0.0"
+        "merge-stream": "^2.0.0",
+        "node-sass": "^6.0.1"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.11.2",

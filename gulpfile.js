@@ -12,6 +12,10 @@ var sass = require('gulp-sass')(require('node-sass'));
 var wait = require('gulp-wait');
 var sourcemaps = require('gulp-sourcemaps');
 var fileinclude = require('gulp-file-include');
+
+const cleanCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 var spawn = require('child_process').spawn;
 
 
@@ -27,6 +31,7 @@ const paths = {
     dist: {
         base: './dist/',
         css: './dist/css',
+        js: './dist/js',
         html: './dist/html',
         assets: './dist/assets',
         img: './dist/assets/img',
@@ -329,7 +334,22 @@ gulp.task('copy:dev:vendor', function () {
         .pipe(gulp.dest(paths.dev.vendor));
 });
 
-gulp.task('deploy', function () {
+gulp.task('dist:concat:js', function () {
+    return gulp.src([
+        paths.src.node_modules + '@popperjs/core/dist/umd/popper.min.js',
+        paths.src.node_modules + 'bootstrap/dist/js/bootstrap.min.js',
+        paths.src.node_modules + 'headroom.js/dist/headroom.min.js',
+        paths.src.node_modules + 'smooth-scroll/dist/smooth-scroll.polyfills.min.js',
+
+        paths.src.base + 'assets/js/pixel.js',
+        paths.src.base + 'assets/js/custom.js'
+    ]) // point to the js files
+        .pipe(concat('all.min.js')) // The name of the final JS file.
+        .pipe(uglify()) // Minify the JS.
+        .pipe(gulp.dest(paths.dist.js)); // The destination directory for the final JS file.
+});
+
+gulp.task('dist:deploy', function () {
     return spawn('rsync', [
         // '--dry-run', // makes rsync perform a trial run that doesn’t make any changes
         // '-v', // increase verbosity
@@ -345,7 +365,7 @@ gulp.task('deploy', function () {
 
 
 gulp.task('build:dev', gulp.series('clean:dev', 'copy:dev:css', 'copy:dev:html', 'copy:dev:html:index', 'copy:dev:assets', 'beautify:css', 'copy:dev:vendor'));
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', /*'compress:dist:image',*/ 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor', 'deploy'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', /*'compress:dist:image',*/ 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor', 'dist:concat:js', 'dist:deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
