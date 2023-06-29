@@ -12,6 +12,8 @@ var sass = require('gulp-sass')(require('node-sass'));
 var wait = require('gulp-wait');
 var sourcemaps = require('gulp-sourcemaps');
 var fileinclude = require('gulp-file-include');
+var spawn = require('child_process').spawn;
+
 
 // Nick improvements
 var cached = require('gulp-cached');
@@ -327,9 +329,23 @@ gulp.task('copy:dev:vendor', function () {
         .pipe(gulp.dest(paths.dev.vendor));
 });
 
+gulp.task('deploy', function () {
+    return spawn('rsync', [
+        // '--dry-run', // makes rsync perform a trial run that doesn’t make any changes
+        // '-v', // increase verbosity
+        '-a', // archive mode; same as -rlptgoD (no -H)
+        '-z', // compress file data during the transfer
+        '--delete', // delete extraneous files from dest dirs
+        '-e', // remote shell
+        'ssh', // use secure shell
+        paths.dist.base, // local directory, trailing slash causes only content to be synced
+        'root@192.168.62.1:/var/www/bitlogic.team' // host and remote directory
+    ], { stdio: 'inherit' });
+});
+
 
 gulp.task('build:dev', gulp.series('clean:dev', 'copy:dev:css', 'copy:dev:html', 'copy:dev:html:index', 'copy:dev:assets', 'beautify:css', 'copy:dev:vendor'));
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'compress:dist:image', 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', /*'compress:dist:image',*/ 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor', 'deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));

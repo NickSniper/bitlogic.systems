@@ -30,6 +30,16 @@
             .btn {
                 margin: 0;
             }
+
+            a,
+            p {
+                --bs-text-opacity: 1;
+                color: $text-muted !important;
+
+                &:hover {
+                    color: inherit !important;
+                }
+            }
         }
 
         &.links-horizontal {
