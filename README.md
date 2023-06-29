@@ -60,3 +60,9 @@ Azure Services
 GCP Services
 VMware Tanzu Services
 
+
+
+Search: 
+https://fusejs.io/demo.html
+https://projects.verou.me/awesomplete/
+fuse.js: https://preview.themeforest.net/item/aster-creative-agency-portfolio-hugo-theme/full_screen_preview/39237517
