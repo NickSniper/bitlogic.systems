@@ -1,3 +1,5 @@
+// @import "./node_modules/@fontsource/ibm-plex-sans/latin";
+
 #navbar-main {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -21,4 +23,51 @@
             height: 26px;
         }
     }
+}
+
+.section-after-navbar {
+    padding-top: 57px;
+}
+
+// fade left part of image (to gray color)
+
+.image-fade-left {
+    position: relative;
+    // overflow: hidden;
+    display: inline-block;
+}
+
+.image-fade-left::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(243, 244, 246, 0) 0%, rgba(243, 244, 246, 1) 100%);
+}
+
+
+.h1 {
+    font-size: 3.5rem;
+}
+
+.h2 {
+    font-size: 2rem;
+}
+
+.h3 {
+    font-size: 1.75rem;
+}
+
+.h4 {
+    font-size: 1.5rem;
+}
+
+.h5 {
+    font-size: 1.25rem;
+}
+
+.h6 {
+    font-size: 1rem;
 }

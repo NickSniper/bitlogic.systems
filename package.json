@@ -46,6 +46,7 @@
         "node-sass": "^6.0.1"
     },
     "dependencies": {
+        "@fontsource/ibm-plex-sans": "^5.0.5",
         "@fortawesome/fontawesome-free": "6.4.0",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "5.2.3",
