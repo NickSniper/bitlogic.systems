@@ -4,7 +4,7 @@
 @import "custom/variables";
 
 @import "../../node_modules/bootstrap/scss/functions";
-@import "pixel/variables";
+@import "main/variables";
 
 // Third party
 // @import '../../node_modules/vanillajs-datepicker/sass/datepicker.scss';
@@ -65,17 +65,17 @@
 // scss-docs-end import-stack
 
 // Mixins & functions
-@import "pixel/mixins";
-@import "pixel/functions";
+@import "main/mixins";
+@import "main/functions";
 
 // Utilities
-@import "pixel/utilities";
+@import "main/utilities";
 
 // Layout
-@import "pixel/layout";
+@import "main/layout";
 
 // Components
-@import "pixel/components";
+@import "main/components";
 
 // write your custom styles here!
 @import "custom/custom";

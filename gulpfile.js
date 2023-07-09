@@ -64,7 +64,7 @@ const paths = {
 
 // Compile SCSS
 gulp.task('scss', function () {
-    return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'])
+    return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'])
         .pipe(wait(500))
         .pipe(sourcemaps.init())
         // .pipe(cached('sass'))
@@ -144,7 +144,7 @@ gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', func
         server: paths.temp.base
     });
 
-    gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'], gulp.series('scss'));
+    gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
     gulp.watch([paths.src.html, paths.src.base + '*.html', paths.src.partials], gulp.series('html', 'index'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
     // gulp.watch([paths.src.assets], gulp.series('images'));
@@ -154,7 +154,7 @@ gulp.task('serve', gulp.series('scss', 'html', 'index', 'assets', 'vendor', func
 // Minify CSS
 gulp.task('minify:css', function () {
     return gulp.src([
-        paths.dist.css + '/pixel.css'
+        paths.dist.css + '/main.css'
     ])
         .pipe(cleanCss())
         .pipe(gulp.dest(paths.dist.css))
@@ -200,7 +200,7 @@ gulp.task('clean:dist', function () {
 
 // Compile and copy scss/css
 gulp.task('copy:dist:css', function () {
-    return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/pixel/**/*.scss', paths.src.scss + '/pixel.scss'])
+    return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'])
         .pipe(wait(500))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -257,7 +257,11 @@ gulp.task('compress:dist:image', function () {
 // Copy node_modules to vendor
 gulp.task('copy:dist:vendor', function () {
     // return gulp.src(npmDist(), { base: paths.src.node_modules })
-    return gulp.src([paths.src.node_modules + '/**/**/*.min.css', paths.src.node_modules + '/**/**/*.woff2']) // copy css & woff2 only
+    return gulp.src([
+        paths.src.node_modules + '/**/**/*.min.css',
+        paths.src.node_modules + '/**/**/*.woff2',
+        paths.src.node_modules + '/**/**/latin.css', // temporary workaround for IBM fonts
+    ]) // copy css & woff2 only
         .pipe(gulp.dest(paths.dist.vendor));
 });
 
@@ -268,7 +272,7 @@ gulp.task('dist:concat:js', function () {
         paths.src.node_modules + 'headroom.js/dist/headroom.min.js',
         paths.src.node_modules + 'smooth-scroll/dist/smooth-scroll.polyfills.min.js',
 
-        paths.src.base + 'assets/js/pixel.js',
+        paths.src.base + 'assets/js/main.js',
         paths.src.base + 'assets/js/custom.js'
     ]) // point to the js files
         .pipe(concat('all.min.js')) // The name of the final JS file.
