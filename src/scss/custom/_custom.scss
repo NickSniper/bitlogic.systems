@@ -25,8 +25,11 @@
     }
 }
 
-.section-after-navbar {
+.section-header {
+    position: relative;
+    // padding-top   : $spacer * 7;
     padding-top: 57px;
+    padding-bottom: $spacer * 3;
 }
 
 // fade left part of image (to gray color)
