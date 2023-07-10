@@ -1,5 +1,6 @@
 @@if (environment === 'production'){
 <script src="/js/all.min.js"></script>
+<script src="/vendor/jquery/dist/jquery.min.js"></script>
 }
 
 @@if (environment !== 'production'){
@@ -11,8 +12,13 @@
 <!-- Vendor JS -->
 <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
+<!-- jQuery, should be before custom.js -->
+<script src="/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/vendor/jquery-ui-dist/jquery-ui.min.js"></script>
+
 <!-- Main JS -->
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/custom.js"></script>
 
 <!-- !!!!!! if you add some scripts here - don't forgot to add them to gulpfile.js -->
 
