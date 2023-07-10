@@ -1,3 +1,6 @@
+// ********************************************************************************
+// corrections to default theme
+
 // @import "./node_modules/@fontsource/ibm-plex-sans/latin";
 
 #navbar-main {
@@ -15,13 +18,7 @@
         }
 
         .navbar-brand {
-            // margin: 0px;
-            // padding: 8px;
             padding: 8px 28px 8px 20px;
-            // padding-top: 8px;
-            // padding-bottom: 8px;
-            // padding-right: 28px;
-            // padding-left: 18px;
             margin: 0px !important;
             position: relative;
 
@@ -57,10 +54,15 @@
 
 .section-header {
     position: relative;
-    // padding-top   : $spacer * 7;
+    padding-top: $spacer * 7;
     padding-top: 48px;
     padding-bottom: $spacer * 3;
 }
+
+
+// ***********************************************************************************
+// my custom elements
+
 
 // fade left part of image (to gray color)
 
@@ -78,29 +80,4 @@
     width: 25%;
     height: 100%;
     background: linear-gradient(to left, rgba(243, 244, 246, 0) 0%, rgba(243, 244, 246, 1) 100%);
-}
-
-
-.h1 {
-    font-size: 3.5rem;
-}
-
-.h2 {
-    font-size: 2rem;
-}
-
-.h3 {
-    font-size: 1.75rem;
-}
-
-.h4 {
-    font-size: 1.5rem;
-}
-
-.h5 {
-    font-size: 1.25rem;
-}
-
-.h6 {
-    font-size: 1rem;
 }

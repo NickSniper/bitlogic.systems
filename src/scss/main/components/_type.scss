@@ -21,19 +21,19 @@ p,
 ol li,
 ul li {
 	font-family: $font-family-base;
-	font-size  : $paragraph-font-size;
+	font-size: $paragraph-font-size;
 	font-weight: $paragraph-font-weight;
 	line-height: $paragraph-line-height;
 }
 
 a,
 .text-action {
-	color      : $link-color;
+	color: $link-color;
 	font-weight: $font-weight-normal;
-	transition : $transition-base;
+	transition: $transition-base;
 
 	&:hover {
-		color : $link-hover-color;
+		color: $link-hover-color;
 		cursor: pointer;
 	}
 }
@@ -51,13 +51,13 @@ article {
 
 	p,
 	blockquote {
-		font-size    : 1.27rem;
+		font-size: 1.27rem;
 		margin-bottom: 2rem;
 	}
 
 	ul li,
 	ol li {
-		font-size    : 1.27rem;
+		font-size: 1.27rem;
 		margin-bottom: 1.5rem;
 	}
 
@@ -67,11 +67,11 @@ article {
 	}
 
 	a {
-		color          : $tertiary;
+		color: $tertiary;
 		text-decoration: underline;
 
 		&:hover {
-			color          : $tertiary;
+			color: $tertiary;
 			text-decoration: none;
 		}
 	}
@@ -79,11 +79,11 @@ article {
 }
 
 blockquote {
-	font-size    : 1.27rem;
-	background   : #f5f9fc;
+	font-size: 1.27rem;
+	background: #f5f9fc;
 	border-radius: 10px;
-	padding      : 25px;
-	font-style   : italic;
+	padding: 25px;
+	font-style: italic;
 }
 
 .lead {
@@ -110,8 +110,8 @@ blockquote {
 .display-2,
 .display-3,
 .display-4 {
-	font-weight: $display-font-weight;
-	color      : $headings-color;
+	font-weight: $headings-font-weight; // Nick corrected
+	color: $headings-color;
 }
 
 @include media-breakpoint-down(md) {
@@ -136,11 +136,11 @@ blockquote {
 // Blockquotes
 .blockquote {
 	font-family: 'Sanchez', serif;
-	font-style : italic;
+	font-style: italic;
 	font-weight: 400;
 
 	.blockquote-footer {
-		font-size  : $font-size-lg;
+		font-size: $font-size-lg;
 		font-weight: $font-weight-bolder;
 	}
 }
