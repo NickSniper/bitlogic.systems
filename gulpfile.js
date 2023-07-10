@@ -59,7 +59,7 @@ gulp.task('clean', function () {
 // Compile SCSS
 gulp.task('scss', function () {
     return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'])
-        .pipe(wait(500))
+        // .pipe(wait(500))
         .pipe(sourcemaps.init())
         // .pipe(cached('sass'))
         .pipe(sass().on('error', sass.logError))
@@ -148,45 +148,13 @@ gulp.task('serve', gulp.series('clean', 'scss', 'html', 'index', 'assets', 'vend
 // ************************************************************************************************************
 // build
 
-// Minify Html
-gulp.task('minify:html', function () {
-    return gulp.src([paths.dist.html + '/**/*.html'])
-        .pipe(htmlmin({
-            collapseWhitespace: true,
-            removeComments: true
-        }))
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: './src/partials/',
-            context: {
-                environment: 'production'
-            }
-        }))
-        .pipe(gulp.dest(paths.dist.html))
-});
-
-gulp.task('minify:html:index', function () {
-    return gulp.src([paths.dist.base + '*.html'])
-        .pipe(htmlmin({
-            collapseWhitespace: true,
-            removeComments: true
-        }))
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: './src/partials/',
-            context: {
-                environment: 'production'
-            }
-        }))
-        .pipe(gulp.dest(paths.dist.base))
-});
 
 // Clean
 gulp.task('clean:dist', function () {
     return del([paths.dist.base]);
 });
 
-// Compile and copy scss/css
+// Compile, copy scss/css, minify
 gulp.task('copy:dist:css', function () {
     return gulp.src([
         paths.src.scss + '/custom/**/*.scss',
@@ -195,7 +163,7 @@ gulp.task('copy:dist:css', function () {
         paths.src.node_modules + '@fontsource/ibm-plex-sans/latin.css',
         paths.src.node_modules + '@fortawesome/fontawesome-free/css/all.min.css'
     ])
-        .pipe(wait(500))
+        // .pipe(wait(500))
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('all.min.css')) // The name of the final CSS file.
         .pipe(autoprefixer({
@@ -207,7 +175,7 @@ gulp.task('copy:dist:css', function () {
         .pipe(gulp.dest(paths.dist.css))
 });
 
-// Copy Html
+// Copy Html + minify
 gulp.task('copy:dist:html', function () {
     return gulp.src([paths.src.html])
         .pipe(fileinclude({
@@ -217,10 +185,14 @@ gulp.task('copy:dist:html', function () {
                 environment: 'production'
             }
         }))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
         .pipe(gulp.dest(paths.dist.html));
 });
 
-// Copy index
+// Copy index + minify
 gulp.task('copy:dist:html:index', function () {
     return gulp.src([paths.src.base + '*.html'])
         .pipe(fileinclude({
@@ -229,6 +201,10 @@ gulp.task('copy:dist:html:index', function () {
             context: {
                 environment: 'production'
             }
+        }))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
         }))
         .pipe(gulp.dest(paths.dist.base))
 });
@@ -293,7 +269,7 @@ gulp.task('dist:deploy', function () {
 });
 
 
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:vendor', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'copy:dist:css', 'minify:html', 'minify:html:index', /*'minify:dist:css',*/ 'minify:dist:js', 'dist:deploy'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:vendor', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'copy:dist:css', 'minify:dist:js', 'dist:deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
