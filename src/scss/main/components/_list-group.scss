@@ -4,7 +4,7 @@
 
 
 .list-group-item {
-	background   : transparent;
+	background: transparent;
 	border-radius: $list-group-item-border-radius;
 
 	&:first-child,
@@ -22,8 +22,8 @@
 			}
 
 			&.active {
-				color      : $tertiary;
-				background : transparent;
+				color: $tertiary;
+				background: transparent;
 				font-weight: $font-weight-bold;
 			}
 		}
@@ -38,24 +38,24 @@
 }
 
 .list-group-img {
-	width         : 3rem;
-	height        : 3rem;
-	border-radius : 50%;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
 	vertical-align: top;
-	margin        : -.1rem 1.2rem 0 -.2rem;
+	margin: -.1rem 1.2rem 0 -.2rem;
 }
 
 .list-group-sm {
 	.list-group-item {
-		padding      : $list-group-sm-item-padding-y $list-group-sm-item-padding-x;
-		color        : $list-group-color;
+		padding: $list-group-sm-item-padding-y $list-group-sm-item-padding-x;
+		color: $list-group-color;
 		border-bottom: $list-group-border-width solid #f9f7f7;
 
 		&.active {
 			border-color: #f9f7f7;
-			border-left : 0;
+			border-left: 0;
 			border-right: 0;
-			font-weight : $font-weight-bold;
+			font-weight: $font-weight-bold;
 		}
 	}
 }
