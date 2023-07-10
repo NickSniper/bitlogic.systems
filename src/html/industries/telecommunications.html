@@ -101,8 +101,21 @@
                     </div>
                     <div class="modal-body">
 
-                        <label for="customRange2" class="form-label">% "забілювання" картинки збоку</label>
-                        <input type="range" class="form-range" min="0" max="100" step="1" id="customRange2">
+                        <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span
+                                id="fadeRangeOut">25</span>%</label>
+                        <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
+                            oninput="fadeRangeOnInput(this)">
+                        <script>
+                            function fadeRangeOnInput(input) {
+                                console.log(input.value.toString());
+                                const fadeRangeOut = document.getElementById('fadeRangeOut');
+                                fadeRangeOut.textContent = input.value;
+                                console.log('width: "' + input.value + '%";');
+                                document.styleSheets[0].addRule('.image-fade-left::after', 'width: ' + input.value + '%;');
+                            }
+                        </script>
+                        <label>Вибір картинки: </label>
+
 
                         <p>With less than a month to go before the European Union enacts new consumer
                             privacy laws for its citizens, companies around the world are updating their
