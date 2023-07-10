@@ -9,10 +9,9 @@ const cssbeautify = require('gulp-cssbeautify');
 const gulp = require('gulp');
 const npmDist = require('gulp-npm-dist');
 const sass = require('gulp-sass')(require('node-sass'));
-const wait = require('gulp-wait');
+// const wait = require('gulp-wait');
 const sourcemaps = require('gulp-sourcemaps');
 const fileinclude = require('gulp-file-include');
-const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const spawn = require('child_process').spawn;
@@ -23,22 +22,21 @@ const replace = require('gulp-replace');
 
 // Define paths
 const ImagesExtensions = /\.(jpeg|jpg|png|gif|webp|avif|heif|tiff?g)$/i;
-// const includedExtensions = /\.(jpeg|jpg|png|gif|webp|avif|heif|tiff?g)$/i;
 const paths = {
     dist: {
         base: './dist/',
         css: './dist/css',
         js: './dist/js',
-        html: './dist/html',
+        html: './dist',
         assets: './dist/assets',
         vendor: './dist/vendor'
     },
     src: {
         base: './src/',
         css: './src/css',
-        html: './src/html/**/*.html',
+        html: './src/**/*.html',
         assets: './src/assets/**/*.*',
-        partials: './src/partials/**/*.html',
+        partials: './src/partials',
         scss: './src/scss',
         node_modules: './node_modules/',
         vendor: './vendor'
@@ -46,7 +44,7 @@ const paths = {
     temp: {
         base: './.temp/',
         css: './.temp/css',
-        html: './.temp/html',
+        html: './.temp',
         assets: './.temp/assets',
         vendor: './.temp/vendor'
     }
@@ -66,30 +64,17 @@ gulp.task('scss', function () {
         .pipe(autoprefixer({
             overrideBrowserslist: ['> 1%']
         }))
+        .pipe(cssbeautify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.temp.css))
         .pipe(browserSync.stream());
 });
 
-gulp.task('index', function () {
-    return gulp.src([paths.src.base + '*.html'])
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: './src/partials/',
-            context: {
-                environment: 'development'
-            }
-        }))
-        // .pipe(cached('index'))
-        .pipe(gulp.dest(paths.temp.base))
-        .pipe(browserSync.stream());
-});
-
 gulp.task('html', function () {
-    return gulp.src([paths.src.html])
+    return gulp.src([paths.src.html, '!' + paths.src.partials + '/**'])
         .pipe(fileinclude({
             prefix: '@@',
-            basepath: './src/partials/',
+            basepath: paths.src.partials,
             context: {
                 environment: 'development'
             }
@@ -98,14 +83,6 @@ gulp.task('html', function () {
         .pipe(gulp.dest(paths.temp.html))
         .pipe(browserSync.stream());
 });
-
-// gulp.task('assets', function () {
-//     return gulp.src([paths.src.assets])
-//         // .pipe(gulpif.exclude(excludedExtensions))
-//         .pipe(cached('assets'))
-//         .pipe(gulp.dest(paths.temp.assets))
-//         .pipe(browserSync.stream());
-// });
 
 gulp.task('assets', function () {
     return gulp.src([paths.src.assets])
@@ -132,13 +109,13 @@ gulp.task('vendor', function () {
         .pipe(gulp.dest(paths.temp.vendor));
 });
 
-gulp.task('serve', gulp.series('clean', 'scss', 'html', 'index', 'assets', 'vendor', function () {
+gulp.task('serve', gulp.series('clean', 'scss', 'html', 'assets', 'vendor', function () {
     browserSync.init({
         server: paths.temp.base
     });
 
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
-    gulp.watch([paths.src.html, paths.src.base + '*.html', paths.src.partials], gulp.series('html', 'index'));
+    gulp.watch([paths.src.html], gulp.series('html'));
     // gulp.watch([paths.src.assets], gulp.series('assets'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
     gulp.watch([paths.src.vendor], gulp.series('vendor'));
@@ -177,10 +154,10 @@ gulp.task('copy:dist:css', function () {
 
 // Copy Html + minify
 gulp.task('copy:dist:html', function () {
-    return gulp.src([paths.src.html])
+    return gulp.src([paths.src.html, '!' + paths.src.partials + '/**'])
         .pipe(fileinclude({
             prefix: '@@',
-            basepath: './src/partials/',
+            basepath: paths.src.partials,
             context: {
                 environment: 'production'
             }
@@ -190,23 +167,6 @@ gulp.task('copy:dist:html', function () {
             removeComments: true
         }))
         .pipe(gulp.dest(paths.dist.html));
-});
-
-// Copy index + minify
-gulp.task('copy:dist:html:index', function () {
-    return gulp.src([paths.src.base + '*.html'])
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: './src/partials/',
-            context: {
-                environment: 'production'
-            }
-        }))
-        .pipe(htmlmin({
-            collapseWhitespace: true,
-            removeComments: true
-        }))
-        .pipe(gulp.dest(paths.dist.base))
 });
 
 // Copy assets
@@ -269,7 +229,7 @@ gulp.task('dist:deploy', function () {
 });
 
 
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:vendor', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'copy:dist:css', 'minify:dist:js', 'dist:deploy'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:vendor', 'copy:dist:html', 'copy:dist:assets', 'copy:dist:css', 'minify:dist:js', 'dist:deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
