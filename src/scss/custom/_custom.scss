@@ -107,6 +107,6 @@
     color: #888;
 }
 
-// .modal-backdrop {
-//     opacity: 0.5 !important;
-// }
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
