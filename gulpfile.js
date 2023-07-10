@@ -19,6 +19,7 @@ const spawn = require('child_process').spawn;
 const cached = require('gulp-cached');
 const gulpif = require('gulp-if');
 const sharpResponsive = require("gulp-sharp-responsive");
+const replace = require('gulp-replace');
 
 // Define paths
 const ImagesExtensions = /\.(jpeg|jpg|png|gif|webp|avif|heif|tiff?g)$/i;
@@ -143,14 +144,9 @@ gulp.task('serve', gulp.series('clean', 'scss', 'html', 'index', 'assets', 'vend
     gulp.watch([paths.src.vendor], gulp.series('vendor'));
 }));
 
-// Minify CSS
-gulp.task('minify:css', function () {
-    return gulp.src([
-        paths.dist.css + '/main.min.css'
-    ])
-        .pipe(cleanCss())
-        .pipe(gulp.dest(paths.dist.css))
-});
+
+// ************************************************************************************************************
+// build
 
 // Minify Html
 gulp.task('minify:html', function () {
@@ -192,15 +188,22 @@ gulp.task('clean:dist', function () {
 
 // Compile and copy scss/css
 gulp.task('copy:dist:css', function () {
-    return gulp.src([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'])
+    return gulp.src([
+        paths.src.scss + '/custom/**/*.scss',
+        paths.src.scss + '/main/**/*.scss',
+        paths.src.scss + '/main.scss',
+        paths.src.node_modules + '@fontsource/ibm-plex-sans/latin.css',
+        paths.src.node_modules + '@fortawesome/fontawesome-free/css/all.min.css'
+    ])
         .pipe(wait(500))
-        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(rename('main.min.css'))
+        .pipe(concat('all.min.css')) // The name of the final CSS file.
         .pipe(autoprefixer({
             overrideBrowserslist: ['> 1%']
         }))
-        .pipe(sourcemaps.write('.'))
+        .pipe(cleanCss({ level: { 1: { specialComments: 0 } } })) // Minify the CSS + remove comments.
+        .pipe(replace('url(files/', 'url(/vendor/@fontsource/ibm-plex-sans/files/')) // ibm font fix
+        .pipe(replace('url(../webfonts/', 'url(/vendor/@fortawesome/fontawesome-free/webfonts/')) // awesome font fix
         .pipe(gulp.dest(paths.dist.css))
 });
 
@@ -260,13 +263,12 @@ gulp.task('copy:dist:vendor', function () {
         .pipe(gulp.dest(paths.dist.vendor));
 });
 
-gulp.task('dist:concat:js', function () {
+gulp.task('minify:dist:js', function () {
     return gulp.src([
         paths.src.node_modules + '@popperjs/core/dist/umd/popper.min.js',
         paths.src.node_modules + 'bootstrap/dist/js/bootstrap.min.js',
         paths.src.node_modules + 'headroom.js/dist/headroom.min.js',
         paths.src.node_modules + 'smooth-scroll/dist/smooth-scroll.polyfills.min.js',
-
         paths.src.base + 'assets/js/main.js',
         paths.src.base + 'assets/js/custom.js'
     ]) // point to the js files
@@ -291,7 +293,7 @@ gulp.task('dist:deploy', function () {
 });
 
 
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:css', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'minify:css', 'minify:html', 'minify:html:index', 'copy:dist:vendor', 'dist:concat:js', 'dist:deploy'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:vendor', 'copy:dist:html', 'copy:dist:html:index', 'copy:dist:assets', 'copy:dist:css', 'minify:html', 'minify:html:index', /*'minify:dist:css',*/ 'minify:dist:js', 'dist:deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
