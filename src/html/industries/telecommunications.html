@@ -39,7 +39,7 @@
                         <div class="image-fade-left">
                             <!-- <img src="/assets/img/industries/telecommunications-01.png" alt="telecommunications" -->
                             <img width="728" height="408" src="/assets/img/industries/telecommunications-01@1x.webp"
-                                alt="Telecommunications header image">
+                                alt="Telecommunications header image" id="image-header">
                         </div>
                     </div>
                 </div>
@@ -96,30 +96,79 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="h6 modal-title">Change the options</h2>
+                        <h2 class="h4 modal-title">Change the options</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                        <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span
-                                id="fadeRangeOut">25</span>%</label>
-                        <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
-                            oninput="fadeRangeOnInput(this)">
+                        <div class="container mb-4 mt-2">
+                            <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span
+                                    id="fadeRangeOut">25</span>%</label>
+                            <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
+                                oninput="fadeRangeOnInput(this)">
+                            <script>
+                                function fadeRangeOnInput(input) {
+                                    console.log(input.value.toString());
+                                    const fadeRangeOut = document.getElementById('fadeRangeOut');
+                                    fadeRangeOut.textContent = input.value;
+                                    console.log('width: "' + input.value + '%";');
+                                    document.styleSheets[0].addRule('.image-fade-left::after', 'width: ' + input.value + '%;');
+                                }
+                            </script>
+                        </div>
+                        <!-- <label>Вибір картинки: </label> -->
+
+
+                        <div class="container mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-4 p-0 m-1">
+                                    <label>Вибір картинки:</label>
+                                </div>
+                                <div class="col-1 p-0 m-1">
+                                    <button class="btn btn-primary" id="prevButton"> <i
+                                            class="fa-solid fa-backward"></i>
+                                    </button>
+                                </div>
+                                <div class="col-2 p-0 m-1">
+                                    <input type="text" class="form-control text-end" id="valueInput">
+                                </div>
+                                <div class="col-1 p-0 m-1">
+                                    <button class="btn btn-primary" id="nextButton"> <i class="fa-solid fa-forward"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         <script>
-                            function fadeRangeOnInput(input) {
-                                console.log(input.value.toString());
-                                const fadeRangeOut = document.getElementById('fadeRangeOut');
-                                fadeRangeOut.textContent = input.value;
-                                console.log('width: "' + input.value + '%";');
-                                document.styleSheets[0].addRule('.image-fade-left::after', 'width: ' + input.value + '%;');
+                            const prevButton = document.getElementById('prevButton');
+                            const nextButton = document.getElementById('nextButton');
+                            const valueInput = document.getElementById('valueInput');
+                            const image = document.getElementById('image-header');
+                            let currentValue = 1;
+                            valueInput.value = currentValue;
+                            prevButton.addEventListener('click', function () {
+                                if (currentValue > 1) {
+                                    currentValue--;
+                                    valueInput.value = currentValue;
+                                    updateImage();
+                                }
+                            });
+                            nextButton.addEventListener('click', function () {
+                                currentValue++;
+                                valueInput.value = currentValue;
+                                updateImage();
+                            });
+                            valueInput.addEventListener('input', function () {
+                                currentValue = parseInt(valueInput.value);
+                                updateImage();
+                            });
+                            function updateImage() {
+                                image.src = `/assets/img/industries/telecommunications-${currentValue.toString().padStart(2, '0')}@1x.webp`;
                             }
                         </script>
-                        <label>Вибір картинки: </label>
 
+                        <p>Схопіть мишкою і перемістіть це вікно у зручне вам місце.</p>
 
-                        <p>With less than a month to go before the European Union enacts new consumer
-                            privacy laws for its citizens, companies around the world are updating their
-                            terms of service agreements to comply.</p>
                     </div>
                 </div>
             </div>
