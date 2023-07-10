@@ -1,29 +1,24 @@
 // Copyright © 2011-2023 bitLogic.systems 
 
-var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync').create();
-var cleanCss = require('gulp-clean-css');
-var del = require('del');
+const autoprefixer = require('gulp-autoprefixer');
+const browserSync = require('browser-sync').create();
+const cleanCss = require('gulp-clean-css');
+const del = require('del');
 const htmlmin = require('gulp-htmlmin');
 const cssbeautify = require('gulp-cssbeautify');
-var gulp = require('gulp');
+const gulp = require('gulp');
 const npmDist = require('gulp-npm-dist');
-var sass = require('gulp-sass')(require('node-sass'));
-var wait = require('gulp-wait');
-var sourcemaps = require('gulp-sourcemaps');
-var fileinclude = require('gulp-file-include');
-
-const cleanCSS = require('gulp-clean-css');
+const sass = require('gulp-sass')(require('node-sass'));
+const wait = require('gulp-wait');
+const sourcemaps = require('gulp-sourcemaps');
+const fileinclude = require('gulp-file-include');
+const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
-var spawn = require('child_process').spawn;
-
-
-// Nick improvements
-var cached = require('gulp-cached');
-// var imagemin = require('gulp-imagemin');
+const spawn = require('child_process').spawn;
+const cached = require('gulp-cached');
 const gulpif = require('gulp-if');
-var sharpResponsive = require("gulp-sharp-responsive");
+const sharpResponsive = require("gulp-sharp-responsive");
 
 // Define paths
 const ImagesExtensions = /\.(jpeg|jpg|png|gif|webp|avif|heif|tiff?g)$/i;
@@ -151,7 +146,7 @@ gulp.task('serve', gulp.series('clean', 'scss', 'html', 'index', 'assets', 'vend
 // Minify CSS
 gulp.task('minify:css', function () {
     return gulp.src([
-        paths.dist.css + '/main.css'
+        paths.dist.css + '/main.min.css'
     ])
         .pipe(cleanCss())
         .pipe(gulp.dest(paths.dist.css))
@@ -201,6 +196,7 @@ gulp.task('copy:dist:css', function () {
         .pipe(wait(500))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
+        .pipe(rename('main.min.css'))
         .pipe(autoprefixer({
             overrideBrowserslist: ['> 1%']
         }))
@@ -285,6 +281,7 @@ gulp.task('dist:deploy', function () {
         // '-v', // increase verbosity
         '-a', // archive mode; same as -rlptgoD (no -H)
         '-z', // compress file data during the transfer
+        '--size-only', // skip files that match in size
         '--delete', // delete extraneous files from dest dirs
         '-e', // remote shell
         'ssh', // use secure shell
