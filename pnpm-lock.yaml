@@ -26,6 +26,9 @@ dependencies:
   jquery-ui-dist:
     specifier: ^1.13.2
     version: 1.13.2
+  nouislider:
+    specifier: ^15.7.1
+    version: 15.7.1
   smooth-scroll:
     specifier: ^16.1.0
     version: 16.1.0
@@ -5017,6 +5020,10 @@ packages:
       sort-keys: 2.0.0
     dev: true
     optional: true
+
+  /nouislider@15.7.1:
+    resolution: {integrity: sha512-5N7C1ru/i8y3dg9+Z6ilj6+m1EfabvOoaRa7ztpxBSKKRZso4vA52DGSbBJjw5XLtFr/LZ9SgGAXqyVtlVHO5w==}
+    dev: false
 
   /now-and-later@2.0.1:
     resolution: {integrity: sha512-KGvQ0cB70AQfg107Xvs/Fbu+dGmZoTRJp2TaPwcwQm3/7PteUyN2BCgk8KBMPGBUXZdVwyWS8fDCGFygBm19UQ==}

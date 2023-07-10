@@ -193,6 +193,7 @@ gulp.task('copy:dist:vendor', function () {
     // return gulp.src(npmDist(), { base: paths.src.node_modules })
     return gulp.src([
         paths.src.node_modules + '/**/**/*.min.css',
+        paths.src.node_modules + '/**/**/*.min.js',
         paths.src.node_modules + '/**/**/*.woff2',
         paths.src.node_modules + '/**/**/latin.css', // temporary workaround for IBM fonts
     ]) // copy css & woff2 only
