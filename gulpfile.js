@@ -123,11 +123,11 @@ gulp.task('serve', gulp.series('clean', 'html', 'scss', 'js', 'assets', 'vendor'
         server: paths.temp.base
     });
 
-    gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
     gulp.watch([paths.src.html], gulp.series('html'));
     gulp.watch([paths.src.js], gulp.series('js'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
-    gulp.watch([paths.src.vendor], gulp.series('vendor'));
+    gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
+    gulp.watch([paths.src.node_modules + '/**/**/*.min.css', paths.src.node_modules + '/**/**/*.min.js', paths.src.base + 'package.json'], gulp.series('vendor'));
 }));
 
 
@@ -239,7 +239,7 @@ gulp.task('dist:deploy', function () {
 });
 
 
-gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:vendor', 'copy:dist:html', 'copy:dist:assets', 'copy:dist:css', 'minify:dist:js', 'dist:deploy'));
+gulp.task('build:dist', gulp.series('clean:dist', 'copy:dist:html', 'copy:dist:css', 'copy:dist:assets', 'copy:dist:vendor', 'minify:dist:js', 'dist:deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
