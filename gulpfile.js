@@ -211,8 +211,7 @@ gulp.task('copy:dist:vendor', function () {
 
 gulp.task('minify:dist:js', function () {
     return gulp.src([
-        paths.src.node_modules + '@popperjs/core/dist/umd/popper.min.js',
-        paths.src.node_modules + 'bootstrap/dist/js/bootstrap.min.js',
+        paths.src.node_modules + 'bootstrap/dist/js/bootstrap.bundle.min.js',
         paths.src.node_modules + 'headroom.js/dist/headroom.min.js',
         paths.src.node_modules + 'smooth-scroll/dist/smooth-scroll.polyfills.min.js',
         paths.src.base + 'js/main.js',
