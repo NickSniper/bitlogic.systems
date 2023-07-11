@@ -35,6 +35,7 @@ const paths = {
         base: './src/',
         css: './src/css',
         html: './src/**/*.html',
+        js: './src/**/*.js',
         assets: './src/assets/**/*.*',
         partials: './src/partials',
         scss: './src/scss',
@@ -45,6 +46,7 @@ const paths = {
         base: './.temp/',
         css: './.temp/css',
         html: './.temp',
+        js: './.temp',
         assets: './.temp/assets',
         vendor: './.temp/vendor'
     }
@@ -84,6 +86,13 @@ gulp.task('html', function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task('js', function () {
+    return gulp.src([paths.src.js, '!' + paths.src.partials + '/**'])
+        .pipe(cached('js'))
+        .pipe(gulp.dest(paths.temp.js))
+        .pipe(browserSync.stream());
+});
+
 gulp.task('assets', function () {
     return gulp.src([paths.src.assets])
         .pipe(cached('assets'))
@@ -105,18 +114,18 @@ gulp.task('assets', function () {
 
 gulp.task('vendor', function () {
     return gulp.src(npmDist(), { base: paths.src.node_modules })
-        // .pipe(cached('vendor'))
+        .pipe(cached('vendor'))
         .pipe(gulp.dest(paths.temp.vendor));
 });
 
-gulp.task('serve', gulp.series('clean', 'scss', 'html', 'assets', 'vendor', function () {
+gulp.task('serve', gulp.series('clean', 'html', 'scss', 'js', 'assets', 'vendor', function () {
     browserSync.init({
         server: paths.temp.base
     });
 
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
     gulp.watch([paths.src.html], gulp.series('html'));
-    // gulp.watch([paths.src.assets], gulp.series('assets'));
+    gulp.watch([paths.src.js], gulp.series('js'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
     gulp.watch([paths.src.vendor], gulp.series('vendor'));
 }));
@@ -206,8 +215,8 @@ gulp.task('minify:dist:js', function () {
         paths.src.node_modules + 'bootstrap/dist/js/bootstrap.min.js',
         paths.src.node_modules + 'headroom.js/dist/headroom.min.js',
         paths.src.node_modules + 'smooth-scroll/dist/smooth-scroll.polyfills.min.js',
-        paths.src.base + 'assets/js/main.js',
-        paths.src.base + 'assets/js/custom.js'
+        paths.src.base + 'js/main.js',
+        paths.src.base + 'js/custom.js'
     ]) // point to the js files
         .pipe(concat('all.min.js')) // The name of the final JS file.
         .pipe(uglify()) // Minify the JS.
