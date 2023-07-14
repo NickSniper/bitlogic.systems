@@ -38,6 +38,9 @@ https://www.cssscript.com/
 # Placeholder loading content
 https://zalog.ro/placeholder-loading/
 
+# HTML to Markdown converter
+https://www.cssscript.com/html-markdown-converter-turndown/ = npm install turndown --save
+
 # Images generation
 https://discord.com/channels/662267976984297473/995431172375064616
 
