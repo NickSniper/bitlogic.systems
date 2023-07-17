@@ -41,6 +41,12 @@ https://zalog.ro/placeholder-loading/
 # HTML to Markdown converter
 https://www.cssscript.com/html-markdown-converter-turndown/ = npm install turndown --save
 
+
+# Site generators, templates, etc
+[Nunjucks] (https://mozilla.github.io/nunjucks/templating.html)
+based on Nunjucks [Eleventy] (https://www.11ty.dev/docs/tutorials)
+
+
 # Images generation
 https://discord.com/channels/662267976984297473/995431172375064616
 

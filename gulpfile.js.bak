@@ -19,8 +19,6 @@ const cached = require('gulp-cached');
 const gulpif = require('gulp-if');
 const sharpResponsive = require("gulp-sharp-responsive");
 const replace = require('gulp-replace');
-const nunjucksRender = require('gulp-nunjucks-render')
-
 // gulp-inject
 
 // Define paths
@@ -37,11 +35,10 @@ const paths = {
     src: {
         base: './src/',
         css: './src/css',
-        html: './src/**/*.+(html|njk)',
-        templates: './src/templates',
-        partials: './src/partials',
+        html: './src/**/*.html',
         js: './src/**/*.js',
         assets: './src/assets/**/*.*',
+        partials: './src/partials',
         scss: './src/scss',
         node_modules: './node_modules/',
         vendor: './vendor'
@@ -77,12 +74,7 @@ gulp.task('scss', function () {
 });
 
 gulp.task('html', function () {
-    return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
-        .pipe(
-            nunjucksRender({
-                path: [paths.src.templates],
-            })
-        )
+    return gulp.src([paths.src.html, '!' + paths.src.partials + '/**'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: paths.src.partials,
@@ -96,7 +88,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src([paths.src.js, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
+    return gulp.src([paths.src.js, '!' + paths.src.partials + '/**'])
         .pipe(cached('js'))
         .pipe(gulp.dest(paths.temp.js))
         .pipe(browserSync.stream());
@@ -133,9 +125,9 @@ gulp.task('serve', gulp.series('clean', gulp.parallel('html', 'scss', 'js', 'ass
         server: paths.temp.base
     });
 
+    gulp.watch([paths.src.html], gulp.series('html'));
     gulp.watch([paths.src.js], gulp.series('js'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
-    gulp.watch([paths.src.base + '**/*.+(html|njk)'], gulp.series('html'));
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
     gulp.watch([paths.src.node_modules + '/**/**/*.min.css', paths.src.node_modules + '/**/**/*.min.js', paths.src.base + 'package.json'], gulp.series('vendor'));
 }));
@@ -173,12 +165,7 @@ gulp.task('copy:dist:css', function () {
 
 // Copy Html + minify
 gulp.task('copy:dist:html', function () {
-    return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
-        .pipe(
-            nunjucksRender({
-                path: [paths.src.templates],
-            })
-        )
+    return gulp.src([paths.src.html, '!' + paths.src.partials + '/**'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: paths.src.partials,
@@ -257,24 +244,3 @@ gulp.task('build:dist', gulp.series('clean:dist', gulp.parallel('copy:dist:html'
 
 // Default
 gulp.task('default', gulp.series('serve'));
-
-
-
-// ************************************************************************************************************
-
-
-// gulp.task('markdown', function() {
-//     const config = {
-//       options: {
-//         preset: 'commonmark',
-//         html: true,
-//         xhtmlOut: true,
-//         linkify: true,
-//         typographer: true,
-//       },
-//     };
-//     return gulp
-//         .src('src/md-source/*.md')
-//         .pipe(markdown(config))
-//         .pipe(gulp.dest('src/html-source/'));
-//   });
