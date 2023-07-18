@@ -6,12 +6,12 @@ figcaption,
 figure,
 main {
     display: block;
-    margin : 0;
+    margin: 0;
 }
 
-main {
-    overflow: hidden;
-}
+// main {
+// overflow: hidden;
+// }
 
 img {
     max-width: 100%;
@@ -26,6 +26,6 @@ button:focus {
 }
 
 label {
-    font-weight  : $font-weight-bold;
+    font-weight: $font-weight-bold;
     margin-bottom: .5rem;
 }

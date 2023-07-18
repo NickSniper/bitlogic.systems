@@ -110,3 +110,66 @@
 .modal-backdrop.show {
     opacity: 0 !important;
 }
+
+// ***********************************************************************************
+// TOC
+
+.toc {
+    // position: fixed;
+    position: sticky; // I want sticky position
+    // top: 1rem;
+    left: 3em;
+    top: 5em;
+    padding: 1em;
+    width: 14em;
+    line-height: 2;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc ul ul {
+    padding-left: 2em;
+}
+
+.toc li a {
+    display: inline-block;
+    color: #aaa;
+    text-decoration: none;
+    -webkit-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.toc li.visible>a {
+    color: #111;
+    -webkit-transform: translate(5px);
+    transform: translate(5px);
+}
+
+.toc-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.toc-marker path {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
+}
+
+
+
+
+
+.toc {
+    position: sticky;
+    top: 1rem;
+    display: block;
+}
