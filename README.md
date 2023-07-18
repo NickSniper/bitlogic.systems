@@ -1,3 +1,9 @@
+# Introduction to industry:
+
+Write a short but very professional introduction, without unnecessary embellishments and without loud words. Target audience: CTO, IT managers in a large corporation in the telecommunications industry.
+Content: Our expertise in professional services, call center setup, software development including billing and accounting, databases, technical support
+
+
 # bitlogic.systems
 
 Disabled packages and removed from package.json:

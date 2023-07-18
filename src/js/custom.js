@@ -206,7 +206,7 @@ var TOP_MARGIN = 0.1,
 var pathLength;
 window.addEventListener('resize', drawPath, false);
 window.addEventListener('scroll', sync, false);
-// drawPath();
+drawPath();
 
 function drawPath() {
     tocItems = [].slice.call(toc.querySelectorAll('li'));
