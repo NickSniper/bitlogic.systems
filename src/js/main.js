@@ -361,10 +361,10 @@ d.addEventListener("DOMContentLoaded", function (event) {
         });
     }
 
-    var scroll = new SmoothScroll('a[href*="#"]', {
-        speed: 500,
-        speedAsDuration: true
-    });
+    // var scroll = new SmoothScroll('a[href*="#"]', {
+    //     speed: 500,
+    //     speedAsDuration: true
+    // });
 
     // update target element content to match number of characters
     var dataBindCharacters = [].slice.call(document.querySelectorAll('[data-bind-characters-target]'))

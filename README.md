@@ -105,7 +105,7 @@ VMware Tanzu Services
 
 
 
-Search: 
+# Search: 
 https://fusejs.io/demo.html
 https://projects.verou.me/awesomplete/
 flexiblog theme: https://flexiblog-agency.netlify.app/ 
