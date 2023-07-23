@@ -22,15 +22,15 @@ Disabled packages and removed from package.json:
 compile to ECMAScript 2018
 https://code.visualstudio.com/docs/typescript/typescript-compiling
 
-# TOC (Table of Contents plugin for Bootstrap)
-https://afeld.github.io/bootstrap-toc/
+# ~~TOC (Table of Contents plugin for Bootstrap)~~
+~~https://afeld.github.io/bootstrap-toc/
 Demo: (працює з України): https://advanced-js.github.io/syllabus/
 Demo 2: https://rishikeshdarandale.github.io/aws-http/
-Another jQuery: https://www.jqueryscript.net/blog/best-table-contents-plugins.html
+Another jQuery: https://www.jqueryscript.net/blog/best-table-contents-plugins.html~~
 
-!!! Бомбезний чистий JS:
+~~!!! Бомбезний чистий JS:
 https://www.cssscript.com/animated-side-toc-nav-long-web-content/
-Demo: https://www.cssscript.com/demo/animated-side-toc-nav-long-web-content/
+Demo: https://www.cssscript.com/demo/animated-side-toc-nav-long-web-content/~~
 
 # Drag to Move
 https://www.cssscript.com/drag-to-move/
