@@ -153,12 +153,12 @@
         </div>
 
         <!-- Settings button -->
-        <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-default">
+        <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-wheel-setting">
             <i class="fas fa-cog"></i>
         </a>
 
         <!-- Modal Content -->
-        <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+        <div class="modal fade" id="modal-wheel-setting" tabindex="-1" role="dialog" aria-labelledby="modal-wheel-setting" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -167,16 +167,15 @@
                     </div>
                     <div class="modal-body">
                         <div class="container mb-4 mt-2">
-                            <label for="fadeRange" class="form-label">"забілювання" картинки збоку
-                                <span id="fadeRangeOut">25</span>%</label>
+                            <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span id="fadeRangeOut">25</span>%</label>
                             <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
                                 oninput="fadeRangeOnInput(this)">
                             <script>
                                 function fadeRangeOnInput(input) {
-                                    console.log(input.value.toString());
+                                    // console.log(input.value.toString());
                                     const fadeRangeOut = document.getElementById('fadeRangeOut');
                                     fadeRangeOut.textContent = input.value;
-                                    console.log('width: "' + input.value + '%";');
+                                    // console.log('width: "' + input.value + '%";');
                                     document.styleSheets[0].addRule('.image-fade-left::after', 'width: ' + input.value + '%;');
                                 }
                             </script>

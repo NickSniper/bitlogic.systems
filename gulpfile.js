@@ -20,6 +20,8 @@ const gulpif = require('gulp-if');
 const sharpResponsive = require("gulp-sharp-responsive");
 const replace = require('gulp-replace');
 const nunjucksRender = require('gulp-nunjucks-render')
+const CacheBuster = require('gulp-cachebust');
+const cachebust = new CacheBuster();
 
 // gulp-inject
 
@@ -146,12 +148,12 @@ gulp.task('serve', gulp.series('clean', gulp.parallel('html', 'scss', 'js', 'ass
 
 
 // Clean
-gulp.task('clean:dist', function () {
+gulp.task('dist-clean', function () {
     return del([paths.dist.base]);
 });
 
 // Compile, copy scss/css, minify
-gulp.task('copy:dist:css', function () {
+gulp.task('dist-css', function () {
     return gulp.src([
         paths.src.scss + '/custom/**/*.scss',
         paths.src.scss + '/main/**/*.scss',
@@ -168,11 +170,12 @@ gulp.task('copy:dist:css', function () {
         .pipe(cleanCss({ level: { 1: { specialComments: 0 } } })) // Minify the CSS + remove comments.
         .pipe(replace('url(files/', 'url(/vendor/@fontsource/ibm-plex-sans/files/')) // ibm font fix
         .pipe(replace('url(../webfonts/', 'url(/vendor/@fortawesome/fontawesome-free/webfonts/')) // awesome font fix
+        .pipe(cachebust.resources())
         .pipe(gulp.dest(paths.dist.css))
 });
 
 // Copy Html + minify
-gulp.task('copy:dist:html', function () {
+gulp.task('dist-html', function () {
     return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
         .pipe(
             nunjucksRender({
@@ -190,11 +193,12 @@ gulp.task('copy:dist:html', function () {
             collapseWhitespace: true,
             removeComments: true
         }))
+        .pipe(cachebust.references())
         .pipe(gulp.dest(paths.dist.html));
 });
 
 // Copy assets
-gulp.task('copy:dist:assets', function () {
+gulp.task('dist-assets', function () {
     return gulp.src([paths.src.assets])
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
@@ -213,7 +217,7 @@ gulp.task('copy:dist:assets', function () {
 });
 
 // Copy node_modules to vendor
-gulp.task('copy:dist:vendor', function () {
+gulp.task('dist-vendor', function () {
     // return gulp.src(npmDist(), { base: paths.src.node_modules })
     return gulp.src([
         paths.src.node_modules + '/**/**/*.min.css',
@@ -224,7 +228,7 @@ gulp.task('copy:dist:vendor', function () {
         .pipe(gulp.dest(paths.dist.vendor));
 });
 
-gulp.task('minify:dist:js', function () {
+gulp.task('dist-js', function () {
     return gulp.src([
         paths.src.node_modules + 'bootstrap/dist/js/bootstrap.bundle.min.js',
         paths.src.node_modules + 'headroom.js/dist/headroom.min.js',
@@ -234,10 +238,11 @@ gulp.task('minify:dist:js', function () {
     ]) // point to the js files
         .pipe(concat('all.min.js')) // The name of the final JS file.
         .pipe(uglify()) // Minify the JS.
+        .pipe(cachebust.resources())
         .pipe(gulp.dest(paths.dist.js)); // The destination directory for the final JS file.
 });
 
-gulp.task('dist:deploy', function () {
+gulp.task('dist-deploy', function () {
     return spawn('rsync', [
         // '--dry-run', // makes rsync perform a trial run that doesn’t make any changes
         // '-v', // increase verbosity
@@ -253,7 +258,7 @@ gulp.task('dist:deploy', function () {
 });
 
 
-gulp.task('build:dist', gulp.series('clean:dist', gulp.parallel('copy:dist:html', 'copy:dist:css', 'copy:dist:assets', 'copy:dist:vendor', 'minify:dist:js'), 'dist:deploy'));
+gulp.task('dist-build', gulp.series('dist-clean', gulp.parallel('dist-css', 'dist-vendor', 'dist-js'), gulp.parallel('dist-html', 'dist-assets'), 'dist-deploy'));
 
 // Default
 gulp.task('default', gulp.series('serve'));
