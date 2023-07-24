@@ -30,6 +30,13 @@
 
                 <!-- TOC -->
                 <div class="col-xl-3 d-none d-xl-block ms-3">
+                    <ul>
+                        {% for item in items %}
+                        {% if ids.includes(item.id) %}
+                        <li>Name: {{ item.name }}, Age: {{ item.age }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
                     <nav class="toc" data-toggle="toc">
                         <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
                             <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
@@ -37,6 +44,8 @@
                         </svg>
                     </nav>
                 </div>
+
+
 
                 <!-- article -->
                 <div class="col overflow-hidden">
