@@ -12,32 +12,26 @@
     <main>
         @@include('./_preloader.html', { "path": "../.."})
         <!-- Header -->
-        <section class="section-header">
-            <div class="container-fluid">
-                <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200">
-                    <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                        <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>@@header.title</h1>
-                        <p class="h4">@@header.text</p>
-                    </div>
-                    <div class="col-lg-6 p-0 text-right">
-                        <div class="image-fade-left">
-                            <img width="728" height="408" src="@@header.img" alt="Telecommunications header image"
-                                id="image-header">
-                        </div>
-                    </div>
+        <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift">
+            <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
+                <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>@@header.title</h1>
+                <p class="h4">@@header.text</p>
+            </div>
+            <div class="col-lg-6 p-0 text-right">
+                <div class="image-fade-left">
+                    <img width="728" height="408" src="@@header.img" alt="Telecommunications header image" id="image-header">
                 </div>
             </div>
-        </section>
-        <!-- End of Header -->
+        </div>
 
-        <div class="row">
+        <div class="row g-0">
 
             <!-- TOC -->
             <div class="col-xl-3 d-none d-xl-block ms-3">
                 <nav class="toc" data-toggle="toc">
                     <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000"
-                            stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+                        <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
+                            stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
                     </svg>
                 </nav>
             </div>
@@ -57,28 +51,21 @@
                     <div class="container">
 
                         <!-- Overview -->
-                        <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
+                        <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
                             <div class="col-lg-9">
                                 <h1>Overview</h1>
-                                <!-- <p class="mb-4 lead fw-bold">Collection of custom Bootstrap 5 components</p> -->
-                                <!-- <p> At bitLogic, we are at the forefront of the telecommunications industry,
-                                    delivering reliable solutions that connect people and businesses across the
-                                    globe. </p> -->
                                 <p> At bitLogic, we specialize in delivering tailored professional services, setting up
                                     efficient call centers, and creating sophisticated software solutions. Our breadth
                                     of expertise covers billing and accounting areas, database management, and provision
                                     of robust technical support.</p>
-
                                 <p>Our team is proficient in developing bespoke software solutions, specifically
                                     designed to facilitate precise billing and seamless accounting processes. We excel
                                     in creating and managing extensive databases that support the unique requirements of
                                     large-scale telecom operations.</p>
-
                                 <p>We're also adept at setting up call centers, optimizing them to offer excellent
                                     customer support, and enhancing overall customer experience. Our technical support
                                     services are characterized by swift response times, high problem-solving efficiency,
                                     and a keen understanding of complex telecom environments.</p>
-
                                 <p>Trust us to provide innovative, reliable, and efficient solutions to meet your
                                     telecom needs.</p>
                             </div>
@@ -87,22 +74,20 @@
                         <!-- Services -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
                             <h1 class="h1">Services</h1>
-                            <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp"
-                                alt="Solutions image">
+                            <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
                             <div class="row">
 
                                 <!-- Card -->
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                                     <div class="card shadow">
-                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp"
-                                            class="card-img-top rounded-top" alt="Service card image">
+                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp" class="card-img-top rounded-top"
+                                            alt="Service card image">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">Contact Center Setup</h3>
                                             <p class="card-text">Comprehensive solutions, including advanced routing,
                                                 AI-driven bots, IVR, and more, for a streamlined, efficient, and
                                                 customer-centric communication system</p>
-                                            <a href="/html/services/contact-center.html"
-                                                class="btn btn-primary btn-sm">Learn More</a>
+                                            <a href="/html/services/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -110,15 +95,14 @@
                                 <!-- Card -->
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                                     <div class="card shadow">
-                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp"
-                                            class="card-img-top rounded-top" alt="Service card image">
+                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp" class="card-img-top rounded-top"
+                                            alt="Service card image">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">Contact Center Setup</h3>
                                             <p class="card-text">Comprehensive solutions, including advanced routing,
                                                 AI-driven bots, IVR, and more, for a streamlined, efficient, and
                                                 customer-centric communication system</p>
-                                            <a href="/html/services/contact-center.html"
-                                                class="btn btn-primary btn-sm">Learn More</a>
+                                            <a href="/html/services/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -126,8 +110,8 @@
                                 <!-- Card -->
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                                     <div class="card shadow">
-                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp"
-                                            class="card-img-top rounded-top" alt="Service card image">
+                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp" class="card-img-top rounded-top"
+                                            alt="Service card image">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">Database Administration</h3>
                                             <p class="card-text">Comprehensive solutions, including advanced routing,
@@ -153,8 +137,7 @@
                                     them
                                     together
                                 </p>
-                                <a href="../../html/sections/all-sections.html"
-                                    class="btn btn-primary mt-2 animate-up-2">
+                                <a href="../../html/sections/all-sections.html" class="btn btn-primary mt-2 animate-up-2">
                                     <span class="fas fa-th-large me-2"></span>
                                     Explore sections
                                 </a>
@@ -170,14 +153,12 @@
         </div>
 
         <!-- Settings button -->
-        <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal"
-            data-bs-target="#modal-default">
+        <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-default">
             <i class="fas fa-cog"></i>
         </a>
 
         <!-- Modal Content -->
-        <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
-            aria-hidden="true">
+        <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
