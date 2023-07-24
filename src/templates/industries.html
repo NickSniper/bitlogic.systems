@@ -9,37 +9,39 @@
 <body>
     @@include('./_navigation.html', { "path": "../..", "classes": "navbar-light navbar-theme-secondary"
     })
-    <main>
+    <main class="overflow-visible ">
         @@include('./_preloader.html', { "path": "../.."})
         <!-- Header -->
-        <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift">
-            <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>@@header.title</h1>
-                <p class="h4">@@header.text</p>
-            </div>
-            <div class="col-lg-6 p-0 text-right">
-                <div class="image-fade-left">
-                    <img width="728" height="408" src="@@header.img" alt="Telecommunications header image" id="image-header">
+        <div class="container-fluid g-0">
+            <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
+                <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
+                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>@@header.title</h1>
+                    <p class="h4">@@header.text</p>
+                </div>
+                <div class="col-lg-6 p-0 text-right">
+                    <div class="image-fade-left">
+                        <img width="728" height="408" src="@@header.img" alt="Telecommunications header image" id="image-header"
+                            style="max-width: 100%;">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row g-0">
+            <div class="row g-0">
 
-            <!-- TOC -->
-            <div class="col-xl-3 d-none d-xl-block ms-3">
-                <nav class="toc" data-toggle="toc">
-                    <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
-                            stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
-                    </svg>
-                </nav>
-            </div>
+                <!-- TOC -->
+                <div class="col-xl-3 d-none d-xl-block ms-3">
+                    <nav class="toc" data-toggle="toc">
+                        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
+                                stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+                        </svg>
+                    </nav>
+                </div>
 
-            <!-- article -->
-            <div class="col">
-                <!-- <article class="contents"> -->
-                <!-- <ul>
+                <!-- article -->
+                <div class="col overflow-hidden">
+                    <!-- <article class="contents"> -->
+                    <!-- <ul>
                     <li> Overview - The future of telecom depends on CSPs </li>
                     <li> Solutions ??? / TELECOM SOLUTIONS </li>
                     <li> SERVICE OFFERINGS </li>
@@ -47,8 +49,8 @@
                     <li> Insights </li>
                     <li> subscribe </li>
                     </ul> -->
-                <section class="section section-lg pt-0">
-                    <div class="container">
+                    <section class="section section-lg pt-0">
+                        <!-- <div class="container"> -->
 
                         <!-- Overview -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
@@ -147,94 +149,95 @@
                                     alt="MapBox Leaflet.js Custom Integration Mockup">
                             </div>
                         </div>
-                    </div>
-                </section>
+                        <!-- </div> -->
+                    </section>
+                </div>
             </div>
-        </div>
 
-        <!-- Settings button -->
-        <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-wheel-setting">
-            <i class="fas fa-cog"></i>
-        </a>
+            <!-- Settings button -->
+            <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-wheel-setting">
+                <i class="fas fa-cog"></i>
+            </a>
 
-        <!-- Modal Content -->
-        <div class="modal fade" id="modal-wheel-setting" tabindex="-1" role="dialog" aria-labelledby="modal-wheel-setting" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="h4 modal-title" data-toc-skip>Change the options</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container mb-4 mt-2">
-                            <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span id="fadeRangeOut">25</span>%</label>
-                            <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
-                                oninput="fadeRangeOnInput(this)">
-                            <script>
-                                function fadeRangeOnInput(input) {
-                                    // console.log(input.value.toString());
-                                    const fadeRangeOut = document.getElementById('fadeRangeOut');
-                                    fadeRangeOut.textContent = input.value;
-                                    // console.log('width: "' + input.value + '%";');
-                                    document.styleSheets[0].addRule('.image-fade-left::after', 'width: ' + input.value + '%;');
-                                }
-                            </script>
+            <!-- Modal Content -->
+            <div class="modal fade" id="modal-wheel-setting" tabindex="-1" role="dialog" aria-labelledby="modal-wheel-setting" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="h4 modal-title" data-toc-skip>Change the options</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <!-- <label>Вибір картинки: </label> -->
-                        <div class="container mb-4">
-                            <div class="row align-items-center">
-                                <div class="col-4 p-0 m-1">
-                                    <label>Вибір картинки:</label>
-                                </div>
-                                <div class="col-1 p-0 m-1">
-                                    <button class="btn btn-primary" id="prevButton">
-                                        <i class="fa-solid fa-backward"></i>
-                                    </button>
-                                </div>
-                                <div class="col-2 p-0 m-1">
-                                    <input type="text" class="form-control text-end" id="valueInput">
-                                </div>
-                                <div class="col-1 p-0 m-1">
-                                    <button class="btn btn-primary" id="nextButton">
-                                        <i class="fa-solid fa-forward"></i>
-                                    </button>
+                        <div class="modal-body">
+                            <div class="container mb-4 mt-2">
+                                <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span id="fadeRangeOut">25</span>%</label>
+                                <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
+                                    oninput="fadeRangeOnInput(this)">
+                                <script>
+                                    function fadeRangeOnInput(input) {
+                                        // console.log(input.value.toString());
+                                        const fadeRangeOut = document.getElementById('fadeRangeOut');
+                                        fadeRangeOut.textContent = input.value;
+                                        // console.log('width: "' + input.value + '%";');
+                                        document.styleSheets[0].addRule('.image-fade-left::after', 'width: ' + input.value + '%;');
+                                    }
+                                </script>
+                            </div>
+                            <!-- <label>Вибір картинки: </label> -->
+                            <div class="container mb-4">
+                                <div class="row align-items-center">
+                                    <div class="col-4 p-0 m-1">
+                                        <label>Вибір картинки:</label>
+                                    </div>
+                                    <div class="col-1 p-0 m-1">
+                                        <button class="btn btn-primary" id="prevButton">
+                                            <i class="fa-solid fa-backward"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-2 p-0 m-1">
+                                        <input type="text" class="form-control text-end" id="valueInput">
+                                    </div>
+                                    <div class="col-1 p-0 m-1">
+                                        <button class="btn btn-primary" id="nextButton">
+                                            <i class="fa-solid fa-forward"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <script>
-                            const prevButton = document.getElementById('prevButton');
-                            const nextButton = document.getElementById('nextButton');
-                            const valueInput = document.getElementById('valueInput');
-                            const image = document.getElementById('image-header');
-                            let currentValue = 1;
-                            valueInput.value = currentValue;
-                            prevButton.addEventListener('click', function () {
-                                if (currentValue > 1) {
-                                    currentValue--;
+                            <script>
+                                const prevButton = document.getElementById('prevButton');
+                                const nextButton = document.getElementById('nextButton');
+                                const valueInput = document.getElementById('valueInput');
+                                const image = document.getElementById('image-header');
+                                let currentValue = 1;
+                                valueInput.value = currentValue;
+                                prevButton.addEventListener('click', function () {
+                                    if (currentValue > 1) {
+                                        currentValue--;
+                                        valueInput.value = currentValue;
+                                        updateImage();
+                                    }
+                                });
+                                nextButton.addEventListener('click', function () {
+                                    currentValue++;
                                     valueInput.value = currentValue;
                                     updateImage();
+                                });
+                                valueInput.addEventListener('input', function () {
+                                    currentValue = parseInt(valueInput.value);
+                                    updateImage();
+                                });
+                                function updateImage() {
+                                    image.src = `/assets/img/industries/telecommunications-${currentValue.toString().padStart(2, '0')
+                                        }@1x.webp`;
                                 }
-                            });
-                            nextButton.addEventListener('click', function () {
-                                currentValue++;
-                                valueInput.value = currentValue;
-                                updateImage();
-                            });
-                            valueInput.addEventListener('input', function () {
-                                currentValue = parseInt(valueInput.value);
-                                updateImage();
-                            });
-                            function updateImage() {
-                                image.src = `/assets/img/industries/telecommunications-${currentValue.toString().padStart(2, '0')
-                                    }@1x.webp`;
-                            }
-                        </script>
-                        <p>Схопіть мишкою і перемістіть це вікно у зручне вам місце.</p>
+                            </script>
+                            <p>Схопіть мишкою і перемістіть це вікно у зручне вам місце.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- End of Modal Content -->
         </div>
-        <!-- End of Modal Content -->
     </main>
     @@include('./_footer.html', { "path": "../..", "classes": "" }) @@include('./_scripts.html', { "path": "../.."
     })
