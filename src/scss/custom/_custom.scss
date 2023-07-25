@@ -178,6 +178,10 @@
 
 .card {
     position: relative;
+
+    .arrow-link {
+        color: $tertiary; //$secondary; //primary;
+    }
 }
 
 .card-link {
