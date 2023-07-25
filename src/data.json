@@ -17,6 +17,14 @@
       "casestudies" : [
         1,
         3
+      ],
+      "links" : [
+        "<a href=\"https://www.gsma.com/\" target=\"_new\">GSMA</a>: The Global System for Mobile Communications (GSMA) represents the interests of mobile operators worldwide, uniting more than 750 operators with over 400 companies in the broader mobile ecosystem.",
+        "<a href=\"https://www.fcc.gov/\" target=\"_new\">FCC</a>: The Federal Communications Commission regulates interstate and international communications by radio, television, wire, satellite, and cable in the US.",
+        "<a href=\"https://www.itu.int/\" target=\"_new\">ITU</a>: The International Telecommunication Union is a specialized agency of the United Nations that is responsible for issues that concern information and communication technologies.",
+        "<a href=\"https://www.telecoms.com/\" target=\"_new\">Telecoms.com</a>: Telecoms.com is a news and analysis for the global telecoms industry.",
+        "<a href=\"https://www.lightreading.com/\" target=\"_new\">Light Reading</a>: Light Reading is a telecommunications industry information company that provides daily news, analysis and insight for the global communications networking and services industry.",
+        "<a href=\"https://www.cablefax.com/technology\" target=\"_new\">Communications Technology</a>: This resource provides the latest news and analysis of broadband communications providers and digital TV industry."
       ]
     }
   },
