@@ -81,16 +81,6 @@ gulp.task('scss', function () {
 
 gulp.task('html', function () {
     return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: paths.src.partials,
-            context: {
-                environment: 'development'
-            }
-        }))
-        // .pipe(data(function () {
-        //     return require('./src/data.json');
-        // }))
         .pipe(data(function (file) {
             // var json = './examples/' + path.basename(file.path) + '.json';
             let json = './src/data.json';
@@ -102,6 +92,13 @@ gulp.task('html', function () {
                 path: [paths.src.templates],
             })
         )
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: paths.src.partials,
+            context: {
+                environment: 'development'
+            }
+        }))
         .pipe(cached('html'))
         .pipe(gulp.dest(paths.temp.html))
         .pipe(browserSync.stream());
@@ -187,6 +184,17 @@ gulp.task('dist-css', function () {
 // Copy Html + minify
 gulp.task('dist-html', function () {
     return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
+        .pipe(data(function (file) {
+            // var json = './examples/' + path.basename(file.path) + '.json';
+            let json = './src/data.json';
+            delete require.cache[require.resolve(json)];
+            return require(json);
+        }))
+        .pipe(
+            nunjucksRender({
+                path: [paths.src.templates],
+            })
+        )
         .pipe(fileinclude({
             prefix: '@@',
             basepath: paths.src.partials,
@@ -194,14 +202,6 @@ gulp.task('dist-html', function () {
                 environment: 'production'
             }
         }))
-        .pipe(data(function () {
-            return require('./src/data.json');
-        }))
-        .pipe(
-            nunjucksRender({
-                path: [paths.src.templates],
-            })
-        )
         .pipe(htmlmin({
             collapseWhitespace: true,
             removeComments: true

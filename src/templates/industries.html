@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    @@include('./_head.html', { "path": "../..", "title": "bitLogic - {{ inds[@@id].title }}" })
+    @@include('./_head.html', { "path": "../..", "title": "bitLogic - {{ inds[id].title }}" })
 </head>
 
 <body>
@@ -15,12 +15,12 @@
         <div class="container-fluid g-0">
             <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
                 <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{inds[@@id].header.title}}</h1>
-                    <p class="h4">{{inds[@@id].header.text}}</p>
+                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{inds[id].header.title}}</h1>
+                    <p class="h4">{{inds[id].header.text}}</p>
                 </div>
                 <div class="col-lg-6 p-0 text-right">
                     <div class="image-fade-left">
-                        <img width="728" height="408" src="{{inds[@@id].header.img}}" alt="Telecommunications header image" id="image-header"
+                        <img width="728" height="408" src="{{inds[id].header.img}}" alt="Telecommunications header image" id="image-header"
                             style="max-width: 100%;">
                     </div>
                 </div>
@@ -41,17 +41,12 @@
 
                 <!-- article -->
                 <div class="col overflow-hidden">
-                    <!-- <article class="contents"> -->
-                    <!-- <ul>
-                    <li> Overview - The future of telecom depends on CSPs </li>
+                    <!--
                     <li> Solutions ??? / TELECOM SOLUTIONS </li>
-                    <li> SERVICE OFFERINGS </li>
-                    <li> Case studies / SUCCESS STORIES </li>
                     <li> Insights </li>
                     <li> subscribe </li>
                     </ul> -->
-                    <section class="section section-lg pt-0">
-                        <!-- <div class="container"> -->
+                    <section class="section section-lg p-0">
 
                         <!-- Overview -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
@@ -81,14 +76,18 @@
                             <div class="row">
                                 <!-- Card -->
                                 {% for key, service in services %}
-                                {% if inds[@@id].services[key] %}
+                                {% if inds[id].services[key] %}
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
                                         <img src="{{service.img}}" class="card-img-top rounded-top" alt="">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">{{service.title}}</h3>
                                             <p class="card-text">{{service.summary}}</p>
-                                            <a href="/html/services/{{service.name}}.html" class="btn btn-primary btn-sm">Learn More</a>
+                                            <div class="text-end">
+                                                <a href="/html/services/{{service.name}}.html"><i
+                                                        class="fas fa-light fa-arrow-right-long text-gray-600 display-5"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                         <a href="/html/services/{{service.name}}.html" class="card-link"> </a>
                                     </div>
@@ -101,20 +100,21 @@
 
                         <!-- Case studies -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
-                            <h1 class="h1">Case studies</h1>
+                            <h1 class="h1">Case Studies</h1>
                             <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
                             <div class="row">
                                 <!-- Card -->
                                 {% for key, usecase in usecases %}
-                                {% if inds[@@id].usecases[key] %}
+                                {% if inds[id].usecases[key] %}
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
                                         <img src="{{usecase.img}}" class="card-img-top rounded-top" alt="">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">{{usecase.title}}</h3>
                                             <p class="card-text">{{usecase.summary}}</p>
-                                            <a href="/html/services/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
+                                            <a href="/html/cases/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
                                         </div>
+                                        <a href="/html/cases/{{usecase.name}}.html" class="card-link"> </a>
                                     </div>
                                 </div>
                                 {% endif %}
