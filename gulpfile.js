@@ -88,8 +88,14 @@ gulp.task('html', function () {
                 environment: 'development'
             }
         }))
-        .pipe(data(function () {
-            return require('./src/data.json');
+        // .pipe(data(function () {
+        //     return require('./src/data.json');
+        // }))
+        .pipe(data(function (file) {
+            // var json = './examples/' + path.basename(file.path) + '.json';
+            let json = './src/data.json';
+            delete require.cache[require.resolve(json)];
+            return require(json);
         }))
         .pipe(
             nunjucksRender({
@@ -141,7 +147,7 @@ gulp.task('serve', gulp.series('clean', gulp.parallel('html', 'scss', 'js', 'ass
 
     gulp.watch([paths.src.js], gulp.series('js'));
     gulp.watch([paths.src.assets], gulp.series('assets'));
-    gulp.watch([paths.src.base + '**/*.+(html|njk)'], gulp.series('html'));
+    gulp.watch([paths.src.base + '**/*.+(html|njk|json)'], gulp.series('html'));
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
     gulp.watch([paths.src.node_modules + '/**/**/*.min.css', paths.src.node_modules + '/**/**/*.min.js', paths.src.base + 'package.json'], gulp.series('vendor'));
 }));

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    @@include('./_head.html', { "path": "../..", "title": "bitLogic - @@title" })
+    @@include('./_head.html', { "path": "../..", "title": "bitLogic - {{ inds[@@id].title }}" })
 </head>
 
 <body>
@@ -15,12 +15,12 @@
         <div class="container-fluid g-0">
             <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
                 <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>@@header.title</h1>
-                    <p class="h4">@@header.text</p>
+                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{inds[@@id].header.title}}</h1>
+                    <p class="h4">{{inds[@@id].header.text}}</p>
                 </div>
                 <div class="col-lg-6 p-0 text-right">
                     <div class="image-fade-left">
-                        <img width="728" height="408" src="@@header.img" alt="Telecommunications header image" id="image-header"
+                        <img width="728" height="408" src="{{inds[@@id].header.img}}" alt="Telecommunications header image" id="image-header"
                             style="max-width: 100%;">
                     </div>
                 </div>
@@ -30,13 +30,6 @@
 
                 <!-- TOC -->
                 <div class="col-xl-3 d-none d-xl-block ms-3">
-                    <ul>
-                        {% for item in items %}
-                        {% if ids.includes(item.id) %}
-                        <li>Name: {{ item.name }}, Age: {{ item.age }}</li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
                     <nav class="toc" data-toggle="toc">
                         <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
                             <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
@@ -44,7 +37,6 @@
                         </svg>
                     </nav>
                 </div>
-
 
 
                 <!-- article -->
@@ -85,80 +77,51 @@
                         <!-- Services -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
                             <h1 class="h1">Services</h1>
-                            <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
+                            <!-- <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
                             <div class="row">
-
                                 <!-- Card -->
-                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                                {% for key, service in services %}
+                                {% if inds[@@id].services[key] %}
+                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
-                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp" class="card-img-top rounded-top"
-                                            alt="Service card image">
+                                        <img src="{{service.img}}" class="card-img-top rounded-top" alt="">
                                         <div class="card-body">
-                                            <h3 class="h5 card-title mt-3">Contact Center Setup</h3>
-                                            <p class="card-text">Comprehensive solutions, including advanced routing,
-                                                AI-driven bots, IVR, and more, for a streamlined, efficient, and
-                                                customer-centric communication system</p>
-                                            <a href="/html/services/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
+                                            <h3 class="h5 card-title mt-3">{{service.title}}</h3>
+                                            <p class="card-text">{{service.summary}}</p>
+                                            <a href="/html/services/{{service.name}}.html" class="btn btn-primary btn-sm">Learn More</a>
                                         </div>
+                                        <a href="/html/services/{{service.name}}.html" class="card-link"> </a>
                                     </div>
                                 </div>
-
-                                <!-- Card -->
-                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
-                                    <div class="card shadow">
-                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp" class="card-img-top rounded-top"
-                                            alt="Service card image">
-                                        <div class="card-body">
-                                            <h3 class="h5 card-title mt-3">Contact Center Setup</h3>
-                                            <p class="card-text">Comprehensive solutions, including advanced routing,
-                                                AI-driven bots, IVR, and more, for a streamlined, efficient, and
-                                                customer-centric communication system</p>
-                                            <a href="/html/services/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Card -->
-                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
-                                    <div class="card shadow">
-                                        <img src="/assets/img/industries/telecommunications-02@0.5x.webp" class="card-img-top rounded-top"
-                                            alt="Service card image">
-                                        <div class="card-body">
-                                            <h3 class="h5 card-title mt-3">Database Administration</h3>
-                                            <p class="card-text">Comprehensive solutions, including advanced routing,
-                                                AI-driven bots, IVR, and more, for a streamlined, efficient, and
-                                                customer-centric communication system</p>
-                                            <a href="/html/services/dba.html" class="btn btn-primary btn-sm">Learn
-                                                More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                {% endif %}
+                                {% endfor %}
                             </div>
-
                         </div>
 
 
                         <!-- Case studies -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
-                            <div class="col-lg-5 mb-5 mb-lg-0">
-                                <h1 class="h1">Case studies</h1>
-                                <p class="mb-4 lead fw-bold">More than 50 website sections</p>
-                                <p class="mb-4">Using the sections in Pro you can easily build new pages by adding
-                                    them
-                                    together
-                                </p>
-                                <a href="../../html/sections/all-sections.html" class="btn btn-primary mt-2 animate-up-2">
-                                    <span class="fas fa-th-large me-2"></span>
-                                    Explore sections
-                                </a>
-                            </div>
-                            <div class="col-lg-6">
-                                <img width="728" height="408" src="/assets/img/industries/telecommunications-02@1x.webp"
-                                    alt="MapBox Leaflet.js Custom Integration Mockup">
+                            <h1 class="h1">Case studies</h1>
+                            <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
+                            <div class="row">
+                                <!-- Card -->
+                                {% for key, usecase in usecases %}
+                                {% if inds[@@id].usecases[key] %}
+                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
+                                    <div class="card shadow">
+                                        <img src="{{usecase.img}}" class="card-img-top rounded-top" alt="">
+                                        <div class="card-body">
+                                            <h3 class="h5 card-title mt-3">{{usecase.title}}</h3>
+                                            <p class="card-text">{{usecase.summary}}</p>
+                                            <a href="/html/services/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
-                        <!-- </div> -->
+
                     </section>
                 </div>
             </div>
