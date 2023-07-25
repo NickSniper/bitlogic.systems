@@ -1,6 +1,21 @@
 // <!-- Copyright © 2011-2023 bitLogic.systems -->
 
 // ****************************************************************
+// Useful functions
+
+// Do things after DOM has fully loaded
+const onReady = (callback) => {
+    if (document.readyState != 'loading') callback();
+    else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+    else document.attachEvent('onreadystatechange', function () {
+        if (document.readyState == 'complete') callback();
+    });
+};
+
+
+
+// ****************************************************************
+// ****************************************************************
 // Drag move windows
 
 // https://github.com/knadh/dragmove.js
@@ -92,7 +107,7 @@ const dragmove = function (target, handler, onStart, onEnd) {
 
 // export { dragmove as default };
 
-$(function () {
+onReady(() => {
     dragmove(document.querySelector("#modal-wheel-setting"), document.querySelector("#modal-wheel-setting .modal-content"));
     // Modal draggable
     // $('#modal-wheel-setting ').find('.modal-dialog:first').draggable({
@@ -102,9 +117,10 @@ $(function () {
 
 
 // ****************************************************************
+// ****************************************************************
 // TOC auto make 
 
-(function ($) {
+onReady(() => {
     "use strict";
     window.Toc = {
         helpers: {
@@ -275,15 +291,16 @@ $(function () {
         }
     };
 
-    $(function () {
+    onReady(() => {
         $('nav[data-toggle="toc"]').each(function (i, el) {
             var $nav = $(el);
             Toc.init($nav);
         });
         drawPath();
     });
-})(jQuery);
+});
 
+// ****************************************************************
 // ****************************************************************
 // TOC
 
@@ -388,6 +405,7 @@ function sync() {
     }
 }
 
+// ****************************************************************
 // ****************************************************************
 //
 

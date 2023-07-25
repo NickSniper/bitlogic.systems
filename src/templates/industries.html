@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    @@include('./_head.html', { "path": "../..", "title": "bitLogic - {{ inds[id].title }}" })
+    @@include('./_head.html', { "path": "../..", "title": "bitLogic - {{ industries[id].title }}" })
 </head>
 
 <body>
@@ -15,12 +15,12 @@
         <div class="container-fluid g-0">
             <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
                 <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{inds[id].header.title}}</h1>
-                    <p class="h4">{{inds[id].header.text}}</p>
+                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{industries[id].header.title}}</h1>
+                    <p class="h4">{{industries[id].header.text}}</p>
                 </div>
                 <div class="col-lg-6 p-0 text-right">
                     <div class="image-fade-left">
-                        <img width="728" height="408" src="{{inds[id].header.img}}" alt="Telecommunications header image" id="image-header"
+                        <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
                             style="max-width: 100%;">
                     </div>
                 </div>
@@ -52,20 +52,7 @@
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
                             <div class="col-lg-9">
                                 <h1>Overview</h1>
-                                <p> At bitLogic, we specialize in delivering tailored professional services, setting up
-                                    efficient call centers, and creating sophisticated software solutions. Our breadth
-                                    of expertise covers billing and accounting areas, database management, and provision
-                                    of robust technical support.</p>
-                                <p>Our team is proficient in developing bespoke software solutions, specifically
-                                    designed to facilitate precise billing and seamless accounting processes. We excel
-                                    in creating and managing extensive databases that support the unique requirements of
-                                    large-scale telecom operations.</p>
-                                <p>We're also adept at setting up call centers, optimizing them to offer excellent
-                                    customer support, and enhancing overall customer experience. Our technical support
-                                    services are characterized by swift response times, high problem-solving efficiency,
-                                    and a keen understanding of complex telecom environments.</p>
-                                <p>Trust us to provide innovative, reliable, and efficient solutions to meet your
-                                    telecom needs.</p>
+                                <span>{{industries[id].overview | safe}}</span>
                             </div>
                         </div>
 
@@ -75,8 +62,9 @@
                             <!-- <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
                             <div class="row">
                                 <!-- Card -->
+                                {% for id_service in industries[id].services %}
                                 {% for key, service in services %}
-                                {% if inds[id].services[key] %}
+                                {% if key == id_service %}
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
                                         <img src="{{service.img}}" class="card-img-top rounded-top" alt="">
@@ -94,6 +82,7 @@
                                 </div>
                                 {% endif %}
                                 {% endfor %}
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -103,21 +92,23 @@
                             <h1 class="h1">Case Studies</h1>
                             <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
                             <div class="row">
-                                <!-- Card -->
-                                {% for key, usecase in usecases %}
-                                {% if inds[id].usecases[key] %}
+                                {% for id_cs in industries[id].casestudies %}
+                                {% for key, cs in casestudies %}
+                                {% if key == id_cs %}
+                                <!-- Card, Case Studie id={{key}} -->
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
-                                        <img src="{{usecase.img}}" class="card-img-top rounded-top" alt="">
+                                        <img src="{{cs.img}}" class="card-img-top rounded-top" alt="">
                                         <div class="card-body">
-                                            <h3 class="h5 card-title mt-3">{{usecase.title}}</h3>
-                                            <p class="card-text">{{usecase.summary}}</p>
+                                            <h3 class="h5 card-title mt-3">{{cs.title}}</h3>
+                                            <p class="card-text">{{cs.summary}}</p>
                                             <a href="/html/cases/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
                                         </div>
-                                        <a href="/html/cases/{{usecase.name}}.html" class="card-link"> </a>
+                                        <a href="/html/cases/{{cs.name}}.html" class="card-link"> </a>
                                     </div>
                                 </div>
                                 {% endif %}
+                                {% endfor %}
                                 {% endfor %}
                             </div>
                         </div>
