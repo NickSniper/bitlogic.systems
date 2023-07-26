@@ -121,36 +121,21 @@ onReady(() => {
 // TOC auto make 
 
 onReady(() => {
-    "use strict";
     window.Toc = {
         helpers: {
             // return all matching elements in the set, or their descendants
-            findOrFilter: function ($el, selector) {
-                // http://danielnouri.org/notes/2011/03/14/a-jquery-find-that-also-finds-the-root-element/
-                // http://stackoverflow.com/a/12731439/358804
-                // var $descendants = $el.find(selector);
-                var $descendants = Array.from($el).flatMap(el => Array.from(el.querySelectorAll(selector)));
-                // return $el
-                //     .filter(selector)
-                //     .add($descendants)
-                //     .filter(":not([data-toc-skip])");
-                return Array.from($el).filter(el => el.matches(selector))
-                    .concat($descendants)
+            findOrFilter: function (el, selector) {
+                var descendants = Array.from(el).flatMap(el => Array.from(el.querySelectorAll(selector)));
+                return Array.from(el).filter(el => el.matches(selector))
+                    .concat(descendants)
                     .filter(el => !el.hasAttribute('data-toc-skip'));
             },
 
             generateUniqueIdBase: function (el) {
-                // var text = $(el).text();
                 var text = el.textContent;
-
-
-                // adapted from
-                // https://github.com/bryanbraun/anchorjs/blob/65fede08d0e4a705f72f1e7e6284f643d5ad3cf3/anchor.js#L237-L257
-
                 // Regex for finding the non-safe URL characters (many need escaping): & +$,:;=?@"#{}|^~[`%!'<>]./()*\ (newlines, tabs, backspace, & vertical tabs)
                 var nonsafeChars = /[& +$,:;=?@"#{}|^~[`%!'<>\]\.\/\(\)\*\\\n\t\b\v]/g,
                     urlText;
-
                 // Note: we trim hyphens after truncating because truncating can cause dangling hyphens.
                 // Example string:                      // " ⚡⚡ Don't forget: URL fragments should be i18n-friendly, hyphenated, short, and clean."
                 urlText = text
@@ -161,7 +146,6 @@ onReady(() => {
                     .substring(0, 64) // "⚡⚡-Dont-forget-URL-fragments-should-be-i18n-friendly-hyphenated-"
                     .replace(/^-+|-+$/gm, "") // "⚡⚡-Dont-forget-URL-fragments-should-be-i18n-friendly-hyphenated"
                     .toLowerCase(); // "⚡⚡-dont-forget-url-fragments-should-be-i18n-friendly-hyphenated"
-
                 return urlText || el.tagName.toLowerCase();
             },
 
@@ -194,25 +178,18 @@ onReady(() => {
             },
 
             createNavList: function () {
-                // return $('<ul class="nav navbar-nav"></ul>');
                 let ulElement = document.createElement('ul');
                 ulElement.className = 'nav navbar-nav';
                 return ulElement;
             },
 
-            createChildNavList: function ($parent) {
-                var $childList = this.createNavList();
-                // $parent.append($childList);
-                $parent.appendChild($childList);
-                return $childList;
+            createChildNavList: function (parent) {
+                var childList = this.createNavList();
+                parent.appendChild(childList);
+                return childList;
             },
 
             generateNavEl: function (anchor, text) {
-                // var $a = $('<a class="nav-link"></a>');
-                // $a.attr("href", "#" + anchor);
-                // $a.text(text);
-                // var $li = $("<li></li>");
-                // $li.append($a);
                 let a = document.createElement('a');
                 a.className = 'nav-link';
                 a.setAttribute('href', '#' + anchor);
@@ -224,17 +201,15 @@ onReady(() => {
 
             generateNavItem: function (headingEl) {
                 var anchor = this.generateAnchor(headingEl);
-                // var $heading = $(headingEl);
-                // var text = $heading.data("toc-text") || $heading.text();
                 var text = headingEl.getAttribute("toc-text") || headingEl.textContent;
                 return this.generateNavEl(anchor, text);
             },
 
             // Find the first heading level (`<h1>`, then `<h2>`, etc.) that has more than one element. Defaults to 1 (for `<h1>`).
-            getTopLevel: function ($scope) {
+            getTopLevel: function (scope) {
                 for (var i = 1; i <= 6; i++) {
-                    var $headings = this.findOrFilter($scope, "h" + i);
-                    if ($headings.length > 1) {
+                    var headings = this.findOrFilter(scope, "h" + i);
+                    if (headings.length > 1) {
                         return i;
                     }
                 }
@@ -243,48 +218,47 @@ onReady(() => {
             },
 
             // returns the elements for the top level, and the next below it
-            getHeadings: function ($scope, topLevel) {
+            getHeadings: function (scope, topLevel) {
                 var topSelector = "h" + topLevel;
 
                 var secondaryLevel = topLevel + 1;
                 var secondarySelector = "h" + secondaryLevel;
 
-                return this.findOrFilter($scope, topSelector + "," + secondarySelector);
+                return this.findOrFilter(scope, topSelector + "," + secondarySelector);
             },
 
             getNavLevel: function (el) {
                 return parseInt(el.tagName.charAt(1), 10);
             },
 
-            populateNav: function ($topContext, topLevel, $headings) {
-                var $context = $topContext;
-                var $prevNav;
+            populateNav: function (topContext, topLevel, headings) {
+                var context = topContext;
+                var prevNav;
 
                 var helpers = this;
-                $headings.forEach(function (el, i) {
-                    var $newNav = helpers.generateNavItem(el);
+                headings.forEach(function (el, i) {
+                    var newNav = helpers.generateNavItem(el);
                     var navLevel = helpers.getNavLevel(el);
 
-                    // determine the proper $context
+                    // determine the proper context
                     if (navLevel === topLevel) {
                         // use top level
-                        $context = $topContext;
-                    } else if ($prevNav && $context === $topContext) {
+                        context = topContext;
+                    } else if (prevNav && context === topContext) {
                         // create a new level of the tree and switch to it
-                        $context = helpers.createChildNavList($prevNav);
-                    } // else use the current $context
+                        context = helpers.createChildNavList(prevNav);
+                    } // else use the current context
 
-                    // $context.append($newNav);
-                    $context.appendChild($newNav);
+                    context.appendChild(newNav);
 
-                    $prevNav = $newNav;
+                    prevNav = newNav;
                 });
             },
 
             parseOps: function (arg) {
                 var opts = {};
-                opts.$nav = arg;
-                opts.$scope = opts.$scope || $(document.body);
+                opts.nav = arg;
+                opts.scope = opts.scope || [document.body];
                 return opts;
             }
         },
@@ -294,12 +268,12 @@ onReady(() => {
             opts = this.helpers.parseOps(opts);
 
             // ensure that the data attribute is in place for styling
-            opts.$nav.setAttribute("data-toggle", "toc");
+            opts.nav.setAttribute("data-toggle", "toc");
 
-            var $topContext = this.helpers.createChildNavList(opts.$nav);
-            var topLevel = this.helpers.getTopLevel(opts.$scope);
-            var $headings = this.helpers.getHeadings(opts.$scope, topLevel);
-            this.helpers.populateNav($topContext, topLevel, $headings);
+            var topContext = this.helpers.createChildNavList(opts.nav);
+            var topLevel = this.helpers.getTopLevel(opts.scope);
+            var headings = this.helpers.getHeadings(opts.scope, topLevel);
+            this.helpers.populateNav(topContext, topLevel, headings);
         }
     };
 
