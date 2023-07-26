@@ -128,15 +128,21 @@ onReady(() => {
             findOrFilter: function ($el, selector) {
                 // http://danielnouri.org/notes/2011/03/14/a-jquery-find-that-also-finds-the-root-element/
                 // http://stackoverflow.com/a/12731439/358804
-                var $descendants = $el.find(selector);
-                return $el
-                    .filter(selector)
-                    .add($descendants)
-                    .filter(":not([data-toc-skip])");
+                // var $descendants = $el.find(selector);
+                var $descendants = Array.from($el).flatMap(el => Array.from(el.querySelectorAll(selector)));
+                // return $el
+                //     .filter(selector)
+                //     .add($descendants)
+                //     .filter(":not([data-toc-skip])");
+                return Array.from($el).filter(el => el.matches(selector))
+                    .concat($descendants)
+                    .filter(el => !el.hasAttribute('data-toc-skip'));
             },
 
             generateUniqueIdBase: function (el) {
-                var text = $(el).text();
+                // var text = $(el).text();
+                var text = el.textContent;
+
 
                 // adapted from
                 // https://github.com/bryanbraun/anchorjs/blob/65fede08d0e4a705f72f1e7e6284f643d5ad3cf3/anchor.js#L237-L257
@@ -188,28 +194,39 @@ onReady(() => {
             },
 
             createNavList: function () {
-                return $('<ul class="nav navbar-nav"></ul>');
+                // return $('<ul class="nav navbar-nav"></ul>');
+                let ulElement = document.createElement('ul');
+                ulElement.className = 'nav navbar-nav';
+                return ulElement;
             },
 
             createChildNavList: function ($parent) {
                 var $childList = this.createNavList();
-                $parent.append($childList);
+                // $parent.append($childList);
+                $parent.appendChild($childList);
                 return $childList;
             },
 
             generateNavEl: function (anchor, text) {
-                var $a = $('<a class="nav-link"></a>');
-                $a.attr("href", "#" + anchor);
-                $a.text(text);
-                var $li = $("<li></li>");
-                $li.append($a);
-                return $li;
+                // var $a = $('<a class="nav-link"></a>');
+                // $a.attr("href", "#" + anchor);
+                // $a.text(text);
+                // var $li = $("<li></li>");
+                // $li.append($a);
+                let a = document.createElement('a');
+                a.className = 'nav-link';
+                a.setAttribute('href', '#' + anchor);
+                a.textContent = text;
+                let li = document.createElement('li');
+                li.appendChild(a);
+                return li;
             },
 
             generateNavItem: function (headingEl) {
                 var anchor = this.generateAnchor(headingEl);
-                var $heading = $(headingEl);
-                var text = $heading.data("toc-text") || $heading.text();
+                // var $heading = $(headingEl);
+                // var text = $heading.data("toc-text") || $heading.text();
+                var text = headingEl.getAttribute("toc-text") || headingEl.textContent;
                 return this.generateNavEl(anchor, text);
             },
 
@@ -244,7 +261,7 @@ onReady(() => {
                 var $prevNav;
 
                 var helpers = this;
-                $headings.each(function (i, el) {
+                $headings.forEach(function (el, i) {
                     var $newNav = helpers.generateNavItem(el);
                     var navLevel = helpers.getNavLevel(el);
 
@@ -257,21 +274,16 @@ onReady(() => {
                         $context = helpers.createChildNavList($prevNav);
                     } // else use the current $context
 
-                    $context.append($newNav);
+                    // $context.append($newNav);
+                    $context.appendChild($newNav);
 
                     $prevNav = $newNav;
                 });
             },
 
             parseOps: function (arg) {
-                var opts;
-                if (arg.jquery) {
-                    opts = {
-                        $nav: arg
-                    };
-                } else {
-                    opts = arg;
-                }
+                var opts = {};
+                opts.$nav = arg;
                 opts.$scope = opts.$scope || $(document.body);
                 return opts;
             }
@@ -282,7 +294,7 @@ onReady(() => {
             opts = this.helpers.parseOps(opts);
 
             // ensure that the data attribute is in place for styling
-            opts.$nav.attr("data-toggle", "toc");
+            opts.$nav.setAttribute("data-toggle", "toc");
 
             var $topContext = this.helpers.createChildNavList(opts.$nav);
             var topLevel = this.helpers.getTopLevel(opts.$scope);
@@ -292,9 +304,8 @@ onReady(() => {
     };
 
     onReady(() => {
-        $('nav[data-toggle="toc"]').each(function (i, el) {
-            var $nav = $(el);
-            Toc.init($nav);
+        document.querySelectorAll('nav[data-toggle="toc"]').forEach(function (el, i) {
+            Toc.init(el);
         });
         drawPath();
     });
