@@ -3,6 +3,8 @@
 
 // @import "./node_modules/@fontsource/ibm-plex-sans/latin";
 
+@import "font-icomoon/style";
+
 #navbar-main {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -182,6 +184,33 @@
     .arrow-link {
         color: $tertiary; //$secondary; //primary;
     }
+
+    // define a minimum size for the entire card
+    // min-height: 200px;
+
+    @media (min-width: 992px) {
+        .card-img-top {
+            // define a minimum size for the image
+            min-width: 100%;
+            min-height: 194px;
+            max-height: 194px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            .card-title {
+                min-height: 26px;
+            }
+
+            .card-text {
+                min-height: 77px;
+            }
+
+            .card-btn {
+                min-height: 20px;
+            }
+        }
+    }
 }
 
 .card-link {
@@ -202,4 +231,16 @@
     bottom: 0;
     left: 0;
     background: transparent;
+}
+
+// ***********************************************************************************
+// 
+
+.social-buttons {
+
+    a,
+    .btn {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 }

@@ -18,6 +18,12 @@ Disabled packages and removed from package.json:
         "vivus": "^0.4.5",
         "waypoints": "4.0.1"
 
+# your fontawesome reduce
+https://icomoon.io/app/#/select 
+
+# Online HTML editor (good for copy-ppaste)
+https://onlinehtmleditor.dev/
+
 # typescript
 compile to ECMAScript 2018
 https://code.visualstudio.com/docs/typescript/typescript-compiling

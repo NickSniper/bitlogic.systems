@@ -10,12 +10,15 @@
       },
       "services" : [
         1,
+        4,
+        5,
         2,
         3,
         4
       ],
       "casestudies" : [
         1,
+        2,
         3
       ],
       "links" : [
@@ -76,7 +79,7 @@
     "3" : {
       "industry" : "telecommunications",
       "title" : "Database Migration",
-      "summary" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
+      "summary" : "Lorem Ipsum is simply ",
       "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
       "text" : "here the full text of the use case"
     }

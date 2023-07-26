@@ -67,13 +67,14 @@
                                 {% if key == id_service %}
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
-                                        <img src="{{service.img}}" class="card-img-top rounded-top" alt="">
+                                        <img src="{{service.img}}" class="card-img-top rounded-top" alt="card image"
+                                            onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">{{service.title}}</h3>
                                             <p class="card-text">{{service.summary}}</p>
-                                            <div class="text-end">
+                                            <div class="card-btn text-end">
                                                 <a href="/html/services/{{service.name}}.html"><i
-                                                        class="fas fa-light fa-arrow-right-long arrow-link display-5 opacity-75"></i>
+                                                        class="icon icon-arrow-right-long-solid arrow-link display-5 opacity-75"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -98,11 +99,18 @@
                                 <!-- Card, Case Studie id={{key}} -->
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
-                                        <img src="{{cs.img}}" class="card-img-top rounded-top" alt="">
+                                        <img src="{{cs.img}}" class="card-img-top rounded-top" alt="card image"
+                                            onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">{{cs.title}}</h3>
                                             <p class="card-text">{{cs.summary}}</p>
-                                            <a href="/html/cases/contact-center.html" class="btn btn-primary btn-sm">Learn More</a>
+                                            <!-- <a href="/html/cases/contact-center.html" class="btn btn-primary btn-sm">Learn More</a> -->
+                                            <div class="card-btn text-end">
+                                                <span class="arrow-link opacity-75">Read more</span>
+                                                <a href="/html/services/{{service.name}}.html"><i
+                                                        class="icon icon-arrow-right-long-solid arrow-link display-5 opacity-75"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                         <a href="/html/cases/{{cs.name}}.html" class="card-link"> </a>
                                     </div>
@@ -131,7 +139,7 @@
 
             <!-- Settings button -->
             <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-wheel-setting">
-                <i class="fas fa-cog"></i>
+                <i class="icon icon-gear-solid"></i>
             </a>
 
             <!-- Modal Content -->

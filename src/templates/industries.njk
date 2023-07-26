@@ -3,14 +3,14 @@
 <html lang="en">
     <head>
         @@include('./_head.html', { "path": "../..", "title": "bitLogic - Telecommunications solutions"
-                })
+                        })
     </head>
     <body>
         @@include('./_navigation.html', { "path": "../..", "classes": "navbar-light navbar-theme-secondary"
-                })
+                        })
         <main>
             @@include('./_preloader.html', { "path": "../.."
-                                                                        })
+                                                                                    })
             <!-- Header -->
             <section class="section-header">
                 <div class="container-fluid">
@@ -30,12 +30,7 @@
                             <div
                                 class="image-fade-left">
                                 <!-- <img src="/assets/img/industries/telecommunications-01.png" alt="telecommunications" -->
-                                <img
-                                    width="728"
-                                    height="408"
-                                    src="/assets/img/industries/telecommunications-01@1x.webp"
-                                    alt="Telecommunications header image"
-                                    id="image-header">
+                                <img width="728" height="408" src="/assets/img/industries/telecommunications-01@1x.webp" alt="Telecommunications header image" id="image-header">
                             </div>
                         </div>
                     </div>
@@ -61,19 +56,15 @@
                         <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
                             <h2 class="h1">Premium Elements</h2>
                             <p class="mb-4 lead fw-bold">Collection of custom Bootstrap 5 components</p>
-                            <p class="mb-4">Get started building your project using a collection of over 1000 premium web components such as
-                                buttons, alerts, cards, modals, and many more</p>
+                            <p class="mb-4">Get started building your project using a collection of over 1000 premium web components such as buttons, alerts, cards, modals, and
+                                many more</p>
                             <a href="../../html/components/all.html" class="btn btn-tertiary mt-2 animate-up-2">
                                 <span class="fas fa-th-large me-2"></span>
                                 Explore components
                             </a>
                         </div>
                         <div class="col-lg-6 order-lg-1">
-                            <img
-                                width="728"
-                                height="408"
-                                src="/assets/img/industries/telecommunications-02@1x.webp"
-                                alt="MapBox Leaflet.js Custom Integration Mockup">
+                            <img width="728" height="408" src="/assets/img/industries/telecommunications-02@1x.webp" alt="MapBox Leaflet.js Custom Integration Mockup">
                         </div>
                     </div>
                     <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
@@ -87,32 +78,17 @@
                             </a>
                         </div>
                         <div class="col-lg-6">
-                            <img
-                                width="728"
-                                height="408"
-                                src="/assets/img/industries/telecommunications-02@1x.webp"
-                                alt="MapBox Leaflet.js Custom Integration Mockup">
+                            <img width="728" height="408" src="/assets/img/industries/telecommunications-02@1x.webp" alt="MapBox Leaflet.js Custom Integration Mockup">
                         </div>
                     </div>
                 </div>
             </section>
             <!-- Settings button -->
-            <a
-                href="#"
-                id="setting-wheel-button"
-                class="setting-wheel-button"
-                data-bs-toggle="modal"
-                data-bs-target="#modal-default">
-                <i class="fas fa-cog"></i>
+            <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-default">
+                <i class="icon icon-gear-solid"></i>
             </a>
             <!-- Modal Content -->
-            <div
-                class="modal fade"
-                id="modal-default"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="modal-default"
-                aria-hidden="true">
+            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -123,15 +99,7 @@
                             <div class="container mb-4 mt-2">
                                 <label for="fadeRange" class="form-label">"забілювання" картинки збоку
                                     <span id="fadeRangeOut">25</span>%</label>
-                                <input
-                                    type="range"
-                                    class="form-range"
-                                    value="25"
-                                    min="0"
-                                    max="100"
-                                    step="1"
-                                    id="fadeRange"
-                                    oninput="fadeRangeOnInput(this)">
+                                <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange" oninput="fadeRangeOnInput(this)">
                                 <script>
                                     function fadeRangeOnInput(input) {
                                         console.log(input.value.toString());
@@ -200,6 +168,6 @@
             <!-- End of Modal Content -->
         </main>
         @@include('./_footer.html', { "path": "../..", "classes": "" }) @@include('./_scripts.html', { "path": "../.."
-        })
+                })
     </body>
 </html>

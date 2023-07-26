@@ -1,0 +1,126 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-angle-down-solid {
+  &:before {
+    content: $icon-angle-down-solid;
+  }
+}
+
+.icon-angle-up-solid {
+  &:before {
+    content: $icon-angle-up-solid;
+  }
+}
+
+.icon-chevron-left-solid {
+  &:before {
+    content: $icon-chevron-left-solid;
+  }
+}
+
+.icon-chevron-right-solid {
+  &:before {
+    content: $icon-chevron-right-solid;
+  }
+}
+
+.icon-arrow-left-long-solid {
+  &:before {
+    content: $icon-arrow-left-long-solid;
+  }
+}
+
+.icon-arrow-right-long-solid {
+  &:before {
+    content: $icon-arrow-right-long-solid;
+  }
+}
+
+.icon-linkedin {
+  &:before {
+    content: $icon-linkedin;
+  }
+}
+
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+
+.icon-github {
+  &:before {
+    content: $icon-github;
+  }
+}
+
+.icon-envelope-solid {
+  &:before {
+    content: $icon-envelope-solid;
+  }
+}
+
+.icon-magnifying-glass-solid {
+  &:before {
+    content: $icon-magnifying-glass-solid;
+  }
+}
+
+.icon-user-large-solid {
+  &:before {
+    content: $icon-user-large-solid;
+  }
+}
+
+.icon-circle-user-solid {
+  &:before {
+    content: $icon-circle-user-solid;
+  }
+}
+
+.icon-gear-solid {
+  &:before {
+    content: $icon-gear-solid;
+  }
+}
+
+.icon-right-from-bracket-solid {
+  &:before {
+    content: $icon-right-from-bracket-solid;
+  }
+}
+
+.icon-times-solid {
+  &:before {
+    content: $icon-times-solid;
+  }
+}
