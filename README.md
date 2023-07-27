@@ -18,6 +18,9 @@ Disabled packages and removed from package.json:
         "vivus": "^0.4.5",
         "waypoints": "4.0.1"
 
+# Our approach page
+Що ми цей сайт зробили щоб мати 100% балів на швидкість - ми любимо перфекто
+
 # your fontawesome reduce
 https://icomoon.io/app/#/select 
 
