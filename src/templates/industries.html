@@ -9,133 +9,137 @@
 <body>
     @@include('./_navigation.html', { "path": "../..", "classes": "navbar-light navbar-theme-secondary"
     })
+
     <main class="overflow-visible ">
         @@include('./_preloader.html', { "path": "../.."})
-        <!-- Header -->
         <div class="container-fluid g-0">
-            <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
-                <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{industries[id].header.title}}</h1>
-                    <p class="h4">{{industries[id].header.text}}</p>
-                </div>
-                <div class="col-lg-6 p-0 text-right">
-                    <div class="image-fade-left">
-                        <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
-                            style="max-width: 100%;">
+
+            <article>
+                <!-- Header -->
+                <div class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
+                    <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
+                        <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{industries[id].header.title}}</h1>
+                        <p class="h4">{{industries[id].header.text}}</p>
+                    </div>
+                    <div class="col-lg-6 p-0 text-right">
+                        <div class="image-fade-left">
+                            <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
+                                style="max-width: 100%;">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row g-0">
+                <div class="row g-0">
 
-                <!-- TOC -->
-                <div class="col-xl-3 d-none d-xl-block ms-3">
-                    <nav class="toc" data-toggle="toc">
-                        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
-                                stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
-                        </svg>
-                    </nav>
-                </div>
+                    <!-- TOC -->
+                    <div class="col-xl-3 d-none d-xl-block ms-3">
+                        <nav class="toc" data-toggle="toc">
+                            <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
+                                    stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+                            </svg>
+                        </nav>
+                    </div>
 
 
-                <!-- article -->
-                <div class="col overflow-hidden">
-                    <!--
+                    <!-- main text -->
+                    <div class="col overflow-hidden">
+                        <!--
                     <li> Solutions ??? / TELECOM SOLUTIONS </li>
                     <li> Insights </li>
                     <li> subscribe </li>
                     </ul> -->
-                    <section class="section section-lg p-0">
+                        <section class="section section-lg p-0">
 
-                        <!-- Overview -->
-                        <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
-                            <div class="col-lg-9">
-                                <h1>Overview</h1>
-                                <span>{{industries[id].overview | safe}}</span>
-                            </div>
-                        </div>
-
-                        <!-- Services -->
-                        <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
-                            <h1 class="h1">Services</h1>
-                            <!-- <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
-                            <div class="row">
-                                <!-- Card -->
-                                {% for id_service in industries[id].services %}
-                                {% for key, service in services %}
-                                {% if key == id_service %}
-                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
-                                    <div class="card shadow">
-                                        <img src="{{service.img}}" class="card-img-top rounded-top" alt="card image"
-                                            onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
-                                        <div class="card-body">
-                                            <h3 class="h5 card-title mt-3">{{service.title}}</h3>
-                                            <p class="card-text">{{service.summary}}</p>
-                                            <div class="card-btn text-end">
-                                                <a href="/html/services/{{service.name}}.html"><i
-                                                        class="icon icon-arrow-right-long-solid arrow-link display-5 opacity-75"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <a href="/html/services/{{service.name}}.html" class="card-link"> </a>
-                                    </div>
+                            <!-- Overview -->
+                            <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
+                                <div class="col-lg-9">
+                                    <h1>Overview</h1>
+                                    <span>{{industries[id].overview | safe}}</span>
                                 </div>
-                                {% endif %}
-                                {% endfor %}
-                                {% endfor %}
                             </div>
-                        </div>
 
-
-                        <!-- Case studies -->
-                        <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
-                            <h1 class="h1">Case Studies</h1>
-                            <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
-                            <div class="row">
-                                {% for id_cs in industries[id].casestudies %}
-                                {% for key, cs in casestudies %}
-                                {% if key == id_cs %}
-                                <!-- Card, Case Studie id={{key}} -->
-                                <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
-                                    <div class="card shadow">
-                                        <img src="{{cs.img}}" class="card-img-top rounded-top" alt="card image"
-                                            onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
-                                        <div class="card-body">
-                                            <h3 class="h5 card-title mt-3">{{cs.title}}</h3>
-                                            <p class="card-text">{{cs.summary}}</p>
-                                            <!-- <a href="/html/cases/contact-center.html" class="btn btn-primary btn-sm">Learn More</a> -->
-                                            <div class="card-btn text-end">
-                                                <span class="arrow-link opacity-75">Read more</span>
-                                                <a href="/html/services/{{service.name}}.html"><i
-                                                        class="icon icon-arrow-right-long-solid arrow-link display-5 opacity-75"></i>
-                                                </a>
+                            <!-- Services -->
+                            <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
+                                <h1 class="h1">Services</h1>
+                                <!-- <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
+                                <div class="row">
+                                    <!-- Card -->
+                                    {% for id_service in industries[id].services %}
+                                    {% for key, service in services %}
+                                    {% if key == id_service %}
+                                    <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
+                                        <div class="card shadow">
+                                            <img src="{{service.img}}" class="card-img-top rounded-top" alt="card image"
+                                                onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
+                                            <div class="card-body">
+                                                <h3 class="h5 card-title mt-3">{{service.title}}</h3>
+                                                <p class="card-text">{{service.summary}}</p>
+                                                <div class="card-btn text-end">
+                                                    <a href="/html/services/{{service.name}}.html"><i
+                                                            class="icon icon-arrow-right-long-solid arrow-link display-5 opacity-75"></i>
+                                                    </a>
+                                                </div>
                                             </div>
+                                            <a href="/html/services/{{service.name}}.html" class="card-link"> </a>
                                         </div>
-                                        <a href="/html/cases/{{cs.name}}.html" class="card-link"> </a>
                                     </div>
-                                </div>
-                                {% endif %}
-                                {% endfor %}
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                        <!-- Useful Links -->
-                        <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
-                            <h1 class="h1">Useful links</h1>
-                            <div class="col-lg-10">
-                                <ol>
-                                    {% for link in industries[id].links %}
-                                    <li>{{link | safe}} </li>
+                                    {% endif %}
                                     {% endfor %}
-                                </ol>
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div>
 
-                    </section>
+
+                            <!-- Case studies -->
+                            <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
+                                <h1 class="h1">Case Studies</h1>
+                                <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
+                                <div class="row">
+                                    {% for id_cs in industries[id].casestudies %}
+                                    {% for key, cs in casestudies %}
+                                    {% if key == id_cs %}
+                                    <!-- Card, Case Studie id={{key}} -->
+                                    <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
+                                        <div class="card shadow">
+                                            <img src="{{cs.img}}" class="card-img-top rounded-top" alt="card image"
+                                                onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
+                                            <div class="card-body">
+                                                <h3 class="h5 card-title mt-3">{{cs.title}}</h3>
+                                                <p class="card-text">{{cs.summary}}</p>
+                                                <!-- <a href="/html/cases/contact-center.html" class="btn btn-primary btn-sm">Learn More</a> -->
+                                                <div class="card-btn text-end">
+                                                    <span class="arrow-link opacity-75">Read more</span>
+                                                    <a href="/html/services/{{service.name}}.html"><i
+                                                            class="icon icon-arrow-right-long-solid arrow-link display-5 opacity-75"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <a href="/html/cases/{{cs.name}}.html" class="card-link"> </a>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- Useful Links -->
+                            <div class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
+                                <h1 class="h1">Useful links</h1>
+                                <div class="col-lg-10">
+                                    <ol>
+                                        {% for link in industries[id].links %}
+                                        <li>{{link | safe}} </li>
+                                        {% endfor %}
+                                    </ol>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
                 </div>
-            </div>
+            </article>
 
             <!-- Settings button -->
             <a href="#" id="setting-wheel-button" class="setting-wheel-button" data-bs-toggle="modal" data-bs-target="#modal-wheel-setting">
@@ -222,8 +226,10 @@
             <!-- End of Modal Content -->
         </div>
     </main>
+
     @@include('./_footer.html', { "path": "../..", "classes": "" }) @@include('./_scripts.html', { "path": "../.."
     })
+
 </body>
 
 </html>

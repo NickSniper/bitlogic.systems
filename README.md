@@ -61,6 +61,8 @@ https://www.cssscript.com/html-markdown-converter-turndown/ = npm install turndo
 [Nunjucks] (https://mozilla.github.io/nunjucks/templating.html)
 based on Nunjucks [Eleventy] (https://www.11ty.dev/docs/tutorials)
 
+# cool lazy load with img image blur
+https://blog.webdevsimplified.com/2023-05/lazy-load-images/
 
 # Images generation
 https://discord.com/channels/662267976984297473/995431172375064616
