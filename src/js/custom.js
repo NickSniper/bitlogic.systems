@@ -13,7 +13,6 @@ const onReady = (callback) => {
 };
 
 
-
 // ****************************************************************
 // ****************************************************************
 // Drag move windows
@@ -393,4 +392,8 @@ function sync() {
 // ****************************************************************
 // ****************************************************************
 //
+
+var q_email = document.querySelector('#email');
+var email_href = q_email.getAttribute("href");
+q_email.setAttribute("href", email_href.substring(0, 7) + "admin" + email_href.substring(14, 15) + "bitlogic.systems" + email_href.substring(24));
 
