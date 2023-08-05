@@ -13,14 +13,19 @@
         border-bottom: 1px solid #E0E0E0;
     }
 
+    .navbar-brand {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
     // Styles for large-size devices
     @media (min-width: 992px) {
         .nav-item:first-child {
-            margin-left: 10px !important;
+            margin-left: 16px !important;
         }
 
         .navbar-brand {
-            padding: 8px 28px 8px 20px;
+            padding: 12px 28px 12px 20px;
             margin: 0px !important;
             margin-top: 2px !important;
             position: relative;
@@ -48,16 +53,16 @@
         padding: 6px 12px;
     }
 
-    .navbar-brand {
-        img {
-            height: 26px;
-        }
-    }
+    // .navbar-brand {
+    //     img {
+    //         height: 26px;
+    //     }
+    // }
 }
 
 .header-shift {
     position: relative;
-    margin-top: 49px;
+    margin-top: 52px;
 }
 
 @media only screen and (max-width: 991px) {

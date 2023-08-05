@@ -6,17 +6,7 @@ Content: Our expertise in professional services, call center setup, software dev
 
 # bitlogic.systems
 
-Disabled packages and removed from package.json:
-        "@glidejs/glide": "^3.4.1",
-        "chartist": "^0.11.4",
-        "chartist-plugin-tooltips": "0.0.17",
-        "countup.js": "^2.0.5",
-        "vanillajs-datepicker": "^1.0.3",
-        "jarallax": "1.12.0",
-        "nouislider": "11.0.3",
-        "onscreen": "1.3.4",
-        "vivus": "^0.4.5",
-        "waypoints": "4.0.1"
+https://docs.google.com/document/d/1TFhOxsY9VugqJoZDp5efreJLH9N6npZqa1NUBG5q1sI/edit
 
 # Our approach page
 Що ми цей сайт зробили щоб мати 100% балів на швидкість - ми любимо перфекто
@@ -323,3 +313,16 @@ function executeSearch(term) {
     last = list.lastChild.firstElementChild; // last result container — used for checking against keyboard up/down location
   }
 }
+
+
+# Disabled packages and removed from package.json:
+        "@glidejs/glide": "^3.4.1",
+        "chartist": "^0.11.4",
+        "chartist-plugin-tooltips": "0.0.17",
+        "countup.js": "^2.0.5",
+        "vanillajs-datepicker": "^1.0.3",
+        "jarallax": "1.12.0",
+        "nouislider": "11.0.3",
+        "onscreen": "1.3.4",
+        "vivus": "^0.4.5",
+        "waypoints": "4.0.1"
