@@ -62,6 +62,8 @@
     }
 
     .dropdown-megamenu,
+    .dropdown-megamenu-xs,
+    // Nick correction
     .dropdown-megamenu-sm,
     .dropdown-megamenu-md {
 
@@ -92,6 +94,14 @@
 
             }
 
+        }
+    }
+
+    .dropdown-megamenu-xs {
+
+        // Nick correction
+        @include media-breakpoint-up(lg) {
+            min-width: 210px;
         }
     }
 

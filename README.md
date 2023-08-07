@@ -326,3 +326,13 @@ function executeSearch(term) {
         "onscreen": "1.3.4",
         "vivus": "^0.4.5",
         "waypoints": "4.0.1"
+
+# Janus: the general purpose WebRTC server - video call through web browser
+
+https://janus.conf.meetecho.com/index.html        
+https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker
+
+# UA Tech Network
+
+https://dou.ua/lenta/articles/what-is-ua--tech-network/
+https://www.facebook.com/UAITConsortium
