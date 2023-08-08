@@ -1,28 +1,37 @@
 // Copyright © 2011-2023 bitLogic.systems 
 
-const autoprefixer = require('gulp-autoprefixer');
-const browserSync = require('browser-sync').create();
-const cleanCss = require('gulp-clean-css');
-const del = require('del');
-const htmlmin = require('gulp-htmlmin');
-const cssbeautify = require('gulp-cssbeautify');
-const gulp = require('gulp');
-const npmDist = require('gulp-npm-dist');
-const sass = require('gulp-sass')(require('node-sass'));
+// const autoprefixer = require('gulp-autoprefixer');
+import autoprefixer from 'gulp-autoprefixer';
+import browserSync from 'browser-sync';
+import cleanCss from 'gulp-clean-css';
+import del from 'del';
+import htmlmin from 'gulp-htmlmin';
+import cssbeautify from 'gulp-cssbeautify';
+import gulp from 'gulp';
+import npmDist from 'gulp-npm-dist';
+import gulpSass from 'gulp-sass';
+import nodeSass from 'node-sass';
+import sourcemaps from 'gulp-sourcemaps';
+import fileinclude from 'gulp-file-include';
+import uglify from 'gulp-uglify';
+import concat from 'gulp-concat';
+import { spawn } from 'child_process';
+import cached from 'gulp-cached';
+import gulpif from 'gulp-if';
+import sharpResponsive from "gulp-sharp-responsive";
+import replace from 'gulp-replace';
+import nunjucksRender from 'gulp-nunjucks-render';
+import data from 'gulp-data';
+import rev from 'gulp-rev';
+import revReplace from 'gulp-rev-replace';
+import fs from "fs";
 // const wait = require('gulp-wait');
-const sourcemaps = require('gulp-sourcemaps');
-const fileinclude = require('gulp-file-include');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
-const spawn = require('child_process').spawn;
-const cached = require('gulp-cached');
-const gulpif = require('gulp-if');
-const sharpResponsive = require("gulp-sharp-responsive");
-const replace = require('gulp-replace');
-const nunjucksRender = require('gulp-nunjucks-render')
-const data = require('gulp-data');
-const CacheBuster = require('gulp-cachebust');
-const cachebust = new CacheBuster();
+// const CacheBuster = require('gulp-cachebust');
+// const cachebust = new CacheBuster();
+// import rev from 'gulp-rev';
+
+const sass = gulpSass(nodeSass);
+
 
 // gulp-inject
 
@@ -56,7 +65,8 @@ const paths = {
         js: './.temp',
         assets: './.temp/assets',
         vendor: './.temp/vendor'
-    }
+    },
+    manifest: './'
 };
 
 gulp.task('clean', function () {
@@ -82,10 +92,10 @@ gulp.task('scss', function () {
 gulp.task('html', function () {
     return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
         .pipe(data(function (file) {
-            // var json = './examples/' + path.basename(file.path) + '.json';
             let json = './src/data.json';
-            delete require.cache[require.resolve(json)];
-            return require(json);
+            // delete require.cache[require.resolve(json)];
+            // return require(json);
+            return JSON.parse(fs.readFileSync(json));
         }))
         .pipe(
             nunjucksRender({
@@ -166,7 +176,7 @@ gulp.task('dist-css', function () {
         paths.src.scss + '/main/**/*.scss',
         paths.src.scss + '/main.scss',
         paths.src.node_modules + '@fontsource/ibm-plex-sans/latin.css',
-        paths.src.node_modules + '@fortawesome/fontawesome-free/css/all.min.css'
+        // paths.src.node_modules + '@fortawesome/fontawesome-free/css/all.min.css'
     ])
         // .pipe(wait(500))
         .pipe(sass().on('error', sass.logError))
@@ -177,18 +187,22 @@ gulp.task('dist-css', function () {
         .pipe(cleanCss({ level: { 1: { specialComments: 0 } } })) // Minify the CSS + remove comments.
         .pipe(replace('url(files/', 'url(/vendor/@fontsource/ibm-plex-sans/files/')) // ibm font fix
         .pipe(replace('url(../webfonts/', 'url(/vendor/@fortawesome/fontawesome-free/webfonts/')) // awesome font fix
-        .pipe(cachebust.resources())
+        // .pipe(cachebust.resources())
+        .pipe(rev())
         .pipe(gulp.dest(paths.dist.css))
+        .pipe(rev.manifest({ merge: true }))
+        .pipe(gulp.dest(paths.manifest))
 });
 
 // Copy Html + minify
 gulp.task('dist-html', function () {
+    var manifest = gulp.src(paths.manifest + "rev-manifest.json");
     return gulp.src([paths.src.html, '!' + paths.src.partials + '/**', '!' + paths.src.templates + '/**'])
         .pipe(data(function (file) {
-            // var json = './examples/' + path.basename(file.path) + '.json';
             let json = './src/data.json';
-            delete require.cache[require.resolve(json)];
-            return require(json);
+            // delete require.cache[require.resolve(json)];
+            // return require(json);
+            return JSON.parse(fs.readFileSync(json));
         }))
         .pipe(
             nunjucksRender({
@@ -206,7 +220,8 @@ gulp.task('dist-html', function () {
             collapseWhitespace: true,
             removeComments: true
         }))
-        .pipe(cachebust.references())
+        // .pipe(cachebust.references())
+        .pipe(revReplace({ manifest: manifest }))
         .pipe(gulp.dest(paths.dist.html));
 });
 
@@ -251,8 +266,12 @@ gulp.task('dist-js', function () {
     ]) // point to the js files
         .pipe(concat('all.min.js')) // The name of the final JS file.
         .pipe(uglify()) // Minify the JS.
-        .pipe(cachebust.resources())
-        .pipe(gulp.dest(paths.dist.js)); // The destination directory for the final JS file.
+        // .pipe(cachebust.resources())
+        .pipe(rev())
+        .pipe(gulp.dest(paths.dist.js)) // The destination directory for the final JS file.
+        .pipe(rev.manifest({ merge: true }))
+        .pipe(gulp.dest(paths.manifest))
+
 });
 
 gulp.task('dist-deploy', function () {
