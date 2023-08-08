@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff') format('woff');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?lrowge') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,102 +25,102 @@
 
 .icon-angle-down-solid {
   &:before {
-    content: $icon-angle-down-solid;
+    content: $icon-angle-down-solid; 
   }
 }
-
 .icon-angle-up-solid {
   &:before {
-    content: $icon-angle-up-solid;
+    content: $icon-angle-up-solid; 
   }
 }
-
 .icon-chevron-left-solid {
   &:before {
-    content: $icon-chevron-left-solid;
+    content: $icon-chevron-left-solid; 
   }
 }
-
 .icon-chevron-right-solid {
   &:before {
-    content: $icon-chevron-right-solid;
+    content: $icon-chevron-right-solid; 
   }
 }
-
 .icon-arrow-left-long-solid {
   &:before {
-    content: $icon-arrow-left-long-solid;
+    content: $icon-arrow-left-long-solid; 
   }
 }
-
 .icon-arrow-right-long-solid {
   &:before {
-    content: $icon-arrow-right-long-solid;
+    content: $icon-arrow-right-long-solid; 
   }
 }
-
 .icon-linkedin {
   &:before {
-    content: $icon-linkedin;
+    content: $icon-linkedin; 
   }
 }
-
 .icon-twitter {
   &:before {
-    content: $icon-twitter;
+    content: $icon-twitter; 
   }
 }
-
 .icon-facebook {
   &:before {
-    content: $icon-facebook;
+    content: $icon-facebook; 
   }
 }
-
 .icon-github {
   &:before {
-    content: $icon-github;
+    content: $icon-github; 
   }
 }
-
 .icon-envelope-solid {
   &:before {
-    content: $icon-envelope-solid;
+    content: $icon-envelope-solid; 
   }
 }
-
 .icon-magnifying-glass-solid {
   &:before {
-    content: $icon-magnifying-glass-solid;
+    content: $icon-magnifying-glass-solid; 
   }
 }
-
 .icon-user-large-solid {
   &:before {
-    content: $icon-user-large-solid;
+    content: $icon-user-large-solid; 
   }
 }
-
+.icon-user-solid {
+  &:before {
+    content: $icon-user-solid; 
+  }
+}
 .icon-circle-user-solid {
   &:before {
-    content: $icon-circle-user-solid;
+    content: $icon-circle-user-solid; 
   }
 }
-
+.icon-user-regular {
+  &:before {
+    content: $icon-user-regular; 
+  }
+}
 .icon-gear-solid {
   &:before {
-    content: $icon-gear-solid;
+    content: $icon-gear-solid; 
   }
 }
-
 .icon-right-from-bracket-solid {
   &:before {
-    content: $icon-right-from-bracket-solid;
+    content: $icon-right-from-bracket-solid; 
+  }
+}
+.icon-right-to-bracket-solid {
+  &:before {
+    content: $icon-right-to-bracket-solid; 
+  }
+}
+.icon-times-solid {
+  &:before {
+    content: $icon-times-solid; 
   }
 }
 
-.icon-times-solid {
-  &:before {
-    content: $icon-times-solid;
-  }
-}
