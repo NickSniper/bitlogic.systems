@@ -247,4 +247,46 @@
 }
 
 // ************************************************************************************
-//
+// lazy loading blurred image
+
+.blurred-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        animation: pulse 2.5s infinite;
+        background-color: #000;
+    }
+
+    &.loaded::before {
+        animation: none;
+        content: none;
+    }
+
+    img {
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
+    }
+
+    &.loaded img {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

@@ -25,6 +25,8 @@ import data from 'gulp-data';
 import rev from 'gulp-rev';
 import revReplace from 'gulp-rev-replace';
 import fs from "fs";
+import path from "path";
+import through2 from "through2";
 // const wait = require('gulp-wait');
 // const CacheBuster = require('gulp-cachebust');
 // const cachebust = new CacheBuster();
@@ -225,6 +227,29 @@ gulp.task('dist-html', function () {
 // Copy assets
 gulp.task('dist-assets', function () {
     return gulp.src(paths.src.assets, { base: paths.src.base })
+        .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
+            through2.obj(function (file, _, cb) {
+                let dirpath = path.join(file.cwd, paths.dist.base, path.dirname(file.relative));
+                if (!fs.existsSync(dirpath)) {
+                    fs.mkdirSync(dirpath, { recursive: true });
+                }
+                let filename = path.join(dirpath, file.stem + '@0x.webp'); //+ file.extname);
+                // let fname;
+                // const suffix = '@0x';
+                // let dotIndex = filename.lastIndexOf('.');
+                // // If there's no dot, return the filename with the suffix appended
+                // if (dotIndex === -1) {
+                //     fname = filename + suffix;
+                // } else {
+                //     // Insert the suffix just before the dot
+                //     fname = filename.slice(0, dotIndex) + suffix + filename.slice(dotIndex);
+                // }
+                // if (file.path == '/Users/nick/dev/skynet/src/img/industries/telecommunications-02.png') {
+                // console.log(['-i', file.path, '-vf scale=20:-1', fname])
+                spawn('/opt/homebrew/bin/ffmpeg', ['-i', file.path, '-vf', 'scale=20:-1', '-loglevel', 'error', '-y', filename], { stdio: 'inherit' })
+                // }
+                cb(null, file);  // Pass the file along to the next pipe
+            })))
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
             sharpResponsive({
@@ -238,6 +263,9 @@ gulp.task('dist-assets', function () {
                     // { width: 1080, rename: { suffix: "-xl" } },
                 ]
             })))
+        // .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
+        //     spawn('ffmpeg', ['-i', file, '-vf scale=20:-1', file + '0x'])
+        // ))
         .pipe(gulp.dest(paths.dist.base));
 });
 

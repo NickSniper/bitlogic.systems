@@ -52,7 +52,8 @@
         "gulp-wait": "^0.0.2",
         "merge-stream": "^2.0.0",
         "node-sass": "^6.0.1",
-        "nouislider": "^15.7.1"
+        "nouislider": "^15.7.1",
+        "through2": "^4.0.2"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "6.4.0",

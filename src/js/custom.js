@@ -9,10 +9,7 @@
 //     });
 // });
 
-
 // ****************************************************************
-// Useful functions
-
 // Do things after DOM has fully loaded
 const onReady = (callback) => {
     if (document.readyState != 'loading') callback();
@@ -21,6 +18,20 @@ const onReady = (callback) => {
         if (document.readyState == 'complete') callback();
     });
 };
+
+onReady(() => {
+    const blurredImageDiv = document.querySelector(".blurred-img")
+    const img = blurredImageDiv.querySelector("img")
+    function loaded() {
+        blurredImageDiv.classList.add("loaded")
+    }
+
+    if (img.complete) {
+        loaded()
+    } else {
+        img.addEventListener("load", loaded)
+    }
+});
 
 
 // ****************************************************************

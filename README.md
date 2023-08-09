@@ -53,6 +53,7 @@ based on Nunjucks [Eleventy] (https://www.11ty.dev/docs/tutorials)
 
 # cool lazy load with img image blur
 https://blog.webdevsimplified.com/2023-05/lazy-load-images/
+https://www.base64-image.de/
 
 # Images generation
 https://discord.com/channels/662267976984297473/995431172375064616
