@@ -1,6 +1,16 @@
 // <!-- Copyright © 2011-2023 bitLogic.systems -->
 
 // ****************************************************************
+// hide dropdown menu on the start
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     var dropdowns = document.querySelectorAll('.dropdown-menu');
+//     dropdowns.forEach(function (dropdown) {
+//         dropdown.classList.remove('show');
+//     });
+// });
+
+
+// ****************************************************************
 // Useful functions
 
 // Do things after DOM has fully loaded

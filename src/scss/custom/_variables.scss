@@ -6,3 +6,8 @@
 // $primary: orange;
 $tooltip-color: #e2e2e2;
 $tooltip-bg: #515151;
+
+// prevent cached menus briefly appear during page transitions
+// .dropdown-menu {
+//     display: none;
+// }

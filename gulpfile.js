@@ -276,7 +276,8 @@ gulp.task('dist-deploy', function () {
         // '-v', // increase verbosity
         '-a', // archive mode; same as -rlptgoD (no -H)
         '-z', // compress file data during the transfer
-        '--size-only', // skip files that match in size
+        // '--size-only', // skip files that match in size
+        '-c', // skip files verified by checksum
         '--delete', // delete extraneous files from dest dirs
         '-e', // remote shell
         'ssh', // use secure shell
