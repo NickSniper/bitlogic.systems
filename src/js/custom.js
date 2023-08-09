@@ -20,17 +20,32 @@ const onReady = (callback) => {
 };
 
 onReady(() => {
-    const blurredImageDiv = document.querySelector(".blurred-img")
-    const img = blurredImageDiv.querySelector("img")
-    function loaded() {
-        blurredImageDiv.classList.add("loaded")
-    }
+    // const blurredImageDiv = document.querySelector(".blurred-img")
+    // const img = blurredImageDiv.querySelector("img")
+    // function loaded(img) {
+    //     (img ? img : this).classList.add("loaded")
+    // }
 
-    if (img.complete) {
-        loaded()
-    } else {
-        img.addEventListener("load", loaded)
-    }
+    // if (img.complete) {
+    //     loaded()
+    // } else {
+    //     img.addEventListener("load", loaded)
+    // }
+
+    let blurredImageList = [].slice.call(document.querySelectorAll('.blurred-img'));
+    blurredImageList.map(function (blurredImageEl) {
+        function loaded() {
+            blurredImageEl.classList.add("loaded")
+        }
+        const imgList = [].slice.call(blurredImageEl.querySelectorAll('img'));
+        imgList.map(function (img) {
+            if (img.complete) {
+                loaded(img)
+            } else {
+                img.addEventListener("load", loaded)
+            }
+        })
+    })
 });
 
 

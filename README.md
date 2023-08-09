@@ -52,7 +52,7 @@ https://www.cssscript.com/html-markdown-converter-turndown/ = npm install turndo
 based on Nunjucks [Eleventy] (https://www.11ty.dev/docs/tutorials)
 
 # cool lazy load with img image blur
-https://blog.webdevsimplified.com/2023-05/lazy-load-images/
+~~https://blog.webdevsimplified.com/2023-05/lazy-load-images~~
 https://www.base64-image.de/
 
 # Images generation
