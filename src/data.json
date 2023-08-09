@@ -1,14 +1,14 @@
 {
-  "industries" : {
-    "1" : {
-      "title" : "Telecommunications solutions",
-      "overview" : "<p> At bitLogic, we specialize in delivering tailored professional services, setting up efficient call centers, and creating sophisticated software solutions. Our breadth of expertise covers billing and accounting areas, database management, and provision of robust technical support.</p>\r\n<p>Our team is proficient in developing bespoke software solutions, specifically designed to facilitate precise billing and seamless accounting processes. We excel in creating and managing extensive databases that support the unique requirements of large-scale telecom operations.</p>\r\n<p>We're also adept at setting up call centers, optimizing them to offer excellent customer support, and enhancing overall customer experience. Our technical support services are characterized by swift response times, high problem-solving efficiency, and a keen understanding of complex telecom environments.</p>\r\n<p>Trust us to provide innovative, reliable, and efficient solutions to meet your telecom needs.</p>",
-      "header" : {
-        "title" : "Telecommunications solutions from bitLogic",
-        "text" : "Unlock new revenue potential by transforming scalability and flexibility",
-        "img" : "/assets/img/industries/telecommunications-01@1x.webp"
+  "industries": {
+    "1": {
+      "title": "Telecommunications solutions",
+      "overview": "<p> At bitLogic, we specialize in delivering tailored professional services, setting up efficient call centers, and creating sophisticated software solutions. Our breadth of expertise covers billing and accounting areas, database management, and provision of robust technical support.</p>\r\n<p>Our team is proficient in developing bespoke software solutions, specifically designed to facilitate precise billing and seamless accounting processes. We excel in creating and managing extensive databases that support the unique requirements of large-scale telecom operations.</p>\r\n<p>We're also adept at setting up call centers, optimizing them to offer excellent customer support, and enhancing overall customer experience. Our technical support services are characterized by swift response times, high problem-solving efficiency, and a keen understanding of complex telecom environments.</p>\r\n<p>Trust us to provide innovative, reliable, and efficient solutions to meet your telecom needs.</p>",
+      "header": {
+        "title": "Telecommunications solutions from bitLogic",
+        "text": "Unlock new revenue potential by transforming scalability and flexibility",
+        "img": "/img/industries/telecommunications-01@1x.webp"
       },
-      "services" : [
+      "services": [
         1,
         4,
         5,
@@ -16,12 +16,12 @@
         3,
         4
       ],
-      "casestudies" : [
+      "casestudies": [
         1,
         2,
         3
       ],
-      "links" : [
+      "links": [
         "<a href=\"https://www.gsma.com/\" target=\"_new\">GSMA</a>: The Global System for Mobile Communications (GSMA) represents the interests of mobile operators worldwide, uniting more than 750 operators with over 400 companies in the broader mobile ecosystem.",
         "<a href=\"https://www.fcc.gov/\" target=\"_new\">FCC</a>: The Federal Communications Commission regulates interstate and international communications by radio, television, wire, satellite, and cable in the US.",
         "<a href=\"https://www.itu.int/\" target=\"_new\">ITU</a>: The International Telecommunication Union is a specialized agency of the United Nations that is responsible for issues that concern information and communication technologies.",
@@ -31,57 +31,57 @@
       ]
     }
   },
-  "services" : {
-    "1" : {
-      "title" : "Contact Center Setup",
-      "name" : "contact-center",
-      "summary" : "Comprehensive solutions, including advanced routing, AI-driven bots, IVR, and more, for a streamlined, efficient, and customer-centric communication system",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the service"
+  "services": {
+    "1": {
+      "title": "Contact Center Setup",
+      "name": "contact-center",
+      "summary": "Comprehensive solutions, including advanced routing, AI-driven bots, IVR, and more, for a streamlined, efficient, and customer-centric communication system",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the service"
     },
-    "2" : {
-      "title" : "Joke",
-      "name" : "TODO",
-      "summary" : "Here nothing to say",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the service"
+    "2": {
+      "title": "Joke",
+      "name": "TODO",
+      "summary": "Here nothing to say",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the service"
     },
-    "3" : {
-      "title" : "Database Administration",
-      "name" : "TODO",
-      "summary" : "DB is the best",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the service"
+    "3": {
+      "title": "Database Administration",
+      "name": "TODO",
+      "summary": "DB is the best",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the service"
     },
-    "4" : {
-      "title" : "Lorem Ipsum",
-      "name" : "TODO",
-      "summary" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the service"
+    "4": {
+      "title": "Lorem Ipsum",
+      "name": "TODO",
+      "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the service"
     }
   },
-  "casestudies" : {
-    "1" : {
-      "industry" : "telecommunications",
-      "title" : "Building Contact Center Setup",
-      "summary" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the use case"
+  "casestudies": {
+    "1": {
+      "industry": "telecommunications",
+      "title": "Building Contact Center Setup",
+      "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the use case"
     },
-    "2" : {
-      "industry" : "telecommunications",
-      "title" : "Building Joke",
-      "summary" : "Here nothing to say",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the use case"
+    "2": {
+      "industry": "telecommunications",
+      "title": "Building Joke",
+      "summary": "Here nothing to say",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the use case"
     },
-    "3" : {
-      "industry" : "telecommunications",
-      "title" : "Database Migration",
-      "summary" : "Lorem Ipsum is simply ",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
-      "text" : "here the full text of the use case"
+    "3": {
+      "industry": "telecommunications",
+      "title": "Database Migration",
+      "summary": "Lorem Ipsum is simply ",
+      "img": "/img/industries/telecommunications-02@0.5x.webp",
+      "text": "here the full text of the use case"
     }
   }
 }

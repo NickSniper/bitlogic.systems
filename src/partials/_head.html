@@ -4,23 +4,18 @@
 @@if (environment === 'production') {
 <link type="text/css" href="/css/all.min.css" rel="stylesheet">
 }
+
 @@if (environment !== 'production'){
 <link type="text/css" href="/css/main.css" rel="stylesheet">
-
 <!-- Fontawesome -->
 <link type="text/css" href="/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-
-<!-- Font IBM -->
-<link type="text/css" href="/vendor/@fontsource/ibm-plex-sans/latin.css" rel="stylesheet">
 }
 
 <!-- Preload woff2 fonts -->
-<link rel="preload" href="/assets/fonts/icomoon.woff" as="font" type="font/woff2" crossorigin>
-<!-- <link rel="preload" href="/assets/fonts/IBM-Plex-Sans-400.woff2" as="font" type="font/woff2" crossorigin> -->
-<!-- <link rel="preload" href="/assets/fonts/IBM-Plex-Sans-600.woff2" as="font" type="font/woff2" crossorigin> -->
-<link rel="preload" href="/vendor/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/vendor/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/vendor/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/icomoon.woff" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ips-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ips-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ips-600.woff2" as="font" type="font/woff2" crossorigin>
 <!-- <link rel="preload" href="/vendor/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin> -->
 <!-- <link rel="preload" href="/vendor/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin> -->
 <!-- <link rel="preload" href="/vendor/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin> -->
@@ -45,7 +40,7 @@
 <meta property="og:title" content="@@title">
 <meta property="og:description"
     content="bitLogic.systems - Service Transformation approach, with business-driven KPIs, state-of-the-art reference frameworks and capabilities, achieve agile and rapid delivery of business value that compound over time, along with digital end-to-end customer experience.">
-<meta property="og:image" content="https://bitlogic.team/assets/img/brand/full-dark.webp">
+<meta property="og:image" content="https://bitlogic.team/img/brand/full-dark.webp">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
@@ -53,14 +48,16 @@
 <meta property="twitter:title" content="@@title">
 <meta property="twitter:description"
     content="bitLogic.systems - Service Transformation approach, with business-driven KPIs, state-of-the-art reference frameworks and capabilities, achieve agile and rapid delivery of business value that compound over time, along with digital end-to-end customer experience.">
-<meta property="twitter:image" content="https://bitlogic.team/assets/img/brand/full-dark.webp">
+<meta property="twitter:image" content="https://bitlogic.team/img/brand/full-dark.webp">
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
-<link rel="manifest" href="/assets/img/favicon/site.webmanifest">
-<meta name="msapplication-TileColor" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="/img/favicon/site.webmanifest">
+<!-- <link rel="shortcut icon" href="/img/favicon/favicon.ico"> -->
+<!-- <meta name="msapplication-TileColor" content="#2b5797"> -->
+<meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
 
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->

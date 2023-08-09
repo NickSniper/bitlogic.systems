@@ -332,6 +332,15 @@ function executeSearch(term) {
 https://janus.conf.meetecho.com/index.html        
 https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker
 
+# IBM Plex Sans fonts
+
+https://www.ibm.com/plex/
+https://github.com/IBM/plex/releases/latest
+
+# Favicon generator
+
+https://realfavicongenerator.net/
+
 # UA Tech Network
 
 https://dou.ua/lenta/articles/what-is-ua--tech-network/

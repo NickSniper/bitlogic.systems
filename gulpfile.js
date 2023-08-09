@@ -53,7 +53,7 @@ const paths = {
         templates: './src/templates',
         partials: './src/partials',
         js: './src/**/*.js',
-        assets: './src/assets/**/*.*',
+        assets: ['./src/assets/**/*.*', './src/fonts/*.+(woff2|woff)', './src/img/**/*.*', './src/favicon.ico'],
         scss: './src/scss',
         node_modules: './node_modules/',
         vendor: './vendor'
@@ -63,7 +63,7 @@ const paths = {
         css: './.temp/css',
         html: './.temp',
         js: './.temp',
-        assets: './.temp/assets',
+        assets: './.temp',
         vendor: './.temp/vendor'
     },
     manifest: './'
@@ -122,7 +122,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('assets', function () {
-    return gulp.src([paths.src.assets])
+    return gulp.src(paths.src.assets, { base: paths.src.base })
         .pipe(cached('assets'))
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
@@ -137,7 +137,7 @@ gulp.task('assets', function () {
                     // { width: 1080, rename: { suffix: "-xl" } },
                 ]
             })))
-        .pipe(gulp.dest(paths.temp.assets));
+        .pipe(gulp.dest(paths.temp.base));
 });
 
 gulp.task('vendor', function () {
@@ -153,7 +153,7 @@ gulp.task('serve', gulp.series('clean', gulp.parallel('html', 'scss', 'js', 'ass
     });
 
     gulp.watch([paths.src.js], gulp.series('js'));
-    gulp.watch([paths.src.assets], gulp.series('assets'));
+    gulp.watch(paths.src.assets, gulp.series('assets'));
     gulp.watch([paths.src.base + '**/*.+(html|njk|json)'], gulp.series('html'));
     gulp.watch([paths.src.scss + '/custom/**/*.scss', paths.src.scss + '/main/**/*.scss', paths.src.scss + '/main.scss'], gulp.series('scss'));
     gulp.watch([paths.src.node_modules + '/**/**/*.min.css', paths.src.node_modules + '/**/**/*.min.js', paths.src.base + 'package.json'], gulp.series('vendor'));
@@ -175,8 +175,6 @@ gulp.task('dist-css', function () {
         paths.src.scss + '/custom/**/*.scss',
         paths.src.scss + '/main/**/*.scss',
         paths.src.scss + '/main.scss',
-        paths.src.node_modules + '@fontsource/ibm-plex-sans/latin.css',
-        // paths.src.node_modules + '@fortawesome/fontawesome-free/css/all.min.css'
     ])
         // .pipe(wait(500))
         .pipe(sass().on('error', sass.logError))
@@ -185,7 +183,6 @@ gulp.task('dist-css', function () {
             overrideBrowserslist: ['> 1%']
         }))
         .pipe(cleanCss({ level: { 1: { specialComments: 0 } } })) // Minify the CSS + remove comments.
-        .pipe(replace('url(files/', 'url(/vendor/@fontsource/ibm-plex-sans/files/')) // ibm font fix
         .pipe(replace('url(../webfonts/', 'url(/vendor/@fortawesome/fontawesome-free/webfonts/')) // awesome font fix
         // .pipe(cachebust.resources())
         .pipe(rev())
@@ -227,7 +224,7 @@ gulp.task('dist-html', function () {
 
 // Copy assets
 gulp.task('dist-assets', function () {
-    return gulp.src([paths.src.assets])
+    return gulp.src(paths.src.assets, { base: paths.src.base })
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
             sharpResponsive({
@@ -241,7 +238,7 @@ gulp.task('dist-assets', function () {
                     // { width: 1080, rename: { suffix: "-xl" } },
                 ]
             })))
-        .pipe(gulp.dest(paths.dist.assets));
+        .pipe(gulp.dest(paths.dist.base));
 });
 
 // Copy node_modules to vendor
@@ -251,7 +248,6 @@ gulp.task('dist-vendor', function () {
         paths.src.node_modules + '/**/**/*.min.css',
         paths.src.node_modules + '/**/**/*.min.js',
         paths.src.node_modules + '/**/**/*.woff2',
-        paths.src.node_modules + '/**/**/latin.css', // temporary workaround for IBM fonts
     ]) // copy css & woff2 only
         .pipe(gulp.dest(paths.dist.vendor));
 });

@@ -32,8 +32,8 @@
                 <div class="col-xl-3 d-none d-xl-block ms-3">
                     <nav class="toc" data-toggle="toc">
                         <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round"
-                                stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+                            <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+                                transform="translate(-0.5, -0.5)" />
                         </svg>
                     </nav>
                 </div>
@@ -59,7 +59,7 @@
                         <!-- Services -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
                             <h1 class="h1">Services</h1>
-                            <!-- <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
+                            <!-- <img class="mb-5" src="/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
                             <div class="row">
                                 <!-- Card -->
                                 {% for id_service in industries[id].services %}
@@ -68,7 +68,7 @@
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
                                         <img src="{{service.img}}" class="card-img-top rounded-top" alt="card image"
-                                            onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
+                                            onerror="this.onerror=null; this.src='/img/system/placeholder@0.5x.webp'">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">{{service.title}}</h3>
                                             <p class="card-text">{{service.summary}}</p>
@@ -91,7 +91,7 @@
                         <!-- Case studies -->
                         <div class="row justify-content-between align-items-center mb-5 mb-lg-6">
                             <h1 class="h1">Case Studies</h1>
-                            <img class="mb-5" src="/assets/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
+                            <img class="mb-5" src="/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
                             <div class="row">
                                 {% for id_cs in industries[id].casestudies %}
                                 {% for key, cs in casestudies %}
@@ -100,7 +100,7 @@
                                 <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                     <div class="card shadow">
                                         <img src="{{cs.img}}" class="card-img-top rounded-top" alt="card image"
-                                            onerror="this.onerror=null; this.src='/assets/img/system/placeholder@0.5x.webp'">
+                                            onerror="this.onerror=null; this.src='/img/system/placeholder@0.5x.webp'">
                                         <div class="card-body">
                                             <h3 class="h5 card-title mt-3">{{cs.title}}</h3>
                                             <p class="card-text">{{cs.summary}}</p>
@@ -153,8 +153,7 @@
                         <div class="modal-body">
                             <div class="container mb-4 mt-2">
                                 <label for="fadeRange" class="form-label">"забілювання" картинки збоку <span id="fadeRangeOut">25</span>%</label>
-                                <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange"
-                                    oninput="fadeRangeOnInput(this)">
+                                <input type="range" class="form-range" value="25" min="0" max="100" step="1" id="fadeRange" oninput="fadeRangeOnInput(this)">
                                 <script>
                                     function fadeRangeOnInput(input) {
                                         // console.log(input.value.toString());
@@ -210,7 +209,7 @@
                                     updateImage();
                                 });
                                 function updateImage() {
-                                    image.src = `/assets/img/industries/telecommunications-${currentValue.toString().padStart(2, '0')
+                                    image.src = `/img/industries/telecommunications-${currentValue.toString().padStart(2, '0')
                                         }@1x.webp`;
                                 }
                             </script>
