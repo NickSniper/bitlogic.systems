@@ -34,11 +34,12 @@ onReady(() => {
 
     let blurredImageList = [].slice.call(document.querySelectorAll('.blurred-img'));
     blurredImageList.map(function (blurredImageEl) {
-        function loaded() {
-            blurredImageEl.classList.add("loaded")
-        }
         const imgList = [].slice.call(blurredImageEl.querySelectorAll('img'));
         imgList.map(function (img) {
+            function loaded() {
+                // img.style.opacity = "1";
+                blurredImageEl.classList.add("loaded")
+            }
             if (img.complete) {
                 loaded(img)
             } else {

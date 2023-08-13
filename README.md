@@ -346,3 +346,7 @@ https://realfavicongenerator.net/
 
 https://dou.ua/lenta/articles/what-is-ua--tech-network/
 https://www.facebook.com/UAITConsortium
+
+
+# Золота пропорція, відома також як "число Фі" (π)
+61.8% + 38.2%  загальної довжини, тобто 7+ + 5 стовпчики в Bootstrap5

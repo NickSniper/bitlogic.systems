@@ -253,23 +253,23 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        animation: pulse 2.5s infinite;
-        background-color: #000;
-    }
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     inset: 0;
+    //     opacity: 0;
+    //     // animation: pulse 2.5s infinite;
+    //     background-color: #000;
+    // }
 
-    &.loaded::before {
-        animation: none;
-        content: none;
-    }
+    // &.loaded::before {
+    //     animation: none;
+    //     content: none;
+    // }
 
     img {
         opacity: 0;
-        transition: opacity 150ms ease-in-out;
+        // transition: opacity 150ms ease-in-out;
     }
 
     &.loaded img {
@@ -277,16 +277,16 @@
     }
 }
 
-@keyframes pulse {
-    0% {
-        opacity: 0;
-    }
+// @keyframes pulse {
+//     0% {
+//         opacity: 0;
+//     }
 
-    50% {
-        opacity: 0.1;
-    }
+//     50% {
+//         opacity: 0.1;
+//     }
 
-    100% {
-        opacity: 0;
-    }
-}
+//     100% {
+//         opacity: 0;
+//     }
+// }
