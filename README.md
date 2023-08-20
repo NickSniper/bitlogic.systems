@@ -383,22 +383,6 @@ https://www.facebook.com/UAITConsortium
 | 1920  |           | 100%    |       |
 
 
-<picture>
-
-<!-- For SM displays -->
-<source media="(max-width:540px)" srcset="image-540.jpg, image-540@2x.jpg 2x">
-
-<!-- For LG displays -->
-<source media="(max-width:960px)" srcset="image-960.jpg, image-960@2x.jpg 2x">
-
-<!-- For XL displays -->
-<source media="(max-width:1440px)" srcset="image-1440.jpg, image-1440@2x.jpg 2x">
-
-<!-- For Full HD -->
-<source media="(min-width: 0px)" srcset="image-1920.jpg, image-1920@2x.jpg 2x">
-
-<!-- Default image (if none of the media queries match) -->
-<img src="image-1440.jpg" alt="Image description">
-
-</picture>
+# Nunjucks macros
+https://darthmall.net/weblog/2021/includes-and-macros/
 

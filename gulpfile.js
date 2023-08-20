@@ -131,8 +131,14 @@ gulp.task('assets', function () {
             sharpResponsive({
                 includeOriginalFile: true,
                 formats: [
-                    { format: "webp", rename: { suffix: "@1x" } },
-                    { width: (metadata) => metadata.width * 0.5, format: "webp", rename: { suffix: "@0.5x" } },
+                    { format: "webp", rename: { suffix: "-1920@2x" } },
+                    { width: (metadata) => Math.round(metadata.width * 0.75), format: "webp", rename: { suffix: "-1440@2x" } },
+                    { width: (metadata) => Math.round(metadata.width * 0.50), format: "webp", rename: { suffix: "-960@2x" } },
+                    { width: (metadata) => Math.round(metadata.width * 0.25), format: "webp", rename: { suffix: "-540@2x" } },
+                    { width: (metadata) => Math.round(metadata.width * 1.00 / 2), format: "webp", rename: { suffix: "-1920" } },
+                    { width: (metadata) => Math.round(metadata.width * 0.75 / 2), format: "webp", rename: { suffix: "-1440" } },
+                    { width: (metadata) => Math.round(metadata.width * 0.50 / 2), format: "webp", rename: { suffix: "-960" } },
+                    { width: (metadata) => Math.round(metadata.width * 0.25 / 2), format: "webp", rename: { suffix: "-540" } },
                     // { width: 640, rename: { suffix: "-sm" } },
                     // { width: 768, rename: { suffix: "-md" } },
                     // { width: 1024, rename: { suffix: "-lg" } },
