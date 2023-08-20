@@ -1,10 +1,10 @@
 {# picture for different resolutions #}
-{% macro picture(id = '', class = '', image, alt = '', style = '') %}
+{% macro picture(id = '', class = '', image, alt = '', style = '', sm = 'sm', lg = 'lg', xl = 'xl', hd = 'hd') %}
   <picture {% if id %} id="{{ id }}" {% endif %} class="{{ class }}" {% if style %} style={{style}} {%endif%}> 
-    <source media="(max-width:540px)" srcset="{{ image }}-540.webp, {{ image }}-540@2x.webp 2x">
-    <source media="(max-width:960px)" srcset="{{ image }}-960.webp, {{ image }}-960@2x.webp 2x">
-    <source media="(max-width:1440px)" srcset="{{ image }}-1440.webp, {{ image }}-1440@2x.webp 2x">
-    <source media="(min-width: 0px)" srcset="{{ image }}-1920.webp, {{ image }}-1920@2x.webp 2x">
-    <img src="{{ image }}-1440.webp" alt="{{ alt }}" loading="lazy">
+    <source media="(max-width:540px)" srcset="{{image}}-{{sm}}.webp, {{image}}-{{sm}}@2x.webp 2x">
+    <source media="(max-width:960px)" srcset="{{image}}-{{lg}}.webp, {{image}}-{{lg}}@2x.webp 2x">
+    <source media="(max-width:1440px)" srcset="{{image}}-{{xl}}.webp, {{image}}-{{xl}}@2x.webp 2x">
+    <source media="(min-width: 0px)" srcset="{{image}}-{{hd}}.webp, {{image}}-{{hd}}@2x.webp 2x">
+    <img src="{{image}}-def.png" alt="{{ alt }}" loading="lazy">
   </picture>
 {% endmacro %}

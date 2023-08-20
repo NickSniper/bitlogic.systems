@@ -6,7 +6,7 @@
       "header" : {
         "title" : "Telecommunications solutions from bitLogic",
         "text" : "Unlock new revenue potential by transforming scalability and flexibility",
-        "img" : "/img/industries/telecommunications-01",
+        "img" : "/img/industries/telecom-header-c6",
         "alt" : "Telecommunications header image"
       },
       "services" : [
@@ -37,28 +37,28 @@
       "title" : "Contact Center Setup",
       "name" : "contact-center",
       "summary" : "Comprehensive solutions, including advanced routing, AI-driven bots, IVR, and more, for a streamlined, efficient, and customer-centric communication system",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-02",
       "text" : "here the full text of the service"
     },
     "2" : {
       "title" : "Joke",
       "name" : "TODO",
       "summary" : "Here nothing to say",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-03",
       "text" : "here the full text of the service"
     },
     "3" : {
       "title" : "Database Administration",
       "name" : "TODO",
       "summary" : "DB is the best",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-04",
       "text" : "here the full text of the service"
     },
     "4" : {
       "title" : "Lorem Ipsum",
       "name" : "TODO",
       "summary" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-04",
       "text" : "here the full text of the service"
     }
   },
@@ -67,21 +67,21 @@
       "industry" : "telecommunications",
       "title" : "Building Contact Center Setup",
       "summary" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-04",
       "text" : "here the full text of the use case"
     },
     "2" : {
       "industry" : "telecommunications",
       "title" : "Building Joke",
       "summary" : "Here nothing to say",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-02",
       "text" : "here the full text of the use case"
     },
     "3" : {
       "industry" : "telecommunications",
       "title" : "Database Migration",
       "summary" : "Lorem Ipsum is simply ",
-      "img" : "/assets/img/industries/telecommunications-02@0.5x.webp",
+      "img" : "/img/industries/telecom-03",
       "text" : "here the full text of the use case"
     }
   }

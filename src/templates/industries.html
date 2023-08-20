@@ -23,7 +23,7 @@
                     <div class="image-header image-fade-left image-blurred"
                         style="background-image:url('data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA=');">
                         <div>
-                            {{ fn.picture(id = "pic-head-1", image = industries[id].header.img, alt=industries[id].header.alt) }}
+                            {{ fn.picture(id = 'pic-header', image = industries[id].header.img, alt=industries[id].header.alt, sm='lg', lg='xl') }}
                         </div>
                     </div>
                 </figure>
@@ -63,8 +63,8 @@
                             {% if key == id_service %}
                             <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                 <div class="card shadow">
-                                    <img src="{{service.img}}" class="card-img-top rounded-top" alt="card image"
-                                        onerror="this.onerror=null; this.src='/img/system/placeholder-1920.webp'">
+                                    <img srcset="{{service.img}}-sm.webp, {{service.img}}-sm@2x.webp 2x" src="{{service.img}}-sm.png" class="card-img-top rounded-top"
+                                        alt="card image" loading="lazy" onerror="this.onerror=null; this.src='/img/system/placeholder-hd.webp'; this.srcset='';">
                                     <div class="card-body">
                                         <h3 class="h5 card-title mt-3">{{service.title}}</h3>
                                         <p class="card-text">{{service.summary}}</p>
@@ -86,7 +86,7 @@
                     <!-- Case studies -->
                     <section class="row justify-content-between align-items-center mb-5 mb-lg-6">
                         <h1 class="h1">Case Studies</h1>
-                        <img class="mb-5" src="/img/industries/telecommunications-02@1x.webp" alt="Solutions image">
+                        <img class="mb-5" src="/img/industries/telecom-03-hd@2x.webp" alt="Case studies header image">
                         <div class="row">
                             {% for id_cs in industries[id].casestudies %}
                             {% for key, cs in casestudies %}
@@ -94,8 +94,8 @@
                             <!-- Card, Case Studie id={{key}} -->
                             <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
                                 <div class="card shadow">
-                                    <img src="{{cs.img}}" class="card-img-top rounded-top" alt="card image"
-                                        onerror="this.onerror=null; this.src='/img/system/placeholder-1920.webp'">
+                                    <img srcset="{{cs.img}}-sm.webp, {{cs.img}}-sm@2x.webp 2x" src="{{cs.img}}-sm.png" class="card-img-top rounded-top" alt="card image"
+                                        loading="lazy" onerror="this.onerror=null; this.src='/img/system/placeholder-hd.webp'; this.srcset='';">
                                     <div class="card-body">
                                         <h3 class="h5 card-title mt-3">{{cs.title}}</h3>
                                         <p class="card-text">{{cs.summary}}</p>

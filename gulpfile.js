@@ -71,6 +71,23 @@ const paths = {
     manifest: './'
 };
 
+const img_formats = [
+    { format: "webp", rename: { suffix: "-hd@2x" } },
+    { width: (metadata) => Math.round(metadata.width * 0.75), format: "webp", rename: { suffix: "-xl@2x" } },
+    { width: (metadata) => Math.round(metadata.width * 0.50), format: "webp", rename: { suffix: "-lg@2x" } },
+    { width: (metadata) => Math.round(metadata.width * 0.25), format: "webp", rename: { suffix: "-sm@2x" } },
+    { width: (metadata) => Math.round(metadata.width * 1.00 / 2), format: "webp", rename: { suffix: "-hd" } },
+    { width: (metadata) => Math.round(metadata.width * 0.75 / 2), format: "png", rename: { suffix: "-xl" } },
+    { width: (metadata) => Math.round(metadata.width * 0.75 / 2), format: "webp", rename: { suffix: "-xl" } },
+    { width: (metadata) => Math.round(metadata.width * 0.50 / 2), format: "webp", rename: { suffix: "-lg" } },
+    { width: (metadata) => Math.round(metadata.width * 0.25 / 2), format: "png", rename: { suffix: "-sm" } },
+    { width: (metadata) => Math.round(metadata.width * 0.25 / 2), format: "webp", rename: { suffix: "-sm" } },
+    // { width: 640, rename: { suffix: "-sm" } },
+    // { width: 768, rename: { suffix: "-md" } },
+    // { width: 1024, rename: { suffix: "-lg" } },
+    // { width: 1080, rename: { suffix: "-xl" } },
+];
+
 gulp.task('clean', function () {
     return del([paths.temp.base]);
 });
@@ -129,21 +146,8 @@ gulp.task('assets', function () {
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
             sharpResponsive({
-                includeOriginalFile: true,
-                formats: [
-                    { format: "webp", rename: { suffix: "-1920@2x" } },
-                    { width: (metadata) => Math.round(metadata.width * 0.75), format: "webp", rename: { suffix: "-1440@2x" } },
-                    { width: (metadata) => Math.round(metadata.width * 0.50), format: "webp", rename: { suffix: "-960@2x" } },
-                    { width: (metadata) => Math.round(metadata.width * 0.25), format: "webp", rename: { suffix: "-540@2x" } },
-                    { width: (metadata) => Math.round(metadata.width * 1.00 / 2), format: "webp", rename: { suffix: "-1920" } },
-                    { width: (metadata) => Math.round(metadata.width * 0.75 / 2), format: "webp", rename: { suffix: "-1440" } },
-                    { width: (metadata) => Math.round(metadata.width * 0.50 / 2), format: "webp", rename: { suffix: "-960" } },
-                    { width: (metadata) => Math.round(metadata.width * 0.25 / 2), format: "webp", rename: { suffix: "-540" } },
-                    // { width: 640, rename: { suffix: "-sm" } },
-                    // { width: 768, rename: { suffix: "-md" } },
-                    // { width: 1024, rename: { suffix: "-lg" } },
-                    // { width: 1080, rename: { suffix: "-xl" } },
-                ]
+                includeOriginalFile: false,
+                formats: img_formats
             })))
         .pipe(gulp.dest(paths.temp.base));
 });
@@ -259,15 +263,8 @@ gulp.task('dist-assets', function () {
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
             sharpResponsive({
-                includeOriginalFile: true,
-                formats: [
-                    { format: "webp", rename: { suffix: "@1x" } },
-                    { width: (metadata) => metadata.width * 0.5, format: "webp", rename: { suffix: "@0.5x" } },
-                    // { width: 640, rename: { suffix: "-sm" } },
-                    // { width: 768, rename: { suffix: "-md" } },
-                    // { width: 1024, rename: { suffix: "-lg" } },
-                    // { width: 1080, rename: { suffix: "-xl" } },
-                ]
+                includeOriginalFile: false,
+                formats: img_formats
             })))
         // .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
         //     spawn('ffmpeg', ['-i', file, '-vf scale=20:-1', file + '0x'])
