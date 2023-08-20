@@ -1,4 +1,5 @@
 <!-- Copyright © 2011-2023 bitLogic.systems -->
+{% import "macros.njk" as fn %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,30 +22,15 @@
                 <figure class="col-lg-6 p-0 text-right">
                     <div class="image-fade-left blurred-img"
                         style="background-image:url('data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA=');">
-                        <!-- <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
-                            style="max-width: 100%;"> -->
-
-                        <picture>
-                            <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
-                                style="max-width: 100%;" loading="lazy">
-                            <!-- <source 
+                        {{ fn.picture(id = "img-head-1", image = industries[id].header.img, alt="") }}
+                        <!-- <source 
                                 srcset="data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA="
                                 type="image/webp"> -->
-                            <!-- <source media="(max-width: 799px)" srcset="image-mobile.jpg"> -->
-                            <!-- <source media="(min-width: 800px)" srcset="image-desktop.jpg"> -->
-                            <!-- <img src="image-desktop.jpg" alt="Description"> -->
-                            <!-- 480px  - мобилки вертикально 
-                                 992px  - мобилки горизонтально + планшети вертикально
-                                 1200px - ??? планшети горизонтально та невеликі компи (вимирають)
-                                 1920px - стандартні дисплеї + 1080p
-                                 1024 pixels is now a common standard ???
-                            -->
-
-                        </picture>
+                        <!-- <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
+                            style="max-width: 100%;"> -->
                     </div>
                 </figure>
             </header>
-
             <div class="row g-0">
 
                 <!-- TOC -->

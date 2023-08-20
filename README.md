@@ -350,3 +350,55 @@ https://www.facebook.com/UAITConsortium
 
 # Золота пропорція, відома також як "число Фі" (π)
 61.8% + 38.2%  загальної довжини, тобто 7+ + 5 стовпчики в Bootstrap5
+
+# Розмір картинок
+## Apple
+| res.    | % file  |
+|---------|---------|
+| 734px   | 41%     |
+| 1068px  | 60%     |
+| 1773px  |         |
+
+## AI
+* 480px  - мобилки вертикально 
+* 768px  - мобилки горизонтально + планшети вертикально
+* 1024px - ??? планшети горизонтально та невеликі компи (вимирають)
+* 1200px / **1366px** / 1920px - стандартні дисплеї + 1080p
+
+## Bootsrap 5
+* 540px - sm
+* 720px - md
+* 960px - lg
+* 1140px - xl
+* 1320px - xxl     
+
+## Вибір
+| res.  | Bootstrap | % file  | Apple |
+|-------|-----------|---------|-------|
+| 540   | sm        | 25%     |       |
+| ~~734~~ |         | ~~38%~~ | ~~41%~~ |
+| 960   | lg        | 50%     |       |
+| ~~1068~~ |        | ~~56%~~ | ~~60%~~ |
+| 1440  | xl        | 75%     |       |
+| 1920  |           | 100%    |       |
+
+
+<picture>
+
+<!-- For SM displays -->
+<source media="(max-width:540px)" srcset="image-540.jpg, image-540@2x.jpg 2x">
+
+<!-- For LG displays -->
+<source media="(max-width:960px)" srcset="image-960.jpg, image-960@2x.jpg 2x">
+
+<!-- For XL displays -->
+<source media="(max-width:1440px)" srcset="image-1440.jpg, image-1440@2x.jpg 2x">
+
+<!-- For Full HD -->
+<source media="(min-width: 0px)" srcset="image-1920.jpg, image-1920@2x.jpg 2x">
+
+<!-- Default image (if none of the media queries match) -->
+<img src="image-1440.jpg" alt="Image description">
+
+</picture>
+
