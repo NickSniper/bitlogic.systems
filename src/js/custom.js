@@ -20,7 +20,7 @@ const onReady = (callback) => {
 };
 
 onReady(() => {
-    // const blurredImageDiv = document.querySelector(".blurred-img")
+    // const blurredImageDiv = document.querySelector(".image-blurred")
     // const img = blurredImageDiv.querySelector("img")
     // function loaded(img) {
     //     (img ? img : this).classList.add("loaded")
@@ -32,7 +32,7 @@ onReady(() => {
     //     img.addEventListener("load", loaded)
     // }
 
-    let blurredImageList = [].slice.call(document.querySelectorAll('.blurred-img'));
+    let blurredImageList = [].slice.call(document.querySelectorAll('.image-blurred'));
     blurredImageList.map(function (blurredImageEl) {
         const imgList = [].slice.call(blurredImageEl.querySelectorAll('img'));
         imgList.map(function (img) {

@@ -16,18 +16,15 @@
         <article class="container-fluid g-0">
             <header class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
                 <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
-                    <h1 class="display-2-lg mb-lg-7 mb-5" data-toc-skip>{{industries[id].header.title}}</h1>
-                    <p class="h4 me-8">{{industries[id].header.text}}</p>
+                    <h1 class="display-2-xl mb-xl-7 mb-5" data-toc-skip>{{industries[id].header.title}}</h1>
+                    <p class="h4 me-lg-8">{{industries[id].header.text}}</p>
                 </div>
                 <figure class="col-lg-6 p-0 text-right">
-                    <div class="image-fade-left blurred-img"
+                    <div class="image-header image-fade-left image-blurred"
                         style="background-image:url('data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA=');">
-                        {{ fn.picture(id = "pic-head-1", image = industries[id].header.img, alt="") }}
-                        <!-- <source 
-                                srcset="data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA="
-                                type="image/webp"> -->
-                        <!-- <img width="728" height="408" src="{{industries[id].header.img}}" alt="Telecommunications header image" id="image-header"
-                            style="max-width: 100%;"> -->
+                        <div>
+                            {{ fn.picture(id = "pic-head-1", image = industries[id].header.img, alt=industries[id].header.alt) }}
+                        </div>
                     </div>
                 </figure>
             </header>

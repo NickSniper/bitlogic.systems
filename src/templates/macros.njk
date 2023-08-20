@@ -1,6 +1,6 @@
 {# picture for different resolutions #}
-{% macro picture(id = '', class = '', image, alt = '') %}
-  <picture {% if id %} id="{{ id }}" {% endif %} class="{{ class }}"> 
+{% macro picture(id = '', class = '', image, alt = '', style = '') %}
+  <picture {% if id %} id="{{ id }}" {% endif %} class="{{ class }}" {% if style %} style={{style}} {%endif%}> 
     <source media="(max-width:540px)" srcset="{{ image }}-540.webp, {{ image }}-540@2x.webp 2x">
     <source media="(max-width:960px)" srcset="{{ image }}-960.webp, {{ image }}-960@2x.webp 2x">
     <source media="(max-width:1440px)" srcset="{{ image }}-1440.webp, {{ image }}-1440@2x.webp 2x">

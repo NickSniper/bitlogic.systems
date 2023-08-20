@@ -21,7 +21,7 @@
         }
 
         .navbar-brand {
-            padding: 12px 28px 12px 20px;
+            padding: 12px 20px 12px 12px;
             margin: 0px !important;
             margin-top: 2px !important;
             position: relative;
@@ -46,7 +46,7 @@
     }
 
     .nav-link {
-        padding: 6px 12px;
+        padding: 6px 10px;
     }
 
     // .navbar-brand {
@@ -67,28 +67,6 @@
     }
 }
 
-
-// ***********************************************************************************
-// my custom elements
-
-
-// fade left part of image (to gray color)
-
-.image-fade-left {
-    position: relative;
-    // overflow: hidden;
-    display: inline-block;
-}
-
-.image-fade-left::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25%;
-    height: 100%;
-    background: linear-gradient(to left, rgba(243, 244, 246, 0) 0%, rgba(243, 244, 246, 1) 100%);
-}
 
 // ***********************************************************************************
 // settings wheel button
@@ -246,12 +224,96 @@
     }
 }
 
+// ***********************************************************************************
+// my custom elements
+
+
+// fade left part of image (to gray color)
+
+.image-fade-left {
+    position: relative;
+    // overflow: hidden;
+    display: inline-block;
+}
+
+.image-header {
+    width: 100%;
+    /* 100 / 16 * 9 */
+    position: relative;
+    max-height: 440px;
+    overflow: hidden;
+
+    div {
+        // height: 100%;
+        // width: 100%;
+        padding-top: 56.25%;
+    }
+
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    // width: 100%;
+    // /* You can set this to any value you desire */
+    // position: relative;
+    // display: inline-block;
+    // max-height: 440px;
+    // overflow: hidden;
+    // /* This will hide any overflow caused by ignoring the aspect ratio */
+
+
+    // &::before {
+    //     content: "";
+    //     display: block;
+    //     padding-top: 56.25%;
+    //     /* 9/16 * 100% */
+    // }
+
+    // picture {
+    //     position: absolute;
+    //     // top: 0;
+    //     // left: 0;
+    //     // right: 0;
+    //     // bottom: 0;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     min-height: 100%;
+    //     min-width: 100%;
+    //     // object-fit: cover;
+    // }
+
+    // img {
+    //     min-height: 100%;
+    //     min-width: 100%;
+    //     object-fit: cover;
+    // }
+}
+
+.image-fade-left::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(243, 244, 246, 0) 0%, rgba(243, 244, 246, 1) 100%);
+}
+
 // ************************************************************************************
 // lazy loading blurred image
 
-.blurred-img {
+.image-blurred {
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
+    width: 100%;
 
     // &::before {
     //     content: "";
