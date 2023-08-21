@@ -146,7 +146,7 @@ gulp.task('assets', function () {
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
             sharpResponsive({
-                includeOriginalFile: false,
+                includeOriginalFile: true,
                 formats: img_formats
             })))
         .pipe(gulp.dest(paths.temp.base));
@@ -263,7 +263,7 @@ gulp.task('dist-assets', function () {
         // compress if there are images, copy otherwise
         .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
             sharpResponsive({
-                includeOriginalFile: false,
+                includeOriginalFile: true,
                 formats: img_formats
             })))
         // .pipe(gulpif(file => ImagesExtensions.test(file.extname.toLowerCase()),
