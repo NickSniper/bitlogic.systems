@@ -237,118 +237,65 @@
 }
 
 .image-header {
-    width: 100%;
-    /* 100 / 16 * 9 */
-    position: relative;
     max-height: 440px;
-    overflow: hidden;
-
-    div {
-        // height: 100%;
-        // width: 100%;
-        padding-top: 56.25%;
-    }
 
     img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
-
-    // width: 100%;
-    // /* You can set this to any value you desire */
-    // position: relative;
-    // display: inline-block;
-    // max-height: 440px;
-    // overflow: hidden;
-    // /* This will hide any overflow caused by ignoring the aspect ratio */
-
-
-    // &::before {
-    //     content: "";
-    //     display: block;
-    //     padding-top: 56.25%;
-    //     /* 9/16 * 100% */
-    // }
-
-    // picture {
-    //     position: absolute;
-    //     // top: 0;
-    //     // left: 0;
-    //     // right: 0;
-    //     // bottom: 0;
-    //     top: 50%;
-    //     left: 50%;
-    //     transform: translate(-50%, -50%);
-    //     min-height: 100%;
-    //     min-width: 100%;
-    //     // object-fit: cover;
-    // }
-
-    // img {
-    //     min-height: 100%;
-    //     min-width: 100%;
-    //     object-fit: cover;
-    // }
 }
 
-.image-fade-left::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25%;
-    height: 100%;
-    background: linear-gradient(to left, rgba(243, 244, 246, 0) 0%, rgba(243, 244, 246, 1) 100%);
+@media (min-width: 960px) {
+    .image-fade-left::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25%;
+        height: 100%;
+        background: linear-gradient(to left, rgba(243, 244, 246, 0) 0%, rgba(243, 244, 246, 1) 100%);
+    }
 }
 
 // ************************************************************************************
 // lazy loading blurred image
 
-.image-blurred {
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+// .image-blurred {
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     height: 100%;
+//     width: 100%;
 
-    // &::before {
-    //     content: "";
-    //     position: absolute;
-    //     inset: 0;
-    //     opacity: 0;
-    //     // animation: pulse 2.5s infinite;
-    //     background-color: #000;
-    // }
-
-    // &.loaded::before {
-    //     animation: none;
-    //     content: none;
-    // }
-
-    img {
-        opacity: 0;
-        // transition: opacity 150ms ease-in-out;
-    }
-
-    &.loaded img {
-        opacity: 1;
-    }
-}
-
-// @keyframes pulse {
-//     0% {
+//     img {
 //         opacity: 0;
+//         // transition: opacity 150ms ease-in-out;
 //     }
 
-//     50% {
-//         opacity: 0.1;
-//     }
-
-//     100% {
-//         opacity: 0;
+//     &.loaded img {
+//         opacity: 1;
 //     }
 // }
+
+// // @keyframes pulse {
+// //     0% {
+// //         opacity: 0;
+// //     }
+
+// //     50% {
+// //         opacity: 0.1;
+// //     }
+
+// //     100% {
+// //         opacity: 0;
+// //     }
+// // }
+
+// ************************************************************************************
+// limit container-fluif on the huge (hd+) screens
+
+@media (min-width: 1440px) {
+    .container-fluid {
+        max-width: 1920px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

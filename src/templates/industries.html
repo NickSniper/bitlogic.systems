@@ -14,24 +14,25 @@
         @@include('./_preloader.html', { "path": "../.."})
         <!-- Header -->
         <article class="container-fluid g-0">
+            <!-- <article class="container g-0"> -->
             <header class="row justify-content-between mb-5 mb-lg-6 bg-gray-200 g-0 header-shift overflow-hidden">
                 <div class="col-lg-6 mb-2 mb-lg-0 p-5 pt-4 pb-4 position-relative">
                     <h1 class="display-2-xl mb-xl-7 mb-5" data-toc-skip>{{industries[id].header.title}}</h1>
-                    <p class="h4 me-lg-8">{{industries[id].header.text}}</p>
+                    <p class="h4 me-lg-6">{{industries[id].header.text}}</p>
                 </div>
-                <figure class="col-lg-6 p-0 text-right">
-                    <div class="image-header image-fade-left image-blurred"
-                        style="background-image:url('data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA=');">
-                        <div>
-                            {{ fn.picture(id = 'pic-header', image = industries[id].header.img, alt=industries[id].header.alt, sm='lg', lg='xl') }}
-                        </div>
-                    </div>
+                <figure class="image-header image-fade-left col-lg-6 p-0 text-right">
+                    <!-- <div class="image-header image-fade-left "> -->
+                    <!-- image-blurred -->
+                    <!-- style="background-image:url('data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoUAAsAPpE6l0eloyIhMAgAsBIJbACdL1J6SAYQdAG0tLGPMUIA/viU5101+sHbPW+Tmj0gisn2KAO8ryCez/xqZl2gAJifJpeAvetFz7c9lNVpzPCp/yQpOrRG8+BDSPw9Ak7gXC4z7FA7oJiyC5NbGk7Obk+ItOFCJ3XNy5XIJbGNN0SnAfuDoAA=');"> -->
+                    {{ fn.picture(id = 'pic-header', image = industries[id].header.img, alt=industries[id].header.alt, sm='lg', lg='xl') }}
+                    <!-- </div> -->
                 </figure>
             </header>
+
             <div class="row g-0">
 
                 <!-- TOC -->
-                <aside class="col-xl-3 d-none d-xl-block ms-3">
+                <aside class="col-lg-2 d-none d-lg-block">
                     <nav class="toc" data-toggle="toc">
                         <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
                             <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
@@ -42,18 +43,18 @@
 
 
                 <!-- article -->
-                <article class="col overflow-hidden section section-lg p-0">
+                <article class="col col-xl-8 overflow-hidden p-0 px-4">
 
                     <!-- Overview -->
-                    <section class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
-                        <div class="col-lg-9">
-                            <h1>Overview</h1>
-                            <span>{{industries[id].overview | safe}}</span>
-                        </div>
+                    <section class="justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
+                        <!-- <div class="col-xl-9"> -->
+                        <h1>Overview</h1>
+                        <span>{{industries[id].overview | safe}}</span>
+                        <!-- </div> -->
                     </section>
 
                     <!-- Services -->
-                    <section class="row justify-content-between align-items-center mb-5 mb-lg-6">
+                    <section class="justify-content-between align-items-center mb-5 mb-lg-6">
                         <h1 class="h1">Services</h1>
                         <!-- <img class="mb-5" src="/img/industries/telecommunications-02@1x.webp" alt="Solutions image"> -->
                         <div class="row">
@@ -61,7 +62,7 @@
                             {% for id_service in industries[id].services %}
                             {% for key, service in services %}
                             {% if key == id_service %}
-                            <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
+                            <div class="col-12 col-sm-9 col-md-6 col-lg-4 mb-5 mb-lg-4 mx-auto mx-md-0">
                                 <div class="card shadow">
                                     <img srcset="{{service.img}}-sm.webp, {{service.img}}-sm@2x.webp 2x" src="{{service.img}}-sm.png" class="card-img-top rounded-top"
                                         alt="card image" loading="lazy" onerror="this.onerror=null; this.src='/img/system/placeholder-hd.webp'; this.srcset='';">
@@ -84,15 +85,15 @@
                     </section>
 
                     <!-- Case studies -->
-                    <section class="row justify-content-between align-items-center mb-5 mb-lg-6">
+                    <section class="justify-content-between align-items-center mb-5 mb-lg-6">
                         <h1 class="h1">Case Studies</h1>
-                        <img class="mb-5" src="/img/industries/telecom-03-hd@2x.webp" alt="Case studies header image">
+                        <!-- <img class="mb-5" src="/img/industries/telecom-03-hd@2x.webp" alt="Case studies header image"> -->
                         <div class="row">
                             {% for id_cs in industries[id].casestudies %}
                             {% for key, cs in casestudies %}
                             {% if key == id_cs %}
                             <!-- Card, Case Studie id={{key}} -->
-                            <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-4">
+                            <div class="col-12 col-sm-9 col-md-6 col-lg-4 mb-5 mb-lg-4 mx-auto mx-md-0">
                                 <div class="card shadow">
                                     <img srcset="{{cs.img}}-sm.webp, {{cs.img}}-sm@2x.webp 2x" src="{{cs.img}}-sm.png" class="card-img-top rounded-top" alt="card image"
                                         loading="lazy" onerror="this.onerror=null; this.src='/img/system/placeholder-hd.webp'; this.srcset='';">
@@ -117,15 +118,15 @@
                     </section>
 
                     <!-- Useful Links -->
-                    <footer class="row justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
+                    <footer class="justify-content-between align-items-center mb-5 mb-lg-6 text-justify">
                         <h1 class="h1">Useful links</h1>
-                        <div class="col-lg-10">
-                            <ol>
-                                {% for link in industries[id].links %}
-                                <li>{{link | safe}} </li>
-                                {% endfor %}
-                            </ol>
-                        </div>
+                        <!-- <div class="col-xl-8"> -->
+                        <ol>
+                            {% for link in industries[id].links %}
+                            <li>{{link | safe}} </li>
+                            {% endfor %}
+                        </ol>
+                        <!-- </div> -->
                     </footer>
                 </article>
             </div>

@@ -206,7 +206,7 @@ onReady(() => {
                 } else {
                     var anchor = this.generateUniqueId(el);
                     let el_save = el;
-                    while ((el = el.parentElement) && !((el.matches || el.matchesSelector).call(el, '.row')));
+                    while ((el = el.parentElement) && !((el.matches || el.matchesSelector).call(el, '.row, article, header, section, footer, .container')));
                     el = el || el_save;
                     el.id = anchor;
                     return anchor;
